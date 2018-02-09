@@ -21,14 +21,7 @@ export class RemoteServiceProvider {
     this.baseUrl = "https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user";
   }
 
-  private extractData(res: Response) {
-    let body = res.json();
-    //return body.data || {};
-  }
-
   getUsers() {
     return this.http.get(this.baseUrl);
   }
-
-
 }

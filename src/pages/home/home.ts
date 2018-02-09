@@ -14,9 +14,12 @@ export class HomePage {
   }
 
   getUserData() {
-    this.service.getUsers().subscribe((res: any[]) => {
-      console.log(res)
-    });
+    this.service.getUsers().subscribe(
+      (res: any[]) => {
+        console.log(res)
+      }, error => {
+        console.log(error);
+      });
   }
 
 }
