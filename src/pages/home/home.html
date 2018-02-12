@@ -20,12 +20,18 @@
         </ion-col>
 
 
-        <ion-col col-12 col-md-4 text-right class="pull-right">
+        <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="!userIsLogged">
           <a href="#" (click)="openRegistration()">
             <i class="zmdi zmdi-edit"></i> Register</a>
           <a href="#" (click)="openLogin()">
             <i class="zmdi zmdi-account"></i> Login</a>
         </ion-col>
+
+        <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="userIsLogged == 'userIsLogged'">
+            <a href="#" (click)="editProfile()">
+              <i class="zmdi zmdi-account"></i> Edit Profile</a>
+          </ion-col>
+
       </ion-row>
     </ion-grid>
   </div>

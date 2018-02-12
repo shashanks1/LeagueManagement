@@ -5,13 +5,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
 import { LoginPage } from '../login/login';
-/**
- * Generated class for the RegistrationPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 
 @Component({
   selector: 'page-registration',
@@ -19,48 +12,41 @@ import { LoginPage } from '../login/login';
 })
 export class RegistrationPage {
 
-  registrationForm : FormGroup;
-  email : string;
-  fullName : string;
-  userName : string;
-  password : string;
-  agree : boolean;
-
+  registrationForm: FormGroup;
+  email: string;
+  fullName: string;
+  userName: string;
+  password: string;
+  agree: boolean;
+  apiMessage: string;
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
-  this.email = '';
-  this.fullName = '';
-  this.userName = '';
-  this.password = '';
-  this.agree = true;
-  this.registrationForm = fb.group({
-    'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
-    'fullName': [null, Validators.required],
-    'userName': [null, Validators.required],
-    'password': [null, Validators.required],
-    'agree': [null]
+    this.email = '';
+    this.fullName = '';
+    this.userName = '';
+    this.password = '';
+    this.agree = true;
+    this.apiMessage = null;
 
-  });
-  }
+    this.registrationForm = fb.group({
+      'email': ['', Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
+      'fullName': ['', Validators.required],
+      'userName': ['', Validators.required],
+      'password': ['', Validators.required],
+      'agree': [''],
+      'profile': ['']
 
-  signUp(postData){
-    /*let postData= {
-      "email": this.email,
-      "full_name" : this.fullName,
-      "username" : this.userName,
-      "password": this.password,
-      "profile": {}
-    }*/
-    this.service.signUp(postData).subscribe((res: any[]) => {
-      console.log(res)
     });
-
   }
 
-  openLogin() {
-    this.navCtrl.push(LoginPage);
+  signUp(postData) {
+    this.apiMessage = null;
+    this.service.signUp(postData).subscribe((res: any[]) => {
+      sessionStorage.setItem("registrationMessage", JSON.stringify(res['res']));
+      this.navCtrl.push(LoginPage);
+    },
+      error => {
+        this.apiMessage = JSON.stringify(error['error']['res']);
+      });
   }
-  
-
-
 }
