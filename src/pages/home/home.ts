@@ -13,18 +13,17 @@ export class HomePage {
   //@ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
+  userIsLogged: string;
 
   pages: Array<{ title: string, component: any }>;
 
   constructor(public service: RemoteServiceProvider, public navCtrl: NavController) {
-    //this.getUserData();
-  }
-
-  getUserData() {
-    this.service.getUsers().subscribe(
-      (res: any[]) => {
-      }, error => {
-      });
+    sessionStorage.setItem("registrationMessage", null);
+    this.userIsLogged = null;
+    
+    if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
+      this.userIsLogged = sessionStorage.getItem("loginDone");
+    }
   }
 
   openLogin() {

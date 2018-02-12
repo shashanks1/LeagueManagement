@@ -29,22 +29,24 @@ export class RegistrationPage {
     this.apiMessage = null;
 
     this.registrationForm = fb.group({
-      'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
-      'fullName': [null, Validators.required],
-      'userName': [null, Validators.required],
-      'password': [null, Validators.required],
-      'agree': [null]
+      'email': ['', Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
+      'fullName': ['', Validators.required],
+      'userName': ['', Validators.required],
+      'password': ['', Validators.required],
+      'agree': [''],
+      'profile': ['']
 
     });
   }
 
   signUp(postData) {
+    this.apiMessage = null;
     this.service.signUp(postData).subscribe((res: any[]) => {
-      this.apiMessage = JSON.stringify(res['res']);
+      sessionStorage.setItem("registrationMessage", JSON.stringify(res['res']));
       this.navCtrl.push(LoginPage);
     },
       error => {
-        this.apiMessage = JSON.stringify(error['res']);
+        this.apiMessage = JSON.stringify(error['error']['res']);
       });
   }
 }

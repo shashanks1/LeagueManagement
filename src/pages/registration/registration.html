@@ -45,6 +45,9 @@
           <h1>Or</h1>
         </ion-col>
       </ion-row>
+      <div *ngIf="apiMessage">
+        <p>{{apiMessage}}</p>
+      </div>
       <form [formGroup]="registrationForm" (ngSubmit)="signUp(registrationForm.value)">
         <div class="form-container">
           <ion-row text-center>
@@ -76,9 +79,7 @@
                   <div padding class="submitBtn">
                     <button ion-button block large color="dark" [disabled]="!registrationForm.valid">Sign Up</button>
                   </div>
-
-
-
+                  
                 </ion-list>
               </div>
             </ion-col>
