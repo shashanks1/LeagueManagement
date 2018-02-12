@@ -10,29 +10,81 @@ import { RemoteServiceProvider } from '../../providers/remote-service/remote-ser
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  rForm: FormGroup;
-  post: any;
+  loginForm: FormGroup;
+  forgotForm: FormGroup;
+  changePasswordForm: FormGroup;
   password: string;
-  eAddress: string;
+  apiMessage: string;
+  email: string;
+  forgotPassword: boolean;
+  changePassword: boolean;
 
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
-    this.eAddress = '';
+    this.email = '';
     this.password = '';
-    this.rForm = fb.group({
-      'eAddress': [null, Validators.required],
-      'password': [null, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(500)])]
+    this.apiMessage = null;
+    this.forgotPassword = false;
+    this.changePassword = false;
+    this.loginForm = fb.group({
+      'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
+      'password': [null, Validators.required]
+    });
+    this.forgotForm = fb.group({
+      'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])]
+    });
 
+    this.changePasswordForm = fb.group({
+      'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
+      'old_password': [null, Validators.required],
+      'new_password': [null, Validators.required]
     });
   }
-  submit() {
-    let postData = {
-      "email": this.eAddress,
-      "password": this.password,
-    }
-    this.service.submit(postData).subscribe((res: any[]) => {
-      console.log(res)
+
+  // function to submit login to the API
+  submitLogin(value) {
+    this.apiMessage = null;
+    this.service.submitLogin(value).subscribe((res: any[]) => {
     });
+  }
+
+  // function to open forgot password form 
+  openForgotPassword() {
+    this.apiMessage = null;
+    this.forgotPassword = true;
+    this.changePassword = false;
+  }
+
+  // function to submit forgot password to the API
+  submitForgotPassword(value) {
+    this.apiMessage = null;
+    this.service.submitForgotPassword(value).subscribe((res: any[]) => {
+      this.apiMessage = JSON.stringify(res['res']);
+      this.cancel();
+    });
+  }
+
+  // function to submit forgot password to the API
+  submitChangePassword(value) {
+    this.apiMessage = null;
+    this.service.submitChangePassword(value).subscribe((res: any[]) => {
+      this.apiMessage = JSON.stringify(res['res']);
+      this.cancel();
+    });
+  }
+
+  // function to open change password form
+  openChangePassword() {
+    this.apiMessage = null;
+    this.changePassword = true;
+    this.forgotPassword = false;
+  }
+
+  // function to cancel forgot or change password form
+  cancel() {
+    this.apiMessage = null;
+    this.changePassword = false;
+    this.forgotPassword = false;
   }
 }
 

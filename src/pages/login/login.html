@@ -27,9 +27,12 @@
           <img src="assets/imgs/logo.png" alt="">
         </ion-col>
       </ion-row>
+      <div *ngIf="apiMessage">
+        <p>{{apiMessage}}</p>
+      </div>
 
-      <div *ngIf="!name; else forminfo">
-        <form [formGroup]="rForm" (ngSubmit)="submit()">
+      <div *ngIf="!forgotPassword && !changePassword">
+        <form [formGroup]="loginForm" (ngSubmit)="submitLogin(loginForm.value)">
           <div class="form-container">
             <ion-row text-center>
               <ion-col col-12 col-lg-4 offset-lg-4 col-md-8 offset-md-2>
@@ -37,7 +40,7 @@
 
                   <ion-list>
                     <ion-item>
-                      <ion-input type="text" placeholder="Email Address" formControlName="eAddress"></ion-input>
+                      <ion-input type="text" placeholder="Email Address" formControlName="email"></ion-input>
                     </ion-item>
 
                     <ion-item>
@@ -45,7 +48,72 @@
                     </ion-item>
 
                     <div padding class="loginBtn">
-                      <button ion-button block large color="dark" [disabled]="!rForm.valid">Sign In</button>
+                      <button ion-button block large color="dark" [disabled]="!loginForm.valid">Sign In</button>
+                    </div>
+                    <div padding class="loginBtn">
+                      <a href="#" (click)="openForgotPassword()">Forgot Password</a>
+                      <a href="#" (click)="openChangePassword()">Change Password</a>
+                    </div>
+
+
+                  </ion-list>
+                </div>
+              </ion-col>
+
+            </ion-row>
+          </div>
+        </form>
+      </div>
+
+      <div *ngIf="forgotPassword">
+        <form [formGroup]="forgotForm" (ngSubmit)="submitForgotPassword(forgotForm.value)">
+          <div class="form-container">
+            <ion-row text-center>
+              <ion-col col-12 col-lg-4 offset-lg-4 col-md-8 offset-md-2>
+                <div class="signupForm">
+
+                  <ion-list>
+                    <ion-item>
+                      <ion-input type="text" placeholder="Email Address" formControlName="email"></ion-input>
+                    </ion-item>
+
+                    <div padding class="loginBtn">
+                      <button ion-button block large color="dark" [disabled]="!forgotForm.valid">Forgot Password</button>
+                      <button ion-button block large color="dark" (click)="cancel()">Cancel</button>
+                    </div>
+
+                  </ion-list>
+                </div>
+              </ion-col>
+
+            </ion-row>
+          </div>
+        </form>
+      </div>
+
+      <div *ngIf="changePassword">
+        <form [formGroup]="changePasswordForm" (ngSubmit)="submitChangePassword(changePasswordForm.value)">
+          <div class="form-container">
+            <ion-row text-center>
+              <ion-col col-12 col-lg-4 offset-lg-4 col-md-8 offset-md-2>
+                <div class="signupForm">
+
+                  <ion-list>
+                    <ion-item>
+                      <ion-input type="text" placeholder="Email Address" formControlName="email"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-input type="password" placeholder="Old Password" formControlName="old_password"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-input type="password" placeholder="New Password" formControlName="new_password"></ion-input>
+                    </ion-item>
+
+                    <div padding class="loginBtn">
+                      <button ion-button block large color="dark" [disabled]="!changePasswordForm.valid">Change Password</button>
+                      <button ion-button block large color="dark" (click)="cancel()">Cancel</button>
                     </div>
 
                   </ion-list>
@@ -61,17 +129,6 @@
     </ion-grid>
 
   </div>
-  <ng-template #forminfo>
-    <div class="form-container">
-      <div class="row columns">
-        <h1>{{ eAddress }}</h1>
-
-        <p>{{ password }}</p>
-      </div>
-    </div>
-  </ng-template>
-
-
 
   <!-- footer -->
   <div class="footer">
