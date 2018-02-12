@@ -26,7 +26,6 @@ export class RemoteServiceProvider {
   }
 
   submitLogin(data) {
-    console.log(data);
     return this.http.post('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/login', data);
   }
 
