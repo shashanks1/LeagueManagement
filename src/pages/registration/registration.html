@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>SignUp</ion-title>
   </ion-navbar>
 
@@ -28,8 +28,12 @@
         </ion-col>
 
         <ion-col col-12 class="signupHeading">
-          <h1>Are you already a user? <a href="#">Sign In</a></h1>
-          <h2><a href="#">Create an account using</a></h2>
+          <h1>Are you already a user?
+            <a href="#">Sign In</a>
+          </h1>
+          <h2>
+            <a href="#">Create an account using</a>
+          </h2>
         </ion-col>
 
         <ion-col col-12 class="signinWhithSocial">
@@ -70,7 +74,7 @@
                   </ion-item>
 
                   <div padding class="submitBtn">
-                    <button ion-button block large color="dark" [disabled]="!registrationForm.valid" (click)="openLogin()">Sign Up</button>
+                    <button ion-button block large color="dark" [disabled]="!registrationForm.valid">Sign Up</button>
                   </div>
 
 
@@ -83,83 +87,107 @@
         </div>
       </form>
     </ion-grid>
+  </div>
+
+
+
+
+  <!-- footer -->
+  <div class="footer">
+    <div class="container">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-lg-3 col-md-6 col-12>
+            <img src="assets/imgs/footer-logo.png" />
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore nulla pariatur.</p>
+            <a href="#">
+              <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
+            </a>
+          </ion-col>
+
+          <ion-col col-lg-3 col-md-6 col-12>
+            <ul class="footerList">
+              <li>
+                <a href="#">About</a>
+              </li>
+              <li>
+                <a href="#">Leatest News</a>
+              </li>
+              <li>
+                <a href="#">Help</a>
+              </li>
+              <li>
+                <a href="#">Donate</a>
+              </li>
+              <li>
+                <a href="#">Career</a>
+              </li>
+            </ul>
+          </ion-col>
+
+          <ion-col col-lg-3 col-md-6 col-12 class="footerContact">
+            <h5>Contact Us</h5>
+            <p>
+              <strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
+
+            <p>
+              <strong>Call Us</strong> (123) 456-78-90</p>
+
+            <p>
+              <strong>Email</strong> info@mytenniscloud.com</p>
+          </ion-col>
+
+          <ion-col col-lg-3 col-md-6 col-12>
+            <h5>Latest Blog Posts</h5>
+
+            <ion-list>
+              <ion-item>
+                <ion-avatar item-start>
+                  <img src="assets/imgs/blog-img-1.jpg" />
+                </ion-avatar>
+                <h2>Improve Your Strokes Using The Wall</h2>
+                <p>
+                  <a href="#">February 7, 2018</a> by
+                  <a href="#">John Doe</a>
+                </p>
+              </ion-item>
+
+              <ion-item>
+                <ion-avatar item-start>
+                  <img src="assets/imgs/blog-img-2.jpg" />
+                </ion-avatar>
+                <h2>Improve Your Strokes Using The Wall</h2>
+                <p>
+                  <a href="#">February 7, 2018</a> by
+                  <a href="#">John Doe</a>
+                </p>
+              </ion-item>
+
+
+            </ion-list>
+
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
+  </div>
+  <!-- /footer -->
 
-
-
-
-    <!-- footer -->
-    <div class="footer">
-      <div class="container">
-        <ion-grid>
-          <ion-row>
-            <ion-col col-lg-3 col-md-6 col-12>
-              <img src="assets/imgs/footer-logo.png" />
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore nulla pariatur.</p>
-              <a href="#"><img src="assets/imgs/social-icon.png" alt="" class="socialIcon"></a>
-            </ion-col>
-
-            <ion-col col-lg-3 col-md-6 col-12>
-              <ul class="footerList">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Leatest News</a></li>
-                <li><a href="#">Help</a></li>
-                <li><a href="#">Donate</a></li>
-                <li><a href="#">Career</a></li>
-              </ul>
-            </ion-col>
-
-            <ion-col col-lg-3 col-md-6 col-12 class="footerContact">
-              <h5>Contact Us</h5>
-              <p><strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
-
-              <p><strong>Call Us</strong> (123) 456-78-90</p>
-
-              <p><strong>Email</strong> info@mytenniscloud.com</p>
-            </ion-col>
-
-            <ion-col col-lg-3 col-md-6 col-12>
-              <h5>Latest Blog Posts</h5>
-
-              <ion-list>
-                <ion-item>
-                  <ion-avatar item-start>
-                    <img src="assets/imgs/blog-img-1.jpg" />
-                  </ion-avatar>
-                  <h2>Improve Your Strokes Using The Wall</h2>
-                  <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
-                </ion-item>
-
-                <ion-item>
-                  <ion-avatar item-start>
-                    <img src="assets/imgs/blog-img-2.jpg" />
-                  </ion-avatar>
-                  <h2>Improve Your Strokes Using The Wall</h2>
-                  <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
-                </ion-item>
-
-
-              </ion-list>
-
-
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
+  <!-- Bottom footer -->
+  <div class="footerBottom">
+    <div class="container">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12 text-center>
+            <p>My Tennis Cloud © 2018 All Rights Reserved
+              <a href="#">Terms of Use</a> and
+              <a href="#">Privacy Policy</a>
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
-    <!-- /footer -->
-
-    <!-- Bottom footer -->
-    <div class="footerBottom">
-      <div class="container">
-        <ion-grid>
-          <ion-row>
-            <ion-col col-12 text-center>
-              <p>My Tennis Cloud © 2018 All Rights Reserved <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></p>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-    </div>
-    <!-- /Bottom footer -->
+  </div>
+  <!-- /Bottom footer -->
 </ion-content>

@@ -61,7 +61,10 @@ export class LoginPage {
     this.service.submitForgotPassword(value).subscribe((res: any[]) => {
       this.apiMessage = JSON.stringify(res['res']);
       this.cancel();
-    });
+    },
+      error => {
+        this.apiMessage = JSON.stringify(error['res']);
+      });
   }
 
   // function to submit forgot password to the API
@@ -70,7 +73,10 @@ export class LoginPage {
     this.service.submitChangePassword(value).subscribe((res: any[]) => {
       this.apiMessage = JSON.stringify(res['res']);
       this.cancel();
-    });
+    },
+      error => {
+        this.apiMessage = JSON.stringify(error['res']);
+      });
   }
 
   // function to open change password form
