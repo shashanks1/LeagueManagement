@@ -25,15 +25,14 @@ export class LoginPage {
 
     });
   }
-  Login() {
+  submit() {
     let postData = {
       "email": this.eAddress,
       "password": this.password,
     }
-    this.service.Login(postData).subscribe((res: any[]) => {
+    this.service.submit(postData).subscribe((res: any[]) => {
       console.log(res)
     });
   }
-
 }
 

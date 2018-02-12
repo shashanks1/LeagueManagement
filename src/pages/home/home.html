@@ -1,26 +1,30 @@
 <ion-header>
-    <ion-navbar>
-      <button ion-button menuToggle>
+  <ion-navbar>
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-      <!-- <ion-title>Home</ion-title> -->
-    </ion-navbar>
+    <!-- <ion-title>Home</ion-title> -->
+  </ion-navbar>
 
   <div class="container">
     <ion-grid>
       <ion-row class="top-strip">
         <ion-col col-12 col-md-8>
-            <button ion-button menuToggle>
-                <ion-icon name="menu"></ion-icon>
-              </button>
-          <a href="#"><i class="zmdi zmdi-phone"></i> +1 (0) 1234 56789</a>
-          <a href="#"><i class="zmdi zmdi-email"></i> info@mytenniscloud.com</a>
+          <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+          <a href="#">
+            <i class="zmdi zmdi-phone"></i> +1 (0) 1234 56789</a>
+          <a href="#">
+            <i class="zmdi zmdi-email"></i> info@mytenniscloud.com</a>
         </ion-col>
 
 
         <ion-col col-12 col-md-4 text-right class="pull-right">
-            <a href="#" (click)="openRegistration()"><i class="zmdi zmdi-edit"></i> Register</a>
-          <a href="#" (click)="openLogin()"><i class="zmdi zmdi-account" ></i> Login</a>
+          <a href="#" (click)="openRegistration()">
+            <i class="zmdi zmdi-edit"></i> Register</a>
+          <a href="#" (click)="openLogin()">
+            <i class="zmdi zmdi-account"></i> Login</a>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -38,16 +42,32 @@
         <ion-col col-7>
           <ion-list>
             <ul class="mainNav">
-              <li class="active"><a href="#">Lorem ipsum</a></li>
-              <li><a href="#">Perspiciatis <i class="zmdi zmdi-chevron-down"></i></a></li>
-              <li><a href="#">Neque porro <i class="zmdi zmdi-chevron-down"></i></a></li>
-              <li><a href="#">About <i class="zmdi zmdi-chevron-down"></i></a></li>
+              <li class="active">
+                <a href="#">Lorem ipsum</a>
+              </li>
+              <li>
+                <a href="#">Perspiciatis
+                  <i class="zmdi zmdi-chevron-down"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">Neque porro
+                  <i class="zmdi zmdi-chevron-down"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">About
+                  <i class="zmdi zmdi-chevron-down"></i>
+                </a>
+              </li>
             </ul>
           </ion-list>
         </ion-col>
 
         <ion-col col-2>
-          <a href="#"><img src="assets/imgs/social-icon.png" alt="" class="socialIcon"></a>
+          <a href="#">
+            <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
+          </a>
         </ion-col>
       </ion-row>
 
@@ -76,7 +96,9 @@
     <div class="container">
       <ion-grid>
         <ion-row>
-          <ion-col col-12 col-lg-1 class="liveFeedText"><strong>Live Feed</strong></ion-col>
+          <ion-col col-12 col-lg-1 class="liveFeedText">
+            <strong>Live Feed</strong>
+          </ion-col>
           <ion-col col-12 col-lg-11>
 
             <ion-slides autoplay="2000">
@@ -247,26 +269,41 @@
           <ion-col col-lg-3 col-md-6 col-12>
             <img src="assets/imgs/footer-logo.png" />
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore nulla pariatur.</p>
-            <a href="#"><img src="assets/imgs/social-icon.png" alt="" class="socialIcon"></a>
+            <a href="#">
+              <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
+            </a>
           </ion-col>
 
           <ion-col col-lg-3 col-md-6 col-12>
             <ul class="footerList">
-              <li><a href="#">About</a></li>
-              <li><a href="#">Leatest News</a></li>
-              <li><a href="#">Help</a></li>
-              <li><a href="#">Donate</a></li>
-              <li><a href="#">Career</a></li>
+              <li>
+                <a href="#">About</a>
+              </li>
+              <li>
+                <a href="#">Leatest News</a>
+              </li>
+              <li>
+                <a href="#">Help</a>
+              </li>
+              <li>
+                <a href="#">Donate</a>
+              </li>
+              <li>
+                <a href="#">Career</a>
+              </li>
             </ul>
           </ion-col>
 
           <ion-col col-lg-3 col-md-6 col-12 class="footerContact">
             <h5>Contact Us</h5>
-            <p><strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
+            <p>
+              <strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
 
-            <p><strong>Call Us</strong> (123) 456-78-90</p>
+            <p>
+              <strong>Call Us</strong> (123) 456-78-90</p>
 
-            <p><strong>Email</strong> info@mytenniscloud.com</p>
+            <p>
+              <strong>Email</strong> info@mytenniscloud.com</p>
           </ion-col>
 
           <ion-col col-lg-3 col-md-6 col-12>
@@ -278,7 +315,10 @@
                   <img src="assets/imgs/blog-img-1.jpg" />
                 </ion-avatar>
                 <h2>Improve Your Strokes Using The Wall</h2>
-                <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
+                <p>
+                  <a href="#">February 7, 2018</a> by
+                  <a href="#">John Doe</a>
+                </p>
               </ion-item>
 
               <ion-item>
@@ -286,7 +326,10 @@
                   <img src="assets/imgs/blog-img-2.jpg" />
                 </ion-avatar>
                 <h2>Improve Your Strokes Using The Wall</h2>
-                <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
+                <p>
+                  <a href="#">February 7, 2018</a> by
+                  <a href="#">John Doe</a>
+                </p>
               </ion-item>
 
 
@@ -306,7 +349,10 @@
       <ion-grid>
         <ion-row>
           <ion-col col-12 text-center>
-            <p>My Tennis Cloud © 2018 All Rights Reserved <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></p>
+            <p>My Tennis Cloud © 2018 All Rights Reserved
+              <a href="#">Terms of Use</a> and
+              <a href="#">Privacy Policy</a>
+            </p>
           </ion-col>
         </ion-row>
       </ion-grid>

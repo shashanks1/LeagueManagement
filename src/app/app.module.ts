@@ -9,14 +9,14 @@ import { AuthInterceptor } from '../providers/auth.interceptor';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import {RegistrationPage} from '../pages/registration/registration';
+import { RegistrationPage } from '../pages/registration/registration';
 import { LoginPage } from '../pages/login/login';
 import { MyleaguePage } from '../pages/myleague/myleague';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
-import {HttpModule} from '@angular/http';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [

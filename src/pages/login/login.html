@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>SignIn</ion-title>
   </ion-navbar>
 
@@ -29,7 +29,7 @@
       </ion-row>
 
       <div *ngIf="!name; else forminfo">
-        <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+        <form [formGroup]="rForm" (ngSubmit)="submit()">
           <div class="form-container">
             <ion-row text-center>
               <ion-col col-12 col-lg-4 offset-lg-4 col-md-8 offset-md-2>
@@ -81,26 +81,41 @@
           <ion-col col-lg-3 col-md-6 col-12>
             <img src="assets/imgs/footer-logo.png" />
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore nulla pariatur.</p>
-            <a href="#"><img src="assets/imgs/social-icon.png" alt="" class="socialIcon"></a>
+            <a href="#">
+              <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
+            </a>
           </ion-col>
 
           <ion-col col-lg-3 col-md-6 col-12>
             <ul class="footerList">
-              <li><a href="#">About</a></li>
-              <li><a href="#">Leatest News</a></li>
-              <li><a href="#">Help</a></li>
-              <li><a href="#">Donate</a></li>
-              <li><a href="#">Career</a></li>
+              <li>
+                <a href="#">About</a>
+              </li>
+              <li>
+                <a href="#">Leatest News</a>
+              </li>
+              <li>
+                <a href="#">Help</a>
+              </li>
+              <li>
+                <a href="#">Donate</a>
+              </li>
+              <li>
+                <a href="#">Career</a>
+              </li>
             </ul>
           </ion-col>
 
           <ion-col col-lg-3 col-md-6 col-12 class="footerContact">
             <h5>Contact Us</h5>
-            <p><strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
+            <p>
+              <strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
 
-            <p><strong>Call Us</strong> (123) 456-78-90</p>
+            <p>
+              <strong>Call Us</strong> (123) 456-78-90</p>
 
-            <p><strong>Email</strong> info@mytenniscloud.com</p>
+            <p>
+              <strong>Email</strong> info@mytenniscloud.com</p>
           </ion-col>
 
           <ion-col col-lg-3 col-md-6 col-12>
@@ -112,7 +127,10 @@
                   <img src="assets/imgs/blog-img-1.jpg" />
                 </ion-avatar>
                 <h2>Improve Your Strokes Using The Wall</h2>
-                <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
+                <p>
+                  <a href="#">February 7, 2018</a> by
+                  <a href="#">John Doe</a>
+                </p>
               </ion-item>
 
               <ion-item>
@@ -120,7 +138,10 @@
                   <img src="assets/imgs/blog-img-2.jpg" />
                 </ion-avatar>
                 <h2>Improve Your Strokes Using The Wall</h2>
-                <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
+                <p>
+                  <a href="#">February 7, 2018</a> by
+                  <a href="#">John Doe</a>
+                </p>
               </ion-item>
 
 
@@ -140,7 +161,10 @@
       <ion-grid>
         <ion-row>
           <ion-col col-12 text-center>
-            <p>My Tennis Cloud © 2018 All Rights Reserved <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></p>
+            <p>My Tennis Cloud © 2018 All Rights Reserved
+              <a href="#">Terms of Use</a> and
+              <a href="#">Privacy Policy</a>
+            </p>
           </ion-col>
         </ion-row>
       </ion-grid>
