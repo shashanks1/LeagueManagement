@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { EditProfile } from '../editprofile/editprofile';
 import { RegistrationPage } from '../registration/registration';
+import {MyleaguePage} from '../myleague/myleague';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
@@ -37,5 +38,9 @@ export class HomePage {
 
   openRegistration() {
     this.navCtrl.push(RegistrationPage);
+  }
+
+  openLeague() {
+    this.navCtrl.push(MyleaguePage);
   }
 }

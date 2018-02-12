@@ -40,4 +40,12 @@ export class RemoteServiceProvider {
   submitChangePassword(data) {
     return this.http.post('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/change-password', data);
   }
+
+  getLeagueData() {
+    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league');
+  }
+
+  deleteLeague(id){
+    return this.http.delete('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/{id}');
+  }
 }
