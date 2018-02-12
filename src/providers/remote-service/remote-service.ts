@@ -25,11 +25,19 @@ export class RemoteServiceProvider {
     return this.http.get(this.baseUrl);
   }
 
-  submit(data) {
+  submitLogin(data) {
     return this.http.post('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/login', data);
   }
 
   signUp(data) {
     return this.http.post('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user', data);
+  }
+  
+  submitForgotPassword(data) {
+    return this.http.post('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/forgot-password', data);
+  }
+
+  submitChangePassword(data) {
+    return this.http.post('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/change-password', data);
   }
 }

@@ -17,15 +17,13 @@ export class HomePage {
   pages: Array<{ title: string, component: any }>;
 
   constructor(public service: RemoteServiceProvider, public navCtrl: NavController) {
-    this.getUserData();
+    //this.getUserData();
   }
 
   getUserData() {
     this.service.getUsers().subscribe(
       (res: any[]) => {
-        console.log(res)
       }, error => {
-        console.log(error);
       });
   }
 
