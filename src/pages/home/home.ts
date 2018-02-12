@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { EditProfile } from '../editprofile/editprofile';
 import { RegistrationPage } from '../registration/registration';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
@@ -20,7 +21,7 @@ export class HomePage {
   constructor(public service: RemoteServiceProvider, public navCtrl: NavController) {
     sessionStorage.setItem("registrationMessage", null);
     this.userIsLogged = null;
-    
+
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
       this.userIsLogged = sessionStorage.getItem("loginDone");
     }
@@ -28,6 +29,10 @@ export class HomePage {
 
   openLogin() {
     this.navCtrl.push(LoginPage);
+  }
+
+  editProfile() {
+    this.navCtrl.push(EditProfile);
   }
 
   openRegistration() {

@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { RegistrationPage } from '../pages/registration/registration';
 import { LoginPage } from '../pages/login/login';
+import { EditProfile } from '../pages/editprofile/editprofile';
 import { MyleaguePage } from '../pages/myleague/myleague';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -25,6 +26,7 @@ import { HttpModule } from '@angular/http';
     ListPage,
     RegistrationPage,
     LoginPage,
+    EditProfile,
     MyleaguePage
   ],
   imports: [
@@ -38,6 +40,7 @@ import { HttpModule } from '@angular/http';
     MyApp,
     HomePage,
     ListPage,
+    EditProfile,
     RegistrationPage,
     LoginPage,
     MyleaguePage
