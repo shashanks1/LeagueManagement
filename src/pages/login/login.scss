@@ -1,7 +1,7 @@
-
 $blue-color:#1a3150;
 $white:#fff;
-page-home {
+$green:#8bc34a;
+page-signup {
     ion-header {
         background: $blue-color;
     }
@@ -10,6 +10,7 @@ page-home {
         margin: 0 auto;
     }
     .top-strip {
+        color: $white;
         a .zmdi {
             color: #8bc34a;
             margin-right: 10px;
@@ -18,13 +19,8 @@ page-home {
             color: #fff;
             text-decoration: none;
             display: inline-block;
-            margin: 8px 15px;
-            float: left;
+            margin: 0 15px;
         }
-
-        .pull-right a{float:right;}
-
-        .bar-buttons {height: 2.6rem; float:left;}
     }
     .headerContent {
         .socialIcon {
@@ -57,10 +53,12 @@ page-home {
     .banner {
         background: url(../assets/imgs/banner.jpg) no-repeat 50% 0;
         height: 551px;
+        font-family: 'Montserrat', sans-serif;
         h1 {
             color: #fff;
             font-size: 50px;
             margin-top: 160px;
+            font-weight: 700;
         }
         h2 {
             color: #fff;
@@ -116,6 +114,8 @@ page-home {
                 padding: 40px 50px;
                 h1 {
                     font-size: 50px;
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 700;
                 }
                 h6 {
                     font-size: 14px;
@@ -138,6 +138,8 @@ page-home {
         background: #f9faf7;
         padding: 40px 0;
         h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
             font-size: 50px;
             color: $blue-color;
         }
@@ -233,6 +235,78 @@ page-home {
             color: $white;
         }
     }
+    // signup
+    .text-right {
+        text-align: right;
+    }
+    .signupDiv {
+        margin-bottom: 50px;
+        .signupHeading {
+            h1 {
+                font-weight: 300;
+                font-size: 50px;
+                color: $green;
+                font-family: 'Montserrat', sans-serif;
+                margin-top: 50px;
+                a {
+                    color: $blue-color;
+                    font-weight: 500;
+                }
+            }
+            h2 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 600;
+                font-size: 30px;
+                margin-top: 40px;
+                a {
+                    color: $blue-color;
+                    text-decoration: none;
+                }
+            }
+        }
+        .signinWhithSocial {
+            margin-top: 20px;
+            img {
+                margin: 0 25px;
+            }
+        }
+        .orLink {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            h1 {
+                font-weight: 600;
+                font-size: 34px;
+                color: $blue-color;
+                font-family: 'Montserrat', sans-serif;
+            }
+        }
+        .signupForm {
+            padding: 30px 30px 5px;
+            background: #f7f7f7;
+            .label {
+                font-size: 18px;
+            }
+            .item {
+                padding: 0 15px;
+                margin-bottom: 15px;
+                border: 1px solid #bebebe;
+            }
+            .withoutBg {
+                background: none;
+                border: none;
+                padding: 0;
+                .checkbox {
+                    margin-right: 20px;
+                }
+                .item-inner {
+                    border-bottom: none;
+                }
+            }
+            .submitBtn .button {
+                background: $blue-color
+            }
+        }
+    }
     @media screen and (max-width:991px) {
         .mainNav {
             display: none;
@@ -249,6 +323,14 @@ page-home {
             padding: 40px 20px;
             margin-top: 0;
         }
+        .signupDiv {
+            .signupHeading {
+                h1 {
+                    font-size: 40px;
+                    margin-top: 50px;
+                }
+            }
+        }
     }
     @media (min-width:768px) and (max-width:991px) {
         .container {
@@ -258,10 +340,18 @@ page-home {
             padding: 40px 20px;
             margin-top: 0;
         }
+        .signupDiv {
+            .signupHeading {
+                h1 {
+                    font-size: 40px;
+                    margin-top: 50px;
+                }
+            }
+        }
     }
     @media screen and (min-width:992px) {
-        .toolbar {
-            display: none;
-        }
+        // .toolbar {
+        //     display: none;
+        // }
     }
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { LoginPage } from '../login/login';
+import {RegistrationPage} from '../registration/registration';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
@@ -8,8 +10,13 @@ import { RemoteServiceProvider } from '../../providers/remote-service/remote-ser
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public service: RemoteServiceProvider) {
+  //@ViewChild(Nav) nav: Nav;
+  
+    rootPage: any = HomePage;
+  
+    pages: Array<{title: string, component: any}>;
+  
+  constructor(public service: RemoteServiceProvider,public navCtrl: NavController) {
     this.getUserData();
   }
 
@@ -19,4 +26,11 @@ export class HomePage {
     });
   }
 
+  openLogin() {
+    this.navCtrl.push(LoginPage);
+  }
+
+  openRegistration() {
+    this.navCtrl.push(RegistrationPage);
+  }
 }
