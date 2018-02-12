@@ -1,18 +1,242 @@
-<!--
-  Generated template for the MyleaguePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>myleague</ion-title>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Home</ion-title>
   </ion-navbar>
 
+  <div class="container">
+      <ion-grid>
+          <ion-row class="top-strip">
+              <ion-col col-12 col-md-8>
+                  <a href="#"><i class="zmdi zmdi-phone"></i> +1 (0) 1234 56789</a>
+                  <a href="#"><i class="zmdi zmdi-email"></i> info@mytenniscloud.com</a>
+              </ion-col>
+
+
+              <ion-col col-12 col-md-4 text-right>
+                  <a href="#"><i class="zmdi zmdi-account"></i> Login</a>
+                  <a href="#"><i class="zmdi zmdi-edit"></i> Register</a>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+  </div>
 </ion-header>
 
+<ion-content class="headerContent">
+  <div class="container">
+      <ion-grid>
+          <ion-row>
+              <ion-col col-3>
+                  <img src="assets/imgs/logo.png" alt="">
+              </ion-col>
 
-<ion-content padding>
+              <ion-col col-7>
+                  <ion-list>
+                      <ul class="mainNav">
+                          <li class="active"><a href="#">Lorem ipsum</a></li>
+                          <li><a href="#">Perspiciatis <i class="zmdi zmdi-chevron-down"></i></a></li>
+                          <li><a href="#">Neque porro <i class="zmdi zmdi-chevron-down"></i></a></li>
+                          <li><a href="#">About <i class="zmdi zmdi-chevron-down"></i></a></li>
+                      </ul>
+                  </ion-list>
+              </ion-col>
+
+              <ion-col col-2>
+                  <a href="#"><img src="assets/imgs/social-icon.png" alt="" class="socialIcon"></a>
+              </ion-col>
+
+          </ion-row>
+
+      </ion-grid>
+  </div>
+
+  <!-- inner banner -->
+  <div class="banner innerBanner">
+      <div class="container">
+          <ion-row text-center>
+              <ion-col class="col-12 col-sm-8">
+                  <div class="">
+                      <h1>League List</h1>
+                  </div>
+              </ion-col>
+          </ion-row>
+
+      </div>
+  </div>
+
+  <!-- table -->
+  <div class="tableContent">
+      <div class="container">
+          <ion-row>
+              <ion-col col-12 text-right>
+                  <button ion-button color="dark">Add New League</button>
+              </ion-col>
+          </ion-row>
+
+          <div class="tableDiv">
+              <ion-row class="tableDivHeader">
+                  <ion-col col-2>
+                      League Name
+                  </ion-col>
+
+                  <ion-col col-2>
+                      Player Name
+                  </ion-col>
+
+                  <ion-col col-2>
+                      Location
+                  </ion-col>
+
+                  <ion-col col-2>
+                      Category
+                  </ion-col>
+
+                  <ion-col col-2>
+                      Created
+                  </ion-col>
+
+                  <ion-col col-2>
+                      Action
+                  </ion-col>
+              </ion-row>
+
+              <ion-row class="tableDivRow" *ngFor="let lgdata of leagueData">
+                   
+                  <ion-col col-2>
+                        
+                   {{lgdata.name}}
+                        
+                  </ion-col>
+
+                  <ion-col col-2 *ngFor="let player of lgdata.players">
+                        
+                        {{player}}
+                       
+                  </ion-col>
+
+                  <ion-col col-2>
+                        
+                        {{lgdata.location}}
+                        
+                  </ion-col>
+
+                  <ion-col col-2 *ngFor="let category of lgdata.categories">
+                       
+                        {{category}}
+                     
+                  </ion-col>
+
+                  <ion-col col-2>
+                       
+                        {{lgdata.onward}}
+                       
+                  </ion-col>
+            
+                  <ion-col col-2 class="actionLink">
+                      <a href="#"><i class="zmdi zmdi-edit"></i></a>
+                      <a href="#" (click)="deleteLeague(lgdata.id)"><i class="zmdi zmdi-delete"></i></a>
+                      <a href="#"><i class="zmdi zmdi-accounts-add"></i></a>
+                  </ion-col>
+              </ion-row>
+
+             
+
+
+          </div>
+      </div>
+  </div>
+  <!-- /table -->
+
+
+
+  <!-- footer -->
+  <div class="footer">
+      <div class="container">
+          <ion-grid>
+              <ion-row>
+                  <ion-col col-lg-3 col-md-6 col-12>
+                      <img src="assets/imgs/footer-logo.png" />
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore nulla pariatur.</p>
+                      <a href="#"><img src="assets/imgs/social-icon.png" alt="" class="socialIcon"></a>
+                  </ion-col>
+
+                  <ion-col col-lg-3 col-md-6 col-12>
+                      <ul class="footerList">
+                          <li><a href="#">About</a></li>
+                          <li><a href="#">Leatest News</a></li>
+                          <li><a href="#">Help</a></li>
+                          <li><a href="#">Donate</a></li>
+                          <li><a href="#">Career</a></li>
+                      </ul>
+                  </ion-col>
+
+                  <ion-col col-lg-3 col-md-6 col-12 class="footerContact">
+                      <h5>Contact Us</h5>
+                      <p><strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
+
+                      <p><strong>Call Us</strong> (123) 456-78-90</p>
+
+                      <p><strong>Email</strong> info@mytenniscloud.com</p>
+                  </ion-col>
+
+                  <ion-col col-lg-3 col-md-6 col-12>
+                      <h5>Latest Blog Posts</h5>
+
+                      <ion-list>
+                          <ion-item>
+                              <ion-avatar item-start>
+                                  <img src="assets/imgs/blog-img-1.jpg" />
+                              </ion-avatar>
+                              <h2>Improve Your Strokes Using The Wall</h2>
+                              <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
+                          </ion-item>
+
+                          <ion-item>
+                              <ion-avatar item-start>
+                                  <img src="assets/imgs/blog-img-2.jpg" />
+                              </ion-avatar>
+                              <h2>Improve Your Strokes Using The Wall</h2>
+                              <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
+                          </ion-item>
+
+
+                      </ion-list>
+
+
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      </div>
+  </div>
+  <!-- /footer -->
+
+  <!-- Bottom footer -->
+  <div class="footerBottom">
+      <div class="container">
+          <ion-grid>
+              <ion-row>
+                  <ion-col col-12 text-center>
+                      <p>My Tennis Cloud © 2018 All Rights Reserved <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></p>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      </div>
+  </div>
+  <!-- /Bottom footer -->
+
 
 </ion-content>
+
+
+
+<!-- <ion-content padding>
+      <h3>Ionic Menu Starter</h3>
+  
+      <p>
+          If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
+      </p>
+  
+      <button ion-button secondary menuToggle>Toggle Menu</button>
+  </ion-content> -->
