@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { AuthInterceptor } from '../providers/auth.interceptor';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -43,7 +46,12 @@ import {HttpModule} from '@angular/http';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    RemoteServiceProvider
+    RemoteServiceProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ]
 })
 export class AppModule { }
