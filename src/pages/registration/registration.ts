@@ -51,6 +51,7 @@ export class RegistrationPage {
     },
       error => {
         this.errorMessage = JSON.parse(error['error']['res']);
+        this.errorMessage = JSON.parse(this.errorMessage);
       });
   }
 
