@@ -1,229 +1,272 @@
 <ion-header>
-  <ion-navbar>
-      <button ion-button menuToggle>
+    <ion-navbar>
+        <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>My League</ion-title>
-  </ion-navbar>
+        <ion-title>My League</ion-title>
+    </ion-navbar>
 
-  <div class="container">
-      <ion-grid>
-          <ion-row class="top-strip">
-              <ion-col col-12 col-md-8>
-                  <a href="#"><i class="zmdi zmdi-phone"></i> +1 (0) 1234 56789</a>
-                  <a href="#"><i class="zmdi zmdi-email"></i> info@mytenniscloud.com</a>
-              </ion-col>
+    <div class="container">
+        <ion-grid>
+            <ion-row class="top-strip">
+                <ion-col col-12 col-md-8>
+                    <a href="#"><i class="zmdi zmdi-phone"></i> +1 (0) 1234 56789</a>
+                    <a href="#"><i class="zmdi zmdi-email"></i> info@mytenniscloud.com</a>
+                </ion-col>
 
 
-              <ion-col col-12 col-md-4 text-right>
-                
-              </ion-col>
-          </ion-row>
-      </ion-grid>
-  </div>
+                <ion-col col-12 col-md-4 text-right>
+
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
 </ion-header>
 
 <ion-content class="headerContent">
-  <div class="container">
-      <ion-grid>
-          <ion-row>
-              <ion-col col-3>
-                  <img src="assets/imgs/logo.png" alt="">
-              </ion-col>
+    <div class="container">
+        <ion-grid>
+            <ion-row>
+                <ion-col col-3>
+                    <img src="assets/imgs/logo.png" alt="">
+                </ion-col>
 
-              <ion-col col-7>
-                  <ion-list>
-                      <ul class="mainNav">
-                          <li class="active"><a href="#">Lorem ipsum</a></li>
-                          <li><a href="#">Perspiciatis <i class="zmdi zmdi-chevron-down"></i></a></li>
-                          <li><a href="#">Neque porro <i class="zmdi zmdi-chevron-down"></i></a></li>
-                          <li><a href="#">About <i class="zmdi zmdi-chevron-down"></i></a></li>
-                      </ul>
-                  </ion-list>
-              </ion-col>
+                <ion-col col-7>
+                    <ion-list>
+                        <ul class="mainNav">
+                            <li class="active"><a href="#">Lorem ipsum</a></li>
+                            <li><a href="#">Perspiciatis <i class="zmdi zmdi-chevron-down"></i></a></li>
+                            <li><a href="#">Neque porro <i class="zmdi zmdi-chevron-down"></i></a></li>
+                            <li><a href="#">About <i class="zmdi zmdi-chevron-down"></i></a></li>
+                        </ul>
+                    </ion-list>
+                </ion-col>
 
-              <ion-col col-2>
-                  <a href="#"><img src="assets/imgs/social-icon.png" alt="" class="socialIcon"></a>
-              </ion-col>
+                <ion-col col-2>
+                    <a href="#"><img src="assets/imgs/social-icon.png" alt="" class="socialIcon"></a>
+                </ion-col>
 
-          </ion-row>
+            </ion-row>
 
-      </ion-grid>
-  </div>
+        </ion-grid>
+    </div>
 
-  <!-- inner banner -->
-  <div class="banner innerBanner">
-      <div class="container">
-          <ion-row text-center>
-              <ion-col class="col-12 col-sm-8">
-                  <div class="">
-                      <h1>League List</h1>
-                  </div>
-              </ion-col>
-          </ion-row>
+    <!-- inner banner -->
 
-      </div>
-  </div>
+    <div class="banner innerBanner">
+        <div class="container">
+            <ion-row text-center>
+                <ion-col class="col-12 col-sm-8">
+                    <div class="" *ngIf="!addLeague && !editLeague">
+                        <h1>League List</h1>
+                    </div>
+                    <div class="" *ngIf="addLeague">
+                        <h1>Add New League </h1>
+                    </div>
+                    <div class="" *ngIf="editLeague">
+                        <h1>Edit League </h1>
+                    </div>
+                </ion-col>
+            </ion-row>
 
-  <!-- table -->
-  <div class="tableContent">
-      <div class="container">
-          <ion-row>
-              <ion-col col-12 text-right>
-                  <button ion-button color="dark">Add New League</button>
-              </ion-col>
-          </ion-row>
+        </div>
+    </div>
 
-          <div class="tableDiv">
-              <ion-row class="tableDivHeader">
-                  <ion-col col-2>
-                      League Name
-                  </ion-col>
+    <!-- table -->
 
-                  <ion-col col-2>
-                      Player Name
-                  </ion-col>
 
-                  <ion-col col-2>
-                      Location
-                  </ion-col>
+    <!-- /table -->
+    <div class="tableContent" *ngIf="!addLeague && !editLeague">
+           
+        <div class="container">
+            <ion-row>
+                <ion-col col-12 text-right>
+                    <button ion-button color="dark" (click)="addNewLeague()">Add New League</button>
+                </ion-col>
+            </ion-row>
 
-                  <ion-col col-2>
-                      Category
-                  </ion-col>
+            <div class="tableDiv">
+                <ion-row class="tableDivHeader">
+                    <ion-col col-2>
+                        League Name
+                    </ion-col>
 
-                  <ion-col col-2>
-                      Created
-                  </ion-col>
+                    <ion-col col-2>
+                        Player Name
+                    </ion-col>
 
-                  <ion-col col-2>
-                      Action
-                  </ion-col>
-              </ion-row>
+                    <ion-col col-2>
+                        Location
+                    </ion-col>
 
-              <ion-row class="tableDivRow" *ngFor="let lgdata of leagueData">
-                   
-                  <ion-col col-2>
-                        
-                   {{lgdata.name}}
-                        
-                  </ion-col>
+                    <ion-col col-2>
+                        Category
+                    </ion-col>
 
-                  <ion-col col-2 *ngFor="let player of lgdata.players">
-                        
-                        {{player}}
-                       
-                  </ion-col>
+                    <ion-col col-2>
+                        Created
+                    </ion-col>
 
-                  <ion-col col-2>
-                        
+                    <ion-col col-2>
+                        Action
+                    </ion-col>
+                </ion-row>
+
+                <ion-row class="tableDivRow" *ngFor="let lgdata of leagueData">
+
+                    <ion-col col-2>
+
+                        {{lgdata.name}}
+
+                    </ion-col>
+
+                    <ion-col col-2>
+                        <span *ngFor="let player of lgdata.players">
+                            {{player}}
+                        </span>
+
+                    </ion-col>
+
+                    <ion-col col-2>
+
                         {{lgdata.location}}
-                        
-                  </ion-col>
 
-                  <ion-col col-2 *ngFor="let category of lgdata.categories">
-                       
+                    </ion-col>
+
+                    <ion-col col-2 >
+                        <span *ngFor="let category of lgdata.categories">
                         {{category}}
-                     
-                  </ion-col>
+                        </span>
+                    </ion-col>
 
-                  <ion-col col-2>
+                    <ion-col col-2>
+
+                        {{lgdata.created}}
+
+                    </ion-col>
+
+                    <ion-col col-2 class="actionLink">
+                        <a href="#" (click)="editLeagueFunc(lgdata)"><i class="zmdi zmdi-edit" ></i></a>
+                        <a href="#" (click)="deleteLeague(lgdata.id)"><i class="zmdi zmdi-delete"></i></a>
+                        <a href="#"><i class="zmdi zmdi-accounts-add"></i></a>
+                    </ion-col>
+                </ion-row>
+
+
+
+
+
+            </div>
+        </div>
+   
+    </div>
+
+<ion-row>
+    <ion-col col-6 offset-3>
+            <div class="tableContent" *ngIf="addLeague || editLeague" >
+                    <form [formGroup]="modificationForm" (ngSubmit)='submitNewLeague(modificationForm.value)'>
+                        <ion-item>
+                            <ion-input type="text" placeholder="League name" formControlName="name"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input type="text" placeholder="Player name" formControlName="players"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-input type="text" placeholder="Location" formControlName="location"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                        <ion-input type="text" placeholder="Created" formControlName="created"></ion-input>
+                        </ion-item>
+                        <div *ngIf=addLeague>
+                        <button ion-button >Add</button>
+                        </div>
+                        <div *ngIf=editLeague>
+                                <button ion-button >Edit</button>
+                                </div>
                        
-                        {{lgdata.onward}}
-                       
-                  </ion-col>
-            
-                  <ion-col col-2 class="actionLink">
-                      <a href="#"><i class="zmdi zmdi-edit"></i></a>
-                      <a href="#" (click)="deleteLeague(lgdata.id)"><i class="zmdi zmdi-delete"></i></a>
-                      <a href="#"><i class="zmdi zmdi-accounts-add"></i></a>
-                  </ion-col>
-              </ion-row>
-
-             
-
-
-          </div>
-      </div>
-  </div>
-  <!-- /table -->
+                    </form>
+                </div>
+    </ion-col>
+</ion-row>
+    
 
 
 
-  <!-- footer -->
-  <div class="footer">
-      <div class="container">
-          <ion-grid>
-              <ion-row>
-                  <ion-col col-lg-3 col-md-6 col-12>
-                      <img src="assets/imgs/footer-logo.png" />
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore nulla pariatur.</p>
-                      <a href="#"><img src="assets/imgs/social-icon.png" alt="" class="socialIcon"></a>
-                  </ion-col>
+    <!-- footer -->
+    <div class="footer">
+        <div class="container">
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-lg-3 col-md-6 col-12>
+                        <img src="assets/imgs/footer-logo.png" />
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                            nulla pariatur.</p>
+                        <a href="#"><img src="assets/imgs/social-icon.png" alt="" class="socialIcon"></a>
+                    </ion-col>
 
-                  <ion-col col-lg-3 col-md-6 col-12>
-                      <ul class="footerList">
-                          <li><a href="#">About</a></li>
-                          <li><a href="#">Leatest News</a></li>
-                          <li><a href="#">Help</a></li>
-                          <li><a href="#">Donate</a></li>
-                          <li><a href="#">Career</a></li>
-                      </ul>
-                  </ion-col>
+                    <ion-col col-lg-3 col-md-6 col-12>
+                        <ul class="footerList">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Leatest News</a></li>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Donate</a></li>
+                            <li><a href="#">Career</a></li>
+                        </ul>
+                    </ion-col>
 
-                  <ion-col col-lg-3 col-md-6 col-12 class="footerContact">
-                      <h5>Contact Us</h5>
-                      <p><strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
+                    <ion-col col-lg-3 col-md-6 col-12 class="footerContact">
+                        <h5>Contact Us</h5>
+                        <p><strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
 
-                      <p><strong>Call Us</strong> (123) 456-78-90</p>
+                        <p><strong>Call Us</strong> (123) 456-78-90</p>
 
-                      <p><strong>Email</strong> info@mytenniscloud.com</p>
-                  </ion-col>
+                        <p><strong>Email</strong> info@mytenniscloud.com</p>
+                    </ion-col>
 
-                  <ion-col col-lg-3 col-md-6 col-12>
-                      <h5>Latest Blog Posts</h5>
+                    <ion-col col-lg-3 col-md-6 col-12>
+                        <h5>Latest Blog Posts</h5>
 
-                      <ion-list>
-                          <ion-item>
-                              <ion-avatar item-start>
-                                  <img src="assets/imgs/blog-img-1.jpg" />
-                              </ion-avatar>
-                              <h2>Improve Your Strokes Using The Wall</h2>
-                              <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
-                          </ion-item>
+                        <ion-list>
+                            <ion-item>
+                                <ion-avatar item-start>
+                                    <img src="assets/imgs/blog-img-1.jpg" />
+                                </ion-avatar>
+                                <h2>Improve Your Strokes Using The Wall</h2>
+                                <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
+                            </ion-item>
 
-                          <ion-item>
-                              <ion-avatar item-start>
-                                  <img src="assets/imgs/blog-img-2.jpg" />
-                              </ion-avatar>
-                              <h2>Improve Your Strokes Using The Wall</h2>
-                              <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
-                          </ion-item>
-
-
-                      </ion-list>
+                            <ion-item>
+                                <ion-avatar item-start>
+                                    <img src="assets/imgs/blog-img-2.jpg" />
+                                </ion-avatar>
+                                <h2>Improve Your Strokes Using The Wall</h2>
+                                <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
+                            </ion-item>
 
 
-                  </ion-col>
-              </ion-row>
-          </ion-grid>
-      </div>
-  </div>
-  <!-- /footer -->
+                        </ion-list>
 
-  <!-- Bottom footer -->
-  <div class="footerBottom">
-      <div class="container">
-          <ion-grid>
-              <ion-row>
-                  <ion-col col-12 text-center>
-                      <p>My Tennis Cloud © 2018 All Rights Reserved <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></p>
-                  </ion-col>
-              </ion-row>
-          </ion-grid>
-      </div>
-  </div>
-  <!-- /Bottom footer -->
+
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
+    <!-- /footer -->
+
+    <!-- Bottom footer -->
+    <div class="footerBottom">
+        <div class="container">
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-12 text-center>
+                        <p>My Tennis Cloud © 2018 All Rights Reserved <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
+    <!-- /Bottom footer -->
 
 
 </ion-content>

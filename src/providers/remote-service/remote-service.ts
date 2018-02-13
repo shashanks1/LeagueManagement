@@ -46,6 +46,14 @@ export class RemoteServiceProvider {
   }
 
   deleteLeague(id){
-    return this.http.delete('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/{id}');
+    return this.http.delete('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/'+id);
+  }
+
+  updateLeague(id,data){
+    return this.http.put('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/'+id,data);
+  }
+
+  addNewLeague(data){
+    return this.http.post('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league',data);
   }
 }
