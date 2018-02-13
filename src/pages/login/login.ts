@@ -82,11 +82,13 @@ export class LoginPage {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.submitForgotPassword(value).subscribe((res: any[]) => {
-      this.successMessage = JSON.parse(res['res']);
+      this.successMessage = JSON.stringify(res['res']);
+      this.successMessage = JSON.parse(this.successMessage);
       this.cancel();
     },
       error => {
-        this.errorMessage = JSON.parse(error['error']['res']);
+        this.errorMessage = JSON.stringify(error['error']['res']);
+        this.errorMessage = JSON.parse(this.errorMessage);
       });
   }
 
@@ -96,11 +98,13 @@ export class LoginPage {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.submitChangePassword(value).subscribe((res: any[]) => {
-      this.successMessage = JSON.parse(res['res']);
+      this.successMessage = JSON.stringify(res['res']);
+      this.successMessage = JSON.parse(this.successMessage);
       this.cancel();
     },
       error => {
-        this.errorMessage = JSON.parse(error['res']);
+        this.errorMessage = JSON.stringify(error['error']['res']);
+        this.errorMessage = JSON.parse(this.errorMessage);
       });
   }
 
