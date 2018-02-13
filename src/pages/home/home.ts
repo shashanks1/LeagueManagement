@@ -22,7 +22,6 @@ export class HomePage {
 
   constructor(public service: RemoteServiceProvider, public navCtrl: NavController) {
     this.userIsLogged = false;
-   console.log(sessionStorage.getItem("loginDone"))
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
       this.userIsLogged = true;
     }
