@@ -19,7 +19,6 @@ export class GridPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GridPage');
   }
 
 }
