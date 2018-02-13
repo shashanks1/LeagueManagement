@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+
 import { LoginPage } from '../login/login';
-import { EditProfile } from '../editprofile/editprofile';
+import { EditPage } from '../editprofile/editprofile';
 import { RegistrationPage } from '../registration/registration';
-import {MyleaguePage} from '../myleague/myleague';
+import { MyleaguePage } from '../myleague/myleague';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
@@ -15,16 +16,15 @@ export class HomePage {
   //@ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
-  userIsLogged: string;
+  userIsLogged: boolean;
 
   pages: Array<{ title: string, component: any }>;
 
   constructor(public service: RemoteServiceProvider, public navCtrl: NavController) {
-    sessionStorage.setItem("registrationMessage", null);
-    this.userIsLogged = null;
-
+    this.userIsLogged = false;
+   console.log(sessionStorage.getItem("loginDone"))
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
-      this.userIsLogged = sessionStorage.getItem("loginDone");
+      this.userIsLogged = true;
     }
   }
 
@@ -33,7 +33,7 @@ export class HomePage {
   }
 
   editProfile() {
-    this.navCtrl.push(EditProfile);
+    this.navCtrl.push(EditPage);
   }
 
   openRegistration() {

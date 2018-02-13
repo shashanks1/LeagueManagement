@@ -48,4 +48,8 @@ export class RemoteServiceProvider {
   deleteLeague(id){
     return this.http.delete('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/{id}');
   }
+
+  saveProfile(id, data){
+    return this.http.put('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/'+id, data);
+  }
 }

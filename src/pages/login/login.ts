@@ -55,6 +55,7 @@ export class LoginPage {
     this.service.submitLogin(value).subscribe((res: any[]) => {
       this.navCtrl.push(HomePage);
       sessionStorage.setItem("loginDone", 'userIsLogged');
+      sessionStorage.setItem("loggedUserId", JSON.stringify(res['res']['id']));
     },
     error => {
       this.apiMessage = JSON.stringify(error['error']['res']);
