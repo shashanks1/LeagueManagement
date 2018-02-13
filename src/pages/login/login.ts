@@ -15,17 +15,13 @@ export class LoginPage {
   loginForm: FormGroup;
   forgotForm: FormGroup;
   changePasswordForm: FormGroup;
-  password: string;
   successMessage: string;
   errorMessage: string;
-  email: string;
   forgotPassword: boolean;
   changePassword: boolean;
 
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
-    this.email = '';
-    this.password = '';
     this.successMessage = '';
     this.errorMessage = '';
     this.forgotPassword = false;

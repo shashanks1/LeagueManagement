@@ -99,9 +99,16 @@
                                 <ion-list>
 
                                     <ion-item>
+                                        <ion-label floating>Full Name*</ion-label>
+                                        <ion-input type="text" id="firstname" class="form-control" placeholder="Full Name" formControlName="full_name"></ion-input>
+                                    </ion-item>
+                                    <p class="errorMessage" *ngIf="profileForm.controls.full_name.errors && profileForm.controls.full_name.dirty">Full name is required.</p>
+                                    <ion-item>
                                         <ion-label floating>Email*</ion-label>
                                         <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
                                     </ion-item>
+                                    <p class="errorMessage" *ngIf="profileForm.controls.email.errors && profileForm.controls.email.dirty && profileForm.controls.email.errors.pattern">Please provide proper email.</p>
+                                    <p class="errorMessage" *ngIf="profileForm.controls.email.errors && profileForm.controls.email.dirty && profileForm.controls.email.errors.required">Email is required.</p>
 
                                     <ion-item>
                                         <ion-label floating>User Name</ion-label>
