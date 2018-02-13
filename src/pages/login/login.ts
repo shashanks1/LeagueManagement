@@ -16,7 +16,8 @@ export class LoginPage {
   forgotForm: FormGroup;
   changePasswordForm: FormGroup;
   password: string;
-  apiMessage: string;
+  successMessage: string;
+  errorMessage: string;
   email: string;
   forgotPassword: boolean;
   changePassword: boolean;
@@ -25,7 +26,8 @@ export class LoginPage {
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     this.email = '';
     this.password = '';
-    this.apiMessage = null;
+    this.successMessage = '';
+    this.errorMessage = '';
     this.forgotPassword = false;
     this.changePassword = false;
     sessionStorage.setItem("loginDone", null);
@@ -44,27 +46,32 @@ export class LoginPage {
     });
 
     if (sessionStorage.getItem("registrationMessage") != 'null') {
-      this.apiMessage = sessionStorage.getItem("registrationMessage");
+      this.successMessage = JSON.parse(sessionStorage.getItem("registrationMessage"));
     }
   }
 
   // function to submit login to the API
   submitLogin(value) {
     sessionStorage.setItem("registrationMessage", null);
-    this.apiMessage = null;
+    this.successMessage = '';
+    this.errorMessage = '';
     this.service.submitLogin(value).subscribe((res: any[]) => {
-      this.navCtrl.push(HomePage);
       sessionStorage.setItem("loginDone", 'userIsLogged');
+      sessionStorage.setItem("loggedUserId", JSON.stringify(res['res']['id']));
+      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['res']['email']));
+      this.navCtrl.push(HomePage);
     },
-    error => {
-      this.apiMessage = JSON.stringify(error['error']['res']);
-    });
+      error => {
+        this.errorMessage = JSON.stringify(error['error']['res']);
+        this.errorMessage = JSON.parse(this.errorMessage);
+      });
   }
 
   // function to open forgot password form 
   openForgotPassword() {
     sessionStorage.setItem("registrationMessage", null);
-    this.apiMessage = null;
+    this.successMessage = '';
+    this.errorMessage = '';
     this.forgotPassword = true;
     this.changePassword = false;
   }
@@ -72,33 +79,40 @@ export class LoginPage {
   // function to submit forgot password to the API
   submitForgotPassword(value) {
     sessionStorage.setItem("registrationMessage", null);
-    this.apiMessage = null;
+    this.successMessage = '';
+    this.errorMessage = '';
     this.service.submitForgotPassword(value).subscribe((res: any[]) => {
-      this.apiMessage = JSON.stringify(res['res']);
+      this.successMessage = JSON.stringify(res['res']);
+      this.successMessage = JSON.parse(this.successMessage);
       this.cancel();
     },
       error => {
-        this.apiMessage = JSON.stringify(error['error']['res']);
+        this.errorMessage = JSON.stringify(error['error']['res']);
+        this.errorMessage = JSON.parse(this.errorMessage);
       });
   }
 
   // function to submit forgot password to the API
   submitChangePassword(value) {
     sessionStorage.setItem("registrationMessage", null);
-    this.apiMessage = null;
+    this.successMessage = '';
+    this.errorMessage = '';
     this.service.submitChangePassword(value).subscribe((res: any[]) => {
-      this.apiMessage = JSON.stringify(res['res']);
+      this.successMessage = JSON.stringify(res['res']);
+      this.successMessage = JSON.parse(this.successMessage);
       this.cancel();
     },
       error => {
-        this.apiMessage = JSON.stringify(error['res']);
+        this.errorMessage = JSON.stringify(error['error']['res']);
+        this.errorMessage = JSON.parse(this.errorMessage);
       });
   }
 
   // function to open change password form
   openChangePassword() {
     sessionStorage.setItem("registrationMessage", null);
-    this.apiMessage = null;
+    this.successMessage = '';
+    this.errorMessage = '';
     this.changePassword = true;
     this.forgotPassword = false;
   }
@@ -106,9 +120,32 @@ export class LoginPage {
   // function to cancel forgot or change password form
   cancel() {
     sessionStorage.setItem("registrationMessage", null);
-    this.apiMessage = null;
+    this.successMessage = '';
+    this.errorMessage = '';
     this.changePassword = false;
     this.forgotPassword = false;
+  }
+
+  signInWithGoogle() {
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.service.signInWithGoogle().then((res) => {
+      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+      sessionStorage.setItem("loginDone", 'userIsLogged');
+      this.navCtrl.push(HomePage);
+    })
+      .catch((err) => console.log(err));
+  }
+
+  signInWithFacebook() {
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.service.signInWithFacebook().then((res) => {
+      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+      sessionStorage.setItem("loginDone", 'userIsLogged');
+      this.navCtrl.push(HomePage);
+    })
+      .catch((err) => console.log(err));
   }
 }
 

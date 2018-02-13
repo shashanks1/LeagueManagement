@@ -20,12 +20,14 @@ export class MyleaguePage {
   addLeague: boolean;
   editLeague: boolean;
   leagueData: any;
+  editValue : any;
 
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     this.getLeagueData();
     this.addLeague = false;
     this.editLeague = false;
+    this.editValue = '';
 
 
     this.modificationForm = fb.group({

@@ -11,12 +11,29 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { RegistrationPage } from '../pages/registration/registration';
 import { LoginPage } from '../pages/login/login';
+import { EditPage } from '../pages/editprofile/editprofile';
 import { MyleaguePage } from '../pages/myleague/myleague';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
 import { HttpModule } from '@angular/http';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyA5SA8AVybxIcaRek3qa6b4Uvkiq2aCQxE",
+    authDomain: "leaguemanagement-8bbc4.firebaseapp.com",
+    databaseURL: "https://leaguemanagement-8bbc4.firebaseio.com",
+    projectId: "leaguemanagement-8bbc4",
+    storageBucket: "",
+    messagingSenderId: "772145571852"
+  }
+};
 
 @NgModule({
   declarations: [
@@ -25,11 +42,15 @@ import { HttpModule } from '@angular/http';
     ListPage,
     RegistrationPage,
     LoginPage,
+    EditPage,
     MyleaguePage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
   ],
@@ -38,6 +59,7 @@ import { HttpModule } from '@angular/http';
     MyApp,
     HomePage,
     ListPage,
+    EditPage,
     RegistrationPage,
     LoginPage,
     MyleaguePage

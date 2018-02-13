@@ -10,14 +10,12 @@
     <ion-grid>
       <ion-row class="top-strip">
         <ion-col col-12 class="text-right">
-          Home
+          Login
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
 </ion-header>
-
-
 
 <ion-content padding>
   <div class="signupDiv">
@@ -26,9 +24,17 @@
         <ion-col col-12>
           <img src="assets/imgs/logo.png" alt="">
         </ion-col>
+        <ion-col col-12 class="signinWhithSocial">
+          <img src="assets/imgs/facebook-img.jpg" alt="" (click)="signInWithFacebook()">
+          <img src="assets/imgs/google-plus.jpg" alt="" (click)="signInWithGoogle()">
+        </ion-col>
       </ion-row>
-      <div *ngIf="apiMessage">
-        <p>{{apiMessage}}</p>
+      <div *ngIf="successMessage">
+        <p>{{successMessage}}</p>
+      </div>
+
+      <div *ngIf="errorMessage">
+        <p>{{errorMessage}}</p>
       </div>
 
       <div *ngIf="!forgotPassword && !changePassword">
