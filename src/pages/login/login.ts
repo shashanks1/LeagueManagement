@@ -121,5 +121,27 @@ export class LoginPage {
     this.changePassword = false;
     this.forgotPassword = false;
   }
+
+  signInWithGoogle() {
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.service.signInWithGoogle().then((res) => {
+      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+      sessionStorage.setItem("loginDone", 'userIsLogged');
+      this.navCtrl.push(HomePage);
+    })
+      .catch((err) => console.log(err));
+  }
+
+  signInWithFacebook() {
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.service.signInWithFacebook().then((res) => {
+      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+      sessionStorage.setItem("loginDone", 'userIsLogged');
+      this.navCtrl.push(HomePage);
+    })
+      .catch((err) => console.log(err));
+  }
 }
 
