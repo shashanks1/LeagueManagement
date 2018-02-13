@@ -18,7 +18,8 @@ export class RegistrationPage {
   userName: string;
   password: string;
   agree: boolean;
-  apiMessage: string;
+  successMessage: string;
+  errorMessage: string;
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     this.email = '';
@@ -26,7 +27,8 @@ export class RegistrationPage {
     this.userName = '';
     this.password = '';
     this.agree = true;
-    this.apiMessage = null;
+    this.successMessage = '';
+    this.errorMessage = '';
 
     this.registrationForm = fb.group({
       'email': ['', Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
@@ -40,13 +42,14 @@ export class RegistrationPage {
   }
 
   signUp(postData) {
-    this.apiMessage = null;
+    this.successMessage = '';
+    this.errorMessage = '';
     this.service.signUp(postData).subscribe((res: any[]) => {
       sessionStorage.setItem("registrationMessage", JSON.stringify(res['res']));
       this.navCtrl.push(LoginPage);
     },
       error => {
-        this.apiMessage = JSON.stringify(error['error']['res']);
+        this.errorMessage = JSON.parse(error['error']['res']);
       });
   }
 }

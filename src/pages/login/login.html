@@ -27,8 +27,12 @@
           <img src="assets/imgs/logo.png" alt="">
         </ion-col>
       </ion-row>
-      <div *ngIf="apiMessage">
-        <p>{{apiMessage}}</p>
+      <div *ngIf="successMessage">
+        <p>{{successMessage}}</p>
+      </div>
+
+      <div *ngIf="errorMessage">
+        <p>{{errorMessage}}</p>
       </div>
 
       <div *ngIf="!forgotPassword && !changePassword">
