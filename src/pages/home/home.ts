@@ -46,6 +46,7 @@ export class HomePage {
   }
 
   logout() {
+    console.log('dckndk')
     sessionStorage.setItem("loginDone", null);
     sessionStorage.setItem("loggedUserId", null);
     sessionStorage.setItem("loggedUserEmail", null);

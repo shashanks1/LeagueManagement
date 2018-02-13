@@ -118,12 +118,12 @@
                     <ion-item>
                       <ion-input type="password" placeholder="Old Password" formControlName="old_password"></ion-input>
                     </ion-item>
-                    <p class="errorMessage" *ngIf="changePasswordForm.controls.password.errors && changePasswordForm.controls.password.dirty">Old password is required.</p>
+                    <p class="errorMessage" *ngIf="changePasswordForm.controls.old_password.errors && changePasswordForm.controls.old_password.dirty">Old password is required.</p>
 
                     <ion-item>
                       <ion-input type="password" placeholder="New Password" formControlName="new_password"></ion-input>
                     </ion-item>
-                    <p class="errorMessage" *ngIf="changePasswordForm.controls.password.errors && changePasswordForm.controls.password.dirty">New password is required.</p>
+                    <p class="errorMessage" *ngIf="changePasswordForm.controls.new_password.errors && changePasswordForm.controls.new_password.dirty">New password is required.</p>
 
                     <div padding class="loginBtn">
                       <button ion-button block large color="dark" [disabled]="!changePasswordForm.valid">Change Password</button>
