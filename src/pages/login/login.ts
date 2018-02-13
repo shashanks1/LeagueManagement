@@ -56,14 +56,15 @@ export class LoginPage {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.submitLogin(value).subscribe((res: any[]) => {
-      this.navCtrl.push(HomePage);
       sessionStorage.setItem("loginDone", 'userIsLogged');
       sessionStorage.setItem("loggedUserId", JSON.stringify(res['res']['id']));
+      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['res']['email']));
+      this.navCtrl.push(HomePage);
     },
-    error => {
-      this.errorMessage = JSON.stringify(error['error']['res']);
-      this.errorMessage = JSON.parse(this.errorMessage);
-    });
+      error => {
+        this.errorMessage = JSON.stringify(error['error']['res']);
+        this.errorMessage = JSON.parse(this.errorMessage);
+      });
   }
 
   // function to open forgot password form 

@@ -17,6 +17,7 @@ export class HomePage {
 
   rootPage: any = HomePage;
   userIsLogged: boolean;
+  userEmail: string;
 
   pages: Array<{ title: string, component: any }>;
 
@@ -24,6 +25,8 @@ export class HomePage {
     this.userIsLogged = false;
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
       this.userIsLogged = true;
+      this.userEmail = JSON.parse(sessionStorage.getItem("loggedUserEmail"));
+      console.log(this.userEmail)
     }
   }
 

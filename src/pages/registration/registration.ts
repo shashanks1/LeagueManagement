@@ -5,6 +5,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
 import { LoginPage } from '../login/login';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-registration',
@@ -56,7 +57,22 @@ export class RegistrationPage {
   signInWithGoogle() {
     this.successMessage = '';
     this.errorMessage = '';
-    let data = this.service.signInWithGoogle();
-    console.log(data);
+    this.service.signInWithGoogle().then((res) => {
+      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+      sessionStorage.setItem("loginDone", 'userIsLogged');
+      this.navCtrl.push(HomePage);
+    })
+      .catch((err) => console.log(err));
+  }
+
+  signInWithFacebook() {
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.service.signInWithFacebook().then((res) => {
+      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+      sessionStorage.setItem("loginDone", 'userIsLogged');
+      this.navCtrl.push(HomePage);
+    })
+      .catch((err) => console.log(err));
   }
 }
