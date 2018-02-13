@@ -104,11 +104,11 @@
         </ion-col>
       </ion-row>
       <div *ngIf="successMessage">
-        <p>{{successMessage}}</p>
+        <p class="successMessage">{{successMessage}}</p>
       </div>
 
       <div *ngIf="errorMessage">
-        <p>{{errorMessage}}</p>
+        <p class="errorMessage">{{errorMessage}}</p>
       </div>
       <form [formGroup]="registrationForm" (ngSubmit)="signUp(registrationForm.value)">
         <div class="form-container">

@@ -20,8 +20,8 @@ export class EditPage {
         this.apiMessage = null;
 
         this.profileForm = fb.group({
-            'email': ['', Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
-            'full_name': ['', Validators.required],
+            'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
+            'full_name': [null, Validators.required],
             'username': [null],
             'office_phone': [null],
             'home_phone': [null],
@@ -44,7 +44,7 @@ export class EditPage {
             'weakness': [null],
         });
 
-        this.getUserData();
+      //  this.getUserData();
     }
 
     saveProfile(value) {

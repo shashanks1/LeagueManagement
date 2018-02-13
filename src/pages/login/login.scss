@@ -1,7 +1,7 @@
 $blue-color:#1a3150;
 $white:#fff;
 $green:#8bc34a;
-page-signup {
+page-login {
     ion-header {
         background: $blue-color;
     }
@@ -27,6 +27,8 @@ page-signup {
             margin-top: 32px;
         }
     }
+    .successMessage {color:green; text-align: center}
+   .errorMessage {color:red; text-align: center}
     .mainNav {
         list-style: none;
         margin: 40px 0 0 0;
@@ -305,6 +307,8 @@ page-signup {
             .submitBtn .button {
                 background: $blue-color
             }
+
+            
         }
     }
     @media screen and (max-width:991px) {

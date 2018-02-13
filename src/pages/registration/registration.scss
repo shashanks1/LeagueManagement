@@ -1,7 +1,7 @@
 $blue-color:#1a3150;
 $white:#fff;
 $green:#8bc34a;
-page-signup {
+page-registration {
     ion-header {
         background: $blue-color;
     }
@@ -49,6 +49,10 @@ page-signup {
             }
         }
     }
+
+    .successMessage {color:green; text-align: center}
+    .errorMessage {color:red; text-align: center}
+ 
     // banner
     .banner {
         background: url(../assets/imgs/banner.jpg) no-repeat 50% 0;

@@ -28,7 +28,7 @@
         </ion-col>
 
         <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="userIsLogged">
-          {{userEmail}}
+          <span class="loggedInUserEmail">{{userEmail}}</span>
           <a href="#" (click)="editProfile()">
             <i class="zmdi zmdi-account"></i> Edit Profile</a>
         </ion-col>

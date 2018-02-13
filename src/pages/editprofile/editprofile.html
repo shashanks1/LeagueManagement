@@ -93,118 +93,125 @@
                         <ion-col col-12 col-lg-4 offset-lg-4 col-md-8 offset-md-2>
                             <div class="signupForm">
                                 <ion-list>
-                                    <ion-item>
-                                        <ion-label>Full Name*</ion-label>
-                                        <ion-input type="text" placeholder="Full Name" formControlName="full_name"></ion-input>
-                                    </ion-item>
+                                        <ion-item>
+                                                <ion-label floating>Username</ion-label>
+                                                <ion-input type="text"></ion-input>
+                                              </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Email*</ion-label>
+                                        <ion-label floating>Email*</ion-label>
                                         <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>User Name</ion-label>
+                                        <ion-label floating>User Name</ion-label>
                                         <ion-input type="text" placeholder="User Name" formControlName="username"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Home Phone</ion-label>
+                                        <ion-label floating>Home Phone</ion-label>
                                         <ion-input type="text" placeholder="Home Phone" formControlName="home_phone"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Cell Phone</ion-label>
+                                        <ion-label floating>Cell Phone</ion-label>
                                         <ion-input type="text" placeholder="Cell Phone" formControlName="cell_phone"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Address 1</ion-label>
+                                        <ion-label floating>Address 1</ion-label>
                                         <ion-input type="text" placeholder="Address 1" formControlName="address1"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Address 2</ion-label>
+                                        <ion-label floating>Address 2</ion-label>
                                         <ion-input type="text" placeholder="Address 2" formControlName="address2"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>City</ion-label>
+                                        <ion-label floating>City</ion-label>
                                         <ion-input type="text" placeholder="City" formControlName="city"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>State</ion-label>
+                                        <ion-label floating>State</ion-label>
                                         <ion-input type="text" placeholder="State" formControlName="user_state"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Country</ion-label>
+                                        <ion-label floating>Country</ion-label>
                                         <ion-input type="text" placeholder="Country" formControlName="country"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Zip</ion-label>
+                                        <ion-label floating>Zip</ion-label>
                                         <ion-input type="text" placeholder="Zip" formControlName="zip"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Height(cm)</ion-label>
+                                        <ion-label floating>Height(cm)</ion-label>
                                         <ion-input type="text" placeholder="Height(cm)" formControlName="height"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Date of Birth</ion-label>
+                                        <ion-label floating>Date of Birth</ion-label>
                                         <ion-input type="text" placeholder="Date of Birth" formControlName="dob"></ion-input>
-                                    </ion-item>
+                                    </ion-item><br>
 
-                                    <ion-item>
+                                    <!-- <ion-item>
                                         <ion-label>Gender</ion-label>
                                         <ion-input type="text" placeholder="Gender" formControlName="gender"></ion-input>
+                                    </ion-item> -->
+                                    <ion-item>
+                                            <ion-label>Gender :</ion-label>
+                                            <ion-select interface="popover" formControlName="gender">
+                                              <ion-option value="male">Male</ion-option>
+                                              <ion-option value="female">Female</ion-option>
+                                            </ion-select>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Perfered Location</ion-label>
+                                        <ion-label floating> Perfered Location</ion-label>
                                         <ion-input type="text" placeholder="Perfered Location" formControlName="preferred_location"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Handedness</ion-label>
+                                        <ion-label floating>Handedness</ion-label>
                                         <ion-input type="text" placeholder="Handedness" formControlName="handedness"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Handedness</ion-label>
+                                        <ion-label floating>Handedness</ion-label>
                                         <ion-input type="text" placeholder="Handedness" formControlName="handedness"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Rating Type</ion-label>
+                                        <ion-label floating>Rating Type</ion-label>
                                         <ion-input type="text" placeholder="Rating Type" formControlName="rating_type"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Rating</ion-label>
+                                        <ion-label floating>Rating</ion-label>
                                         <ion-input type="text" placeholder="Rating" formControlName="rating"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Rating</ion-label>
+                                        <ion-label floating>Rating</ion-label>
                                         <ion-input type="text" placeholder="Rating" formControlName="rating"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Others</ion-label>
+                                        <ion-label floating>Others</ion-label>
                                         <ion-input type="text" placeholder="Others" formControlName="user_others"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Strength</ion-label>
+                                        <ion-label floating>Strength</ion-label>
                                         <ion-input type="text" placeholder="Strength" formControlName="strength"></ion-input>
                                     </ion-item>
 
                                     <ion-item>
-                                        <ion-label>Weakness</ion-label>
+                                        <ion-label floating>Weakness</ion-label>
                                         <ion-input type="text" placeholder="Weakness" formControlName="weakness"></ion-input>
                                     </ion-item>
 
