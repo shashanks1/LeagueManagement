@@ -43,14 +43,14 @@ export class EditPage {
             'strength': [null],
             'weakness': [null],
         });
-
-      //  this.getUserData();
+        this.getUserData();
     }
 
     saveProfile(value) {
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
         this.service.saveProfile(id, value).subscribe((res: any[]) => {
             this.apiMessage = JSON.stringify(res['res']);
+            this.navCtrl.push(HomePage);
         },
             error => {
                 this.apiMessage = JSON.stringify(error['error']['res']);

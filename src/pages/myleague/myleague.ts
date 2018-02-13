@@ -42,7 +42,6 @@ export class MyleaguePage {
 
     this.service.getLeagueData().subscribe((res: any[]) => {
       this.leagueData = res;
-      console.log(this.leagueData);
     });
   }
 
@@ -66,12 +65,10 @@ export class MyleaguePage {
   submitNewLeague(postData) {
     if (this.addLeague) {
       this.service.addNewLeague(postData).subscribe((res: any[]) => {
-        console.log(res);
       })
     }
     else {
       this.service.updateLeague(postData.id, postData).subscribe((res: any[]) => {
-        console.log(postData.id);
         
       })
 

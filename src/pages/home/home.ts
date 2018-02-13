@@ -26,7 +26,6 @@ export class HomePage {
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
       this.userIsLogged = true;
       this.userEmail = JSON.parse(sessionStorage.getItem("loggedUserEmail"));
-      console.log(this.userEmail)
     }
   }
 
