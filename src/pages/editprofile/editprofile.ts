@@ -13,11 +13,13 @@ import { HomePage } from '../home/home';
 })
 export class EditPage {
     profileForm: FormGroup;
-    apiMessage: string;
+    successMessage: string;
+    errorMessage: string;
 
     constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
 
-        this.apiMessage = null;
+        this.successMessage = '';
+        this.errorMessage = '';
 
         this.profileForm = fb.group({
             'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
@@ -49,12 +51,17 @@ export class EditPage {
     saveProfile(value) {
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
         this.service.saveProfile(id, value).subscribe((res: any[]) => {
-            this.apiMessage = JSON.stringify(res['res']);
-            this.navCtrl.push(HomePage);
+            this.successMessage = JSON.stringify(res['res']);
+            this.successMessage = JSON.parse(this.successMessage);
         },
             error => {
-                this.apiMessage = JSON.stringify(error['error']['res']);
+                this.errorMessage = JSON.stringify(error['error']['res']);
+                this.errorMessage = JSON.parse(this.errorMessage);
             });
+    }
+
+    Cancel() {
+        this.navCtrl.push(HomePage);
     }
 
     getUserData() {
@@ -86,7 +93,8 @@ export class EditPage {
             });
         },
             error => {
-                this.apiMessage = JSON.stringify(error['error']['res']);
+                this.errorMessage = JSON.stringify(error['error']['res']);
+                this.errorMessage = JSON.parse(this.errorMessage);
             });
     }
 }

@@ -84,8 +84,12 @@
                     <img src="assets/imgs/logo.png" alt="">
                 </ion-col>
             </ion-row>
-            <div *ngIf="apiMessage">
-                <p>{{apiMessage}}</p>
+            <div *ngIf="successMessage">
+                <p class="successMessage">{{successMessage}}</p>
+            </div>
+
+            <div *ngIf="errorMessage">
+                <p class="errorMessage">{{errorMessage}}</p>
             </div>
             <form [formGroup]="profileForm" (ngSubmit)="saveProfile(profileForm.value)">
                 <div class="form-container">
@@ -93,10 +97,10 @@
                         <ion-col col-12 col-lg-4 offset-lg-4 col-md-8 offset-md-2>
                             <div class="signupForm">
                                 <ion-list>
-                                        <ion-item>
-                                                <ion-label floating>Username</ion-label>
-                                                <ion-input type="text"></ion-input>
-                                              </ion-item>
+                                    <ion-item>
+                                        <ion-label floating>Username</ion-label>
+                                        <ion-input type="text"></ion-input>
+                                    </ion-item>
 
                                     <ion-item>
                                         <ion-label floating>Email*</ion-label>
@@ -156,15 +160,16 @@
                                     <ion-item>
                                         <ion-label floating>Date of Birth</ion-label>
                                         <ion-input type="text" placeholder="Date of Birth" formControlName="dob"></ion-input>
-                                    </ion-item><br>
+                                    </ion-item>
+                                    <br>
 
-                                 
+
                                     <ion-item>
-                                            <ion-label>Gender :</ion-label>
-                                            <ion-select interface="popover" formControlName="gender">
-                                              <ion-option value="male">Male</ion-option>
-                                              <ion-option value="female">Female</ion-option>
-                                            </ion-select>
+                                        <ion-label>Gender :</ion-label>
+                                        <ion-select interface="popover" formControlName="gender">
+                                            <ion-option value="male">Male</ion-option>
+                                            <ion-option value="female">Female</ion-option>
+                                        </ion-select>
                                     </ion-item>
 
                                     <ion-item>
@@ -204,6 +209,7 @@
 
                                     <div padding class="submitBtn">
                                         <button ion-button block large color="dark" [disabled]="!profileForm.valid">Save Profile</button>
+                                        <a href="#" (click)="cancel()">Cancel</a>
                                     </div>
 
                                 </ion-list>
