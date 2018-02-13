@@ -19,6 +19,22 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
 import { HttpModule } from '@angular/http';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyA5SA8AVybxIcaRek3qa6b4Uvkiq2aCQxE",
+    authDomain: "leaguemanagement-8bbc4.firebaseapp.com",
+    databaseURL: "https://leaguemanagement-8bbc4.firebaseio.com",
+    projectId: "leaguemanagement-8bbc4",
+    storageBucket: "",
+    messagingSenderId: "772145571852"
+  }
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -32,6 +48,9 @@ import { HttpModule } from '@angular/http';
   imports: [
     BrowserModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
   ],

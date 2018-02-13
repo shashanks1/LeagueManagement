@@ -61,7 +61,8 @@ export class LoginPage {
       sessionStorage.setItem("loggedUserId", JSON.stringify(res['res']['id']));
     },
     error => {
-      this.errorMessage = JSON.parse(error['error']['res']);
+      this.errorMessage = JSON.stringify(error['error']['res']);
+      this.errorMessage = JSON.parse(this.errorMessage);
     });
   }
 

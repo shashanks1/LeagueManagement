@@ -5,6 +5,10 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs/Observable';
+
 /*
   Generated class for the RemoteServiceProvider provider.
 
@@ -13,16 +17,19 @@ import 'rxjs/add/operator/catch';
 */
 @Injectable()
 export class RemoteServiceProvider {
-  baseUrl: string;
+  private user: Observable<firebase.User>;
 
   constructor(
-    public http: HttpClient
+    public http: HttpClient,
+    private _firebaseAuth: AngularFireAuth
   ) {
-    this.baseUrl = "https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user";
+    this.user = _firebaseAuth.authState;
   }
 
-  getUsers() {
-    return this.http.get(this.baseUrl);
+  signInWithGoogle() {
+    return this._firebaseAuth.auth.signInWithPopup(
+      new firebase.auth.GoogleAuthProvider()
+    )
   }
 
   submitLogin(data) {
@@ -32,7 +39,7 @@ export class RemoteServiceProvider {
   signUp(data) {
     return this.http.post('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user', data);
   }
-  
+
   submitForgotPassword(data) {
     return this.http.post('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/forgot-password', data);
   }
@@ -45,15 +52,15 @@ export class RemoteServiceProvider {
     return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league');
   }
 
-  deleteLeague(id){
+  deleteLeague(id) {
     return this.http.delete('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/{id}');
   }
 
-  saveProfile(id, data){
-    return this.http.put('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/'+id, data);
+  saveProfile(id, data) {
+    return this.http.put('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/' + id, data);
   }
 
-  getUserData(id){
-    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/'+id);
+  getUserData(id) {
+    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/' + id);
   }
 }

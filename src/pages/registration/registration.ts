@@ -52,4 +52,11 @@ export class RegistrationPage {
         this.errorMessage = JSON.parse(error['error']['res']);
       });
   }
+
+  signInWithGoogle() {
+    this.successMessage = '';
+    this.errorMessage = '';
+    let data = this.service.signInWithGoogle();
+    console.log(data);
+  }
 }
