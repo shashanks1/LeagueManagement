@@ -60,7 +60,7 @@ export class EditPage {
             });
     }
 
-    Cancel() {
+    cancel() {
         this.navCtrl.push(HomePage);
     }
 
