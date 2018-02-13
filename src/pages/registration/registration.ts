@@ -14,27 +14,19 @@ import { HomePage } from '../home/home';
 export class RegistrationPage {
 
   registrationForm: FormGroup;
-  email: string;
-  fullName: string;
-  userName: string;
-  password: string;
   agree: boolean;
   successMessage: string;
   errorMessage: string;
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
-    this.email = '';
-    this.fullName = '';
-    this.userName = '';
-    this.password = '';
     this.agree = true;
     this.successMessage = '';
     this.errorMessage = '';
 
     this.registrationForm = fb.group({
       'email': ['', Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
-      'fullName': ['', Validators.required],
-      'userName': ['', Validators.required],
+      'full_name': ['', Validators.required],
+      'username': ['', Validators.required],
       'password': ['', Validators.required],
       'agree': [''],
       'profile': ['']
