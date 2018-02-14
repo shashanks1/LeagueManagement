@@ -6,10 +6,10 @@ import { RemoteServiceProvider } from '../../providers/remote-service/remote-ser
 
 
 @Component({
-  selector: 'page-myleague',
-  templateUrl: 'myleague.html',
+  selector: 'page-mygroup',
+  templateUrl: 'mygroup.html',
 })
-export class MyleaguePage {
+export class MygroupPage {
   modificationForm: FormGroup;
   addLeague: boolean;
   editLeague: boolean;
@@ -77,7 +77,6 @@ export class MyleaguePage {
   }
 
   submitNewLeague(postData) {
-    this.testarray = [];
     this.testarray.push(postData.players);
 
     postData.players = this.testarray;

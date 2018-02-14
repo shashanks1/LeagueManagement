@@ -1,0 +1,323 @@
+$blue-color:#1a3150;
+$white:#fff;
+$green:#8bc34a;
+
+    ion-header {
+        background: $blue-color;
+    }
+    .container {
+        width: 1170px;
+        margin: 0 auto;
+    }
+    .top-strip {
+        a .zmdi {
+            color: #8bc34a;
+            margin-right: 10px;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 15px;
+        }
+    }
+    .headerContent {
+        .socialIcon {
+            margin-top: 32px;
+        }
+    }
+    .successMessage {color:green; text-align: center}
+    .errorMessage {color:red; text-align: center}
+    .mainNav {
+        list-style: none;
+        margin: 40px 0 0 0;
+        padding: 0;
+        li {
+            float: left;
+            margin: 0 30px;
+            a {
+                color: #606060;
+                font-size: 18px;
+                text-decoration: none;
+            }
+        }
+        .active {
+            a {
+                color: $blue-color;
+                font-weight: 600;
+                border-bottom: 2px solid #96bd42;
+                padding-bottom: 5px;
+            }
+        }
+    }
+    // banner
+    .banner {
+        background: url(../assets/imgs/banner.jpg) no-repeat 50% 0;
+        height: 551px;
+        font-family: 'Montserrat', sans-serif;
+        h1 {
+            color: #fff;
+            font-size: 50px;
+            margin-top: 160px;
+            font-weight: 700;
+        }
+        h2 {
+            color: #fff;
+            font-size: 30px;
+        }
+        .searchbar-search-icon {
+            right: 0;
+            top: 0;
+            left: inherit;
+            width: 120px;
+            height: 50px;
+            background: $blue-color;
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+        .searchbar-input {
+            border-radius: 6px;
+            padding: 6px 55px 6px 10px;
+            height: 50px;
+            font-size: 16px;
+            box-shadow: none;
+        }
+        .searchbar-clear-icon {
+            display: none;
+        }
+    }
+    // Inner banner
+    .innerBanner {
+        background: url(../assets/imgs/inner-banner.jpg) no-repeat 50% 0;
+        height: 289px;
+        h1 {
+            margin-top: 120px;
+        }
+    }
+    // live feed
+    .liveFeed {
+        background: #ececec;
+        padding: 10px 0;
+        .liveFeedText {
+            font-size: 18px;
+            color: $blue-color;
+        }
+        .swiper-slide {
+            display: block;
+            p {
+                margin: 0;
+                font-size: 18px;
+            }
+        }
+    }
+    // welcome content
+    .welcomeContent {
+        .container {
+            background: url(../assets/imgs/welcome-img.jpg) no-repeat;
+            height: 541px;
+            margin-top: 80px;
+            .welcomeContentDiv {
+                background: $blue-color;
+                color: $white;
+                margin-top: 40px;
+                padding: 40px 50px;
+                h1 {
+                    font-size: 50px;
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 700;
+                }
+                h6 {
+                    font-size: 14px;
+                    color: #bce14e;
+                    border-bottom: 2px solid $white;
+                    display: inline-block;
+                    padding-bottom: 30px;
+                }
+                p {
+                    font-size: 16px;
+                    line-height: 26px;
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+    // popularTabs
+    .popularTabs {
+        margin-top: 80px;
+        background: #f9faf7;
+        padding: 40px 0;
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 50px;
+            color: $blue-color;
+        }
+        span {
+            display: inline-block;
+            height: 4px;
+            width: 100px;
+            background: #96bd42
+        }
+        .card {
+            margin-bottom: 80px;
+        }
+        .card-content {
+            background: $blue-color;
+            padding: 8px 0;
+            .card-title {
+                color: $white;
+                font-size: 20px;
+                text-align: center;
+            }
+        }
+    }
+    // footer
+    .footer {
+        background: #f5f5f5;
+        padding: 40px 0;
+        h5 {
+            font-size: 16px;
+            font-weight: 700;
+            color: $blue-color;
+            margin: 0;
+        }
+        .footerList {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li {
+                display: block;
+                margin-bottom: 20px;
+                a {
+                    color: $blue-color;
+                    font-size: 16px;
+                    text-decoration: none;
+                    font-weight: 700;
+                }
+            }
+        }
+        .footerContact {
+            color: #555;
+            strong {
+                display: block;
+            }
+        }
+        .input-wrapper {
+            display: block;
+        }
+        .label {
+            margin: 6px 0 0 0;
+            white-space: inherit;
+            overflow: visible;
+        }
+        .item ion-avatar ion-img,
+        .item ion-avatar img {
+            width: inherit;
+            height: inherit;
+            border-radius: 0;
+        }
+        .item {
+            padding: 0;
+            background: none;
+            color: #555;
+            h2 {
+                font-size: 14px;
+                font-weight: 700;
+            }
+            a {
+                color: #96bd42;
+                text-decoration: none;
+                font-size: 12px;
+            }
+        }
+        .list .item-block .item-inner {
+            border-bottom: none;
+        }
+    }
+    // bottom footer
+    .footerBottom {
+        background: $blue-color;
+        color: #acb8c9;
+        font-size: 12px;
+        a {
+            text-decoration: none;
+            color: $white;
+        }
+    }
+    // table content
+    .tableContent {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        button {
+            background: $blue-color
+        }
+        .tableDiv {
+            border: 1px solid #d7d7d7;
+            margin-top: 50px;
+            font-size: 18px;
+            .tableDivHeader {
+                background: $green;
+                color: $white;
+            }
+            .col {
+                padding: 15px 10px;
+            }
+            .tableDivRow {
+                border-bottom: 1px solid #d7d7d7;
+            }
+            .tableDivRow:nth-of-type(odd) {
+                background: #f7f7f7;
+            }
+            .actionLink {
+                a {
+                    display: inline-block;
+                    background: #f0f0f0;
+                    padding: 5px;
+                    border-radius: 4px;
+                    width: 30px;
+                    height: 30px;
+                    text-align: center;
+                    .zmdi-edit {
+                        color: $green
+                    }
+                    .zmdi-delete {
+                        color: #f00;
+                    }
+                    .zmdi-accounts-add {
+                        color: $blue-color;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width:991px) {
+        .mainNav {
+            display: none;
+        }
+    }
+    @media (min-width:320px) and (max-width:767px) {
+        .container {
+            width: 100%;
+        }
+        .top-strip [text-right] {
+            text-align: left!important;
+        }
+        .welcomeContent .container .welcomeContentDiv {
+            padding: 40px 20px;
+            margin-top: 0;
+        }
+    }
+    @media (min-width:768px) and (max-width:991px) {
+        .container {
+            width: 768px;
+        }
+        .welcomeContent .container .welcomeContentDiv {
+            padding: 40px 20px;
+            margin-top: 0;
+        }
+    }
+    @media screen and (min-width:992px) {
+        .toolbar {
+            display: none;
+        }
+    }

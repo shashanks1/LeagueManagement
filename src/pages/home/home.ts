@@ -5,6 +5,7 @@ import { LoginPage } from '../login/login';
 import { EditPage } from '../editprofile/editprofile';
 import { RegistrationPage } from '../registration/registration';
 import { MyleaguePage } from '../myleague/myleague';
+import { MygroupPage} from '../mygroup/mygroup'; 
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 

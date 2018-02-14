@@ -8,11 +8,11 @@ import { AuthInterceptor } from '../providers/auth.interceptor';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { RegistrationPage } from '../pages/registration/registration';
 import { LoginPage } from '../pages/login/login';
 import { EditPage } from '../pages/editprofile/editprofile';
 import { MyleaguePage } from '../pages/myleague/myleague';
+import { MygroupPage} from '../pages/mygroup/mygroup'; 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -39,11 +39,11 @@ export const environment = {
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     RegistrationPage,
     LoginPage,
     EditPage,
-    MyleaguePage
+    MyleaguePage,
+    MygroupPage
   ],
   imports: [
     BrowserModule,
@@ -58,11 +58,11 @@ export const environment = {
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     EditPage,
     RegistrationPage,
     LoginPage,
-    MyleaguePage
+    MyleaguePage,
+    MygroupPage
   ],
   providers: [
     StatusBar,

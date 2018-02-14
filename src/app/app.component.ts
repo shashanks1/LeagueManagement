@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { MyleaguePage } from '../pages/myleague/myleague';
-
+import { MygroupPage} from '../pages/mygroup/mygroup'; 
 
 
 @Component({
@@ -25,6 +25,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'My League', component: MyleaguePage },
+      { title: 'My Group' , component : MygroupPage }
     ];
 
   }
