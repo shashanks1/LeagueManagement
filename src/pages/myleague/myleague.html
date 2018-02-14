@@ -264,8 +264,8 @@
 
                     <ion-item style="margin-top:20px;">
                         <ion-label>Group</ion-label>
-                        <ion-select placeholder="Category" formControlName="groups" multiple="true" *ngFor="let group of groupsData">
-                            <ion-option value="{{group.id}}">{{group.group_name}}</ion-option>
+                        <ion-select formControlName="groups" multiple="true">
+                            <ion-option *ngFor="let group of groupsData" value="{{group.id}}">{{group.group_name}}</ion-option>
                         </ion-select>
                     </ion-item>
 

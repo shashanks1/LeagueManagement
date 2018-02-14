@@ -145,8 +145,8 @@
 
                     <ion-item style="margin-top:20px;">
                         <ion-label>Players</ion-label>
-                        <ion-select formControlName="players" multiple="true" *ngFor="let player of playerData">
-                            <ion-option value="player.id">{{player.full_name}}</ion-option>
+                        <ion-select formControlName="players" multiple="true">
+                            <ion-option *ngFor="let player of playerData" value="player.id">{{player.full_name}}</ion-option>
 
                         </ion-select>
                     </ion-item>
