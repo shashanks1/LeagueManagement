@@ -11,41 +11,39 @@ import { RemoteServiceProvider } from '../../providers/remote-service/remote-ser
 })
 export class MygroupPage {
   modificationForm: FormGroup;
-  addLeague: boolean;
-  editLeague: boolean;
-  leagueData: any;
+  addGroup: boolean;
+  editGroup: boolean;
+  groupData: Array<any>;
+  playerData: Array<any>;
   editValue: any;
-  testarray: Array<any> = [];
+  testarray: Array<any>;
   successMessage: string;
   errorMessage: string;
 
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
-    this.addLeague = false;
-    this.editLeague = false;
+    this.addGroup = false;
+    this.editGroup = false;
     this.editValue = '';
     this.successMessage = '';
     this.errorMessage = '';
-
+    this.groupData = [];
+    this.playerData = [];
     this.modificationForm = fb.group({
-      'league_name': [''],
-      'description': [''],
-      'players': [''],
-      'league_location': [''],
-      'round_robin_period_from': [''],
-      'round_robin_period_to': [''],
-      'playoff_period_from': [''],
-      'playoff_period_to': [''],
-      'scoring_point': ['']
+      'group_name': [null, Validators.required],
+      'players': [null]
     });
 
-    this.getLeagueData();
+    this.getGroupData();
+    this.getPlayerData();
   }
 
-  getLeagueData() {
-
-    this.service.getLeagueData().subscribe((res: any[]) => {
-      this.leagueData = res;
+  getPlayerData() {
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.service.getPlayerData().subscribe((res: any[]) => {
+      this.playerData = res;
+      console.log(this.playerData);
     },
       error => {
         this.errorMessage = JSON.stringify(error['error']['res']);
@@ -53,42 +51,52 @@ export class MygroupPage {
       });
   }
 
-  addNewLeague() {
-    this.addLeague = true;
-    this.editLeague = false;
+  getGroupData() {
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.service.getGroupData().subscribe((res: any[]) => {
+      this.groupData = res;
+    },
+      error => {
+        this.errorMessage = JSON.stringify(error['error']['res']);
+        this.errorMessage = JSON.parse(this.errorMessage);
+      });
   }
 
-  editLeagueFunc(editValue) {
-    this.editLeague = true;
-    this.addLeague = false;
+  addNewGroup() {
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.addGroup = true;
+    this.editGroup = false;
+  }
+
+  editGroupFunc(editValue) {
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.editGroup = true;
+    this.addGroup = false;
     this.editValue = editValue;
 
     this.modificationForm.setValue({
-      'league_name': editValue.league_name,
-      'players': editValue.players,
-      'league_location': editValue.league_location,
-      'description': editValue.description,
-      'round_robin_period_from': editValue.round_robin_period_from,
-      'round_robin_period_to': editValue.round_robin_period_to,
-      'playoff_period_from': editValue.playoff_period_from,
-      'playoff_period_to': editValue.playoff_period_to,
-      'scoring_point': editValue.scoring_point
+
+      'group_name': editValue.group_name,
+      'players': editValue.players
+
     })
   }
 
-  submitNewLeague(postData) {
-    this.testarray.push(postData.players);
-
-    postData.players = this.testarray;
+  submitNewGroup(postData) {
     this.successMessage = '';
     this.errorMessage = '';
-    if (this.addLeague) {
-      this.service.addNewLeague(postData).subscribe((res: any[]) => {
-        this.getLeagueData();
+
+    if (this.addGroup) {
+      this.service.addNewGroup(postData).subscribe((res: any[]) => {
+        this.modificationForm.reset();
+        this.getGroupData();
         this.successMessage = JSON.stringify(res['res']);
         this.successMessage = JSON.parse(this.successMessage);
-        this.editLeague = false;
-        this.addLeague = false;
+        this.editGroup = false;
+        this.addGroup = false;
 
       },
         error => {
@@ -98,12 +106,13 @@ export class MygroupPage {
     }
     else {
 
-      this.service.updateLeague(this.editValue.id, postData).subscribe((res: any[]) => {
-        this.getLeagueData();
+      this.service.updateGroup(this.editValue.id, postData).subscribe((res: any[]) => {
+        this.modificationForm.reset();
+        this.getGroupData();
         this.successMessage = JSON.stringify(res['res']);
         this.successMessage = JSON.parse(this.successMessage);
-        this.editLeague = false;
-        this.addLeague = false;
+        this.editGroup = false;
+        this.addGroup = false;
 
       },
         error => {
@@ -114,10 +123,11 @@ export class MygroupPage {
     }
   }
 
-  deleteLeague(id) {
-
-    this.service.deleteLeague(id).subscribe((res: any[]) => {
-      this.getLeagueData()
+  deleteGroup(id) {
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.service.deleteGroup(id).subscribe((res: any[]) => {
+      this.getGroupData()
     },
       error => {
         this.errorMessage = JSON.stringify(error['error']['res']);
@@ -126,4 +136,3 @@ export class MygroupPage {
 
   }
 }
-

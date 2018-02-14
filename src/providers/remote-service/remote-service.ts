@@ -92,4 +92,26 @@ export class RemoteServiceProvider {
   getUserData(id) {
     return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/' + id);
   }
+
+  getGroupData() {
+    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/group');
+  }
+
+  deleteGroup(id) {
+    return this.http.delete('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/group/'+id);
+
+  }
+
+  updateGroup(id,data){
+    return this.http.put('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/group/'+id,data);
+  }
+
+  addNewGroup(data){
+    return this.http.post('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/group',data)
+  }
+
+  getPlayerData(){
+    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user?q=players');
+  }
+
 }
