@@ -1,8 +1,8 @@
 <ion-header>
     <ion-navbar>
         <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
+            <ion-icon name="menu"></ion-icon>
+        </button>
         <ion-title>My Group</ion-title>
     </ion-navbar>
 
@@ -10,8 +10,10 @@
         <ion-grid>
             <ion-row class="top-strip">
                 <ion-col col-12 col-md-8>
-                    <a href="#"><i class="zmdi zmdi-phone"></i> +1 (0) 1234 56789</a>
-                    <a href="#"><i class="zmdi zmdi-email"></i> info@mytenniscloud.com</a>
+                    <a href="#">
+                        <i class="zmdi zmdi-phone"></i> +1 (0) 1234 56789</a>
+                    <a href="#">
+                        <i class="zmdi zmdi-email"></i> info@mytenniscloud.com</a>
                 </ion-col>
 
 
@@ -34,16 +36,32 @@
                 <ion-col col-7>
                     <ion-list>
                         <ul class="mainNav">
-                            <li class="active"><a href="#">Lorem ipsum</a></li>
-                            <li><a href="#">Perspiciatis <i class="zmdi zmdi-chevron-down"></i></a></li>
-                            <li><a href="#">Neque porro <i class="zmdi zmdi-chevron-down"></i></a></li>
-                            <li><a href="#">About <i class="zmdi zmdi-chevron-down"></i></a></li>
+                            <li class="active">
+                                <a href="#">Lorem ipsum</a>
+                            </li>
+                            <li>
+                                <a href="#">Perspiciatis
+                                    <i class="zmdi zmdi-chevron-down"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">Neque porro
+                                    <i class="zmdi zmdi-chevron-down"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">About
+                                    <i class="zmdi zmdi-chevron-down"></i>
+                                </a>
+                            </li>
                         </ul>
                     </ion-list>
                 </ion-col>
 
                 <ion-col col-2>
-                    <a href="#"><img src="assets/imgs/social-icon.png" alt="" class="socialIcon"></a>
+                    <a href="#">
+                        <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
+                    </a>
                 </ion-col>
 
             </ion-row>
@@ -111,22 +129,21 @@
                     </ion-col>
 
                     <ion-col col-4>
-                        <span *ngFor="let player of playerData">
-                            {{player.full_name}}
+                        <span *ngFor="let player of group.players">
+                            {{player}}
                         </span>
                     </ion-col>
 
                     <ion-col col-4 text-center class="actionLink">
-                        <a href="#" (click)="editGroupFunc(group)"><i class="zmdi zmdi-edit" ></i></a>
-                        <a href="#" (click)="deleteGroup(group.id)"><i class="zmdi zmdi-delete"></i></a>
+                        <a href="#" (click)="editGroupFunc(group)">
+                            <i class="zmdi zmdi-edit"></i>
+                        </a>
+                        <a href="#" (click)="deleteGroup(group.id)">
+                            <i class="zmdi zmdi-delete"></i>
+                        </a>
 
                     </ion-col>
                 </ion-row>
-
-
-
-
-
             </div>
         </div>
 
@@ -137,25 +154,27 @@
             <div class="" *ngIf="addGroup || editGroup">
                 <form [formGroup]="modificationForm" (ngSubmit)='submitNewGroup(modificationForm.value)'>
 
-
                     <ion-item>
                         <ion-label floating>Group Name*</ion-label>
                         <ion-input type="text" formControlName="group_name"></ion-input>
                     </ion-item>
+                    <p class="errorMessage" *ngIf="modificationForm.controls.group_name.errors && modificationForm.controls.group_name.dirty">Group Name is required.</p>
 
                     <ion-item style="margin-top:20px;">
                         <ion-label>Players</ion-label>
                         <ion-select formControlName="players" multiple="true">
-                            <ion-option *ngFor="let player of playerData" value="player.id">{{player.full_name}}</ion-option>
-
+                                <ion-option *ngFor="let player of playerData" value="{{player.id}}">{{player.full_name}}</ion-option>
                         </ion-select>
                     </ion-item>
+                    <p class="errorMessage" *ngIf="modificationForm.controls.players.errors && modificationForm.controls.players.dirty">Atleast one player is required.</p>
 
                     <div *ngIf=addGroup>
-                        <button ion-button>Create Group</button>
+                        <button ion-button (click)="backToGroup()">Back To Group</button>
+                        <button ion-button [disabled]="!modificationForm.valid">Create Group</button>
                     </div>
                     <div *ngIf=editGroup>
-                        <button ion-button>Save Changes</button>
+                        <button ion-button (click)="backToGroup()">Back To Group</button>
+                        <button ion-button [disabled]="!modificationForm.valid">Save Changes</button>
                     </div>
 
                 </form>
@@ -175,26 +194,41 @@
                         <img src="assets/imgs/footer-logo.png" />
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                             nulla pariatur.</p>
-                        <a href="#"><img src="assets/imgs/social-icon.png" alt="" class="socialIcon"></a>
+                        <a href="#">
+                            <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
+                        </a>
                     </ion-col>
 
                     <ion-col col-lg-3 col-md-6 col-12>
                         <ul class="footerList">
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Leatest News</a></li>
-                            <li><a href="#">Help</a></li>
-                            <li><a href="#">Donate</a></li>
-                            <li><a href="#">Career</a></li>
+                            <li>
+                                <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="#">Leatest News</a>
+                            </li>
+                            <li>
+                                <a href="#">Help</a>
+                            </li>
+                            <li>
+                                <a href="#">Donate</a>
+                            </li>
+                            <li>
+                                <a href="#">Career</a>
+                            </li>
                         </ul>
                     </ion-col>
 
                     <ion-col col-lg-3 col-md-6 col-12 class="footerContact">
                         <h5>Contact Us</h5>
-                        <p><strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
+                        <p>
+                            <strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
 
-                        <p><strong>Call Us</strong> (123) 456-78-90</p>
+                        <p>
+                            <strong>Call Us</strong> (123) 456-78-90</p>
 
-                        <p><strong>Email</strong> info@mytenniscloud.com</p>
+                        <p>
+                            <strong>Email</strong> info@mytenniscloud.com</p>
                     </ion-col>
 
                     <ion-col col-lg-3 col-md-6 col-12>
@@ -206,7 +240,10 @@
                                     <img src="assets/imgs/blog-img-1.jpg" />
                                 </ion-avatar>
                                 <h2>Improve Your Strokes Using The Wall</h2>
-                                <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
+                                <p>
+                                    <a href="#">February 7, 2018</a> by
+                                    <a href="#">John Doe</a>
+                                </p>
                             </ion-item>
 
                             <ion-item>
@@ -214,7 +251,10 @@
                                     <img src="assets/imgs/blog-img-2.jpg" />
                                 </ion-avatar>
                                 <h2>Improve Your Strokes Using The Wall</h2>
-                                <p><a href="#">February 7, 2018</a> by <a href="#">John Doe</a> </p>
+                                <p>
+                                    <a href="#">February 7, 2018</a> by
+                                    <a href="#">John Doe</a>
+                                </p>
                             </ion-item>
 
 
@@ -234,7 +274,10 @@
             <ion-grid>
                 <ion-row>
                     <ion-col col-12 text-center>
-                        <p>My Tennis Cloud © 2018 All Rights Reserved <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a></p>
+                        <p>My Tennis Cloud © 2018 All Rights Reserved
+                            <a href="#">Terms of Use</a> and
+                            <a href="#">Privacy Policy</a>
+                        </p>
                     </ion-col>
                 </ion-row>
             </ion-grid>

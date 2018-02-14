@@ -31,7 +31,7 @@ export class MygroupPage {
     this.playerData = [];
     this.modificationForm = fb.group({
       'group_name': [null, Validators.required],
-      'players': [null]
+      'players': [null, Validators.required]
     });
 
     this.getGroupData();
@@ -39,8 +39,6 @@ export class MygroupPage {
   }
 
   getPlayerData() {
-    this.successMessage = '';
-    this.errorMessage = '';
     this.service.getPlayerData().subscribe((res: any[]) => {
       this.playerData = res;
     },
@@ -63,13 +61,23 @@ export class MygroupPage {
   }
 
   addNewGroup() {
+    this.modificationForm.reset();
     this.successMessage = '';
     this.errorMessage = '';
     this.addGroup = true;
     this.editGroup = false;
   }
 
+  backToGroup() {
+    this.modificationForm.reset();
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.addGroup = false;
+    this.editGroup = false;
+  }
+
   editGroupFunc(editValue) {
+    console.log(editValue)
     this.successMessage = '';
     this.errorMessage = '';
     this.editGroup = true;
@@ -77,7 +85,6 @@ export class MygroupPage {
     this.editValue = editValue;
 
     this.modificationForm.setValue({
-
       'group_name': editValue.group_name,
       'players': editValue.players
 
@@ -104,7 +111,6 @@ export class MygroupPage {
         })
     }
     else {
-
       this.service.updateGroup(this.editValue.id, postData).subscribe((res: any[]) => {
         this.modificationForm.reset();
         this.getGroupData();
@@ -118,7 +124,6 @@ export class MygroupPage {
           this.errorMessage = JSON.stringify(error['error']['res']);
           this.errorMessage = JSON.parse(this.errorMessage);
         })
-
     }
   }
 
@@ -126,12 +131,13 @@ export class MygroupPage {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.deleteGroup(id).subscribe((res: any[]) => {
+      this.successMessage = JSON.stringify(res['res']);
+      this.successMessage = JSON.parse(this.successMessage);
       this.getGroupData()
     },
       error => {
         this.errorMessage = JSON.stringify(error['error']['res']);
         this.errorMessage = JSON.parse(this.errorMessage);
       });
-
   }
 }

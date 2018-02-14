@@ -33,7 +33,6 @@ export class MyleaguePage {
     this.modificationForm = fb.group({
       'league_name': [null, Validators.required],
       'description': [null],
-      'players': [null],
       'league_location': [null],
       'round_robin_period_from': [null],
       'round_robin_period_to': [null],
@@ -49,8 +48,6 @@ export class MyleaguePage {
   }
 
   getLeagueData() {
-    this.successMessage = '';
-    this.errorMessage = '';
     this.service.getLeagueData().subscribe((res: any[]) => {
       this.leagueData = res;
     },
@@ -85,6 +82,7 @@ export class MyleaguePage {
   }
 
   editLeagueFunc(editValue) {
+    console.log(editValue)
     this.successMessage = '';
     this.errorMessage = '';
     this.editLeague = true;
@@ -93,7 +91,6 @@ export class MyleaguePage {
 
     this.modificationForm.setValue({
       'league_name': editValue.league_name,
-      'players': editValue.players,
       'league_location': editValue.league_location,
       'description': editValue.description,
       'round_robin_period_from': editValue.round_robin_period_from,
@@ -101,7 +98,7 @@ export class MyleaguePage {
       'playoff_period_from': editValue.playoff_period_from,
       'playoff_period_to': editValue.playoff_period_to,
       'categories': editValue.categories,
-      'groups':  editValue.groups,
+      'groups': editValue.groups,
       'scoring_point': editValue.scoring_point
     })
   }
@@ -149,13 +146,14 @@ export class MyleaguePage {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.deleteLeague(id).subscribe((res: any[]) => {
+      this.successMessage = JSON.stringify(res['res']);
+      this.successMessage = JSON.parse(this.successMessage);
       this.getLeagueData()
     },
       error => {
         this.errorMessage = JSON.stringify(error['error']['res']);
         this.errorMessage = JSON.parse(this.errorMessage);
       });
-
   }
 }
 
