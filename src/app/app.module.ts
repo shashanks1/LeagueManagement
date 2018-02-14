@@ -8,7 +8,6 @@ import { AuthInterceptor } from '../providers/auth.interceptor';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { RegistrationPage } from '../pages/registration/registration';
 import { LoginPage } from '../pages/login/login';
 import { EditPage } from '../pages/editprofile/editprofile';
@@ -39,7 +38,6 @@ export const environment = {
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     RegistrationPage,
     LoginPage,
     EditPage,
@@ -58,7 +56,6 @@ export const environment = {
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     EditPage,
     RegistrationPage,
     LoginPage,
