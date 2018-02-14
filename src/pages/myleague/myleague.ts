@@ -13,7 +13,7 @@ export class MyleaguePage {
   modificationForm: FormGroup;
   addLeague: boolean;
   editLeague: boolean;
-  leagueData: any;
+  leagueData: Array<any>;
   editValue: any;
   testarray: Array<any> = [];
   successMessage: string;
@@ -26,24 +26,27 @@ export class MyleaguePage {
     this.editValue = '';
     this.successMessage = '';
     this.errorMessage = '';
+    this.leagueData = [];
 
     this.modificationForm = fb.group({
-      'league_name': [''],
-      'description': [''],
-      'players': [''],
-      'league_location': [''],
-      'round_robin_period_from': [''],
-      'round_robin_period_to': [''],
-      'playoff_period_from': [''],
-      'playoff_period_to': [''],
-      'scoring_point': ['']
+      'league_name': [null, Validators.required],
+      'description': [null],
+      'players': [null],
+      'league_location': [null],
+      'round_robin_period_from': [null],
+      'round_robin_period_to': [null],
+      'playoff_period_from': [null],
+      'playoff_period_to': [null],
+      'categories': [null],
+      'scoring_point': [null]
     });
 
     this.getLeagueData();
   }
 
   getLeagueData() {
-
+    this.successMessage = '';
+    this.errorMessage = '';
     this.service.getLeagueData().subscribe((res: any[]) => {
       this.leagueData = res;
     },
@@ -54,11 +57,22 @@ export class MyleaguePage {
   }
 
   addNewLeague() {
+    this.successMessage = '';
+    this.errorMessage = '';
     this.addLeague = true;
     this.editLeague = false;
   }
 
+  backToListing() {
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.addLeague = false;
+    this.editLeague = false;
+  }
+
   editLeagueFunc(editValue) {
+    this.successMessage = '';
+    this.errorMessage = '';
     this.editLeague = true;
     this.addLeague = false;
     this.editValue = editValue;
@@ -72,6 +86,7 @@ export class MyleaguePage {
       'round_robin_period_to': editValue.round_robin_period_to,
       'playoff_period_from': editValue.playoff_period_from,
       'playoff_period_to': editValue.playoff_period_to,
+      'categories': editValue.categories,
       'scoring_point': editValue.scoring_point
     })
   }
@@ -79,8 +94,8 @@ export class MyleaguePage {
   submitNewLeague(postData) {
     this.testarray = [];
     this.testarray.push(postData.players);
-
     postData.players = this.testarray;
+
     this.successMessage = '';
     this.errorMessage = '';
     if (this.addLeague) {
@@ -116,7 +131,8 @@ export class MyleaguePage {
   }
 
   deleteLeague(id) {
-
+    this.successMessage = '';
+    this.errorMessage = '';
     this.service.deleteLeague(id).subscribe((res: any[]) => {
       this.getLeagueData()
     },
