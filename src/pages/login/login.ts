@@ -15,17 +15,13 @@ export class LoginPage {
   loginForm: FormGroup;
   forgotForm: FormGroup;
   changePasswordForm: FormGroup;
-  password: string;
   successMessage: string;
   errorMessage: string;
-  email: string;
   forgotPassword: boolean;
   changePassword: boolean;
 
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
-    this.email = '';
-    this.password = '';
     this.successMessage = '';
     this.errorMessage = '';
     this.forgotPassword = false;
@@ -69,6 +65,8 @@ export class LoginPage {
 
   // function to open forgot password form 
   openForgotPassword() {
+    this.changePasswordForm.reset();
+    this.forgotForm.reset();
     sessionStorage.setItem("registrationMessage", null);
     this.successMessage = '';
     this.errorMessage = '';
@@ -84,7 +82,10 @@ export class LoginPage {
     this.service.submitForgotPassword(value).subscribe((res: any[]) => {
       this.successMessage = JSON.stringify(res['res']);
       this.successMessage = JSON.parse(this.successMessage);
-      this.cancel();
+      this.changePasswordForm.reset();
+      this.forgotForm.reset();
+      this.changePassword = false;
+      this.forgotPassword = false;
     },
       error => {
         this.errorMessage = JSON.stringify(error['error']['res']);
@@ -100,7 +101,10 @@ export class LoginPage {
     this.service.submitChangePassword(value).subscribe((res: any[]) => {
       this.successMessage = JSON.stringify(res['res']);
       this.successMessage = JSON.parse(this.successMessage);
-      this.cancel();
+      this.changePasswordForm.reset();
+      this.forgotForm.reset();
+      this.changePassword = false;
+      this.forgotPassword = false;
     },
       error => {
         this.errorMessage = JSON.stringify(error['error']['res']);
@@ -111,6 +115,8 @@ export class LoginPage {
   // function to open change password form
   openChangePassword() {
     sessionStorage.setItem("registrationMessage", null);
+    this.changePasswordForm.reset();
+    this.forgotForm.reset();
     this.successMessage = '';
     this.errorMessage = '';
     this.changePassword = true;
@@ -119,7 +125,9 @@ export class LoginPage {
 
   // function to cancel forgot or change password form
   cancel() {
-    sessionStorage.setItem("registrationMessage", null);
+    this.loginForm.reset();
+    this.changePasswordForm.reset();
+    this.forgotForm.reset();
     this.successMessage = '';
     this.errorMessage = '';
     this.changePassword = false;

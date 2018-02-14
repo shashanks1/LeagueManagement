@@ -44,4 +44,12 @@ export class HomePage {
   openLeague() {
     this.navCtrl.push(MyleaguePage);
   }
+
+  logout() {
+    console.log('dckndk')
+    sessionStorage.setItem("loginDone", null);
+    sessionStorage.setItem("loggedUserId", null);
+    sessionStorage.setItem("loggedUserEmail", null);
+    this.navCtrl.push(HomePage);
+  }
 }

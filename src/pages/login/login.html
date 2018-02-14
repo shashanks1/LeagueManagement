@@ -48,11 +48,13 @@
                     <ion-item>
                       <ion-input type="text" placeholder="Email Address" formControlName="email"></ion-input>
                     </ion-item>
+                    <p class="errorMessage" *ngIf="loginForm.controls.email.errors && loginForm.controls.email.dirty && loginForm.controls.email.errors.pattern">Please provide proper email.</p>
+                    <p class="errorMessage" *ngIf="loginForm.controls.email.errors && loginForm.controls.email.dirty && loginForm.controls.email.errors.required">Email is required.</p>
 
                     <ion-item>
                       <ion-input type="password" placeholder="password" formControlName="password"></ion-input>
                     </ion-item>
-
+                    <p class="errorMessage" *ngIf="loginForm.controls.password.errors && loginForm.controls.password.dirty">Password is required.</p>
                     <div padding class="loginBtn">
                       <button ion-button block large color="dark" [disabled]="!loginForm.valid">Sign In</button>
                     </div>
@@ -82,10 +84,12 @@
                     <ion-item>
                       <ion-input type="text" placeholder="Email Address" formControlName="email"></ion-input>
                     </ion-item>
+                    <p class="errorMessage" *ngIf="forgotForm.controls.email.errors && forgotForm.controls.email.dirty && forgotForm.controls.email.errors.pattern">Please provide proper email.</p>
+                    <p class="errorMessage" *ngIf="forgotForm.controls.email.errors && forgotForm.controls.email.dirty && forgotForm.controls.email.errors.required">Email is required.</p>
 
                     <div padding class="loginBtn">
                       <button ion-button block large color="dark" [disabled]="!forgotForm.valid">Forgot Password</button>
-                      <button ion-button block large color="dark" (click)="cancel()">Cancel</button>
+                      <button ion-button block large color="dark" (click)="cancel()">Login Page</button>
                     </div>
 
                   </ion-list>
@@ -108,18 +112,22 @@
                     <ion-item>
                       <ion-input type="text" placeholder="Email Address" formControlName="email"></ion-input>
                     </ion-item>
+                    <p class="errorMessage" *ngIf="changePasswordForm.controls.email.errors && changePasswordForm.controls.email.dirty && changePasswordForm.controls.email.errors.pattern">Please provide proper email.</p>
+                    <p class="errorMessage" *ngIf="changePasswordForm.controls.email.errors && changePasswordForm.controls.email.dirty && changePasswordForm.controls.email.errors.required">Email is required.</p>
 
                     <ion-item>
                       <ion-input type="password" placeholder="Old Password" formControlName="old_password"></ion-input>
                     </ion-item>
+                    <p class="errorMessage" *ngIf="changePasswordForm.controls.old_password.errors && changePasswordForm.controls.old_password.dirty">Old password is required.</p>
 
                     <ion-item>
                       <ion-input type="password" placeholder="New Password" formControlName="new_password"></ion-input>
                     </ion-item>
+                    <p class="errorMessage" *ngIf="changePasswordForm.controls.new_password.errors && changePasswordForm.controls.new_password.dirty">New password is required.</p>
 
                     <div padding class="loginBtn">
                       <button ion-button block large color="dark" [disabled]="!changePasswordForm.valid">Change Password</button>
-                      <button ion-button block large color="dark" (click)="cancel()">Cancel</button>
+                      <button ion-button block large color="dark" (click)="cancel()">Login Page</button>
                     </div>
 
                   </ion-list>
