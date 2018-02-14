@@ -66,7 +66,7 @@ export class EditPage {
 
     getUserData() {
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
-        this.service.getUserData(id).subscribe((res: any[]) => {
+        this.service.getUser(id).subscribe((res: any[]) => {
             this.profileForm.setValue({
                 'email': res['res']['email'],
                 'full_name': res['res']['full_name'],
