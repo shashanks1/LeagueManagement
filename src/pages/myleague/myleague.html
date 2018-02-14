@@ -72,12 +72,14 @@
         </div>
     </div>
 
-    <!-- table -->
-
-
-    <!-- /table -->
     <div class="tableContent" *ngIf="!addLeague && !editLeague">
+        <div *ngIf="successMessage">
+            <p class="successMessage">{{successMessage}}</p>
+        </div>
 
+        <div *ngIf="errorMessage">
+            <p class="errorMessage">{{errorMessage}}</p>
+        </div>
         <div class="container">
             <ion-row>
                 <ion-col col-12 text-right>
@@ -185,20 +187,20 @@
                     <ion-label floating>Round Robin Period</ion-label>
                     <ion-item>
                         <ion-label>From</ion-label>
-                        <ion-input type="date" placeholder="From" formControlName="round_robin_period.from"></ion-input>
+                        <ion-input type="date" placeholder="From" formControlName="round_robin_period_from"></ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label>To</ion-label>
-                        <ion-input type="date" placeholder="To" formControlName="round_robin_period.to"></ion-input>
+                        <ion-input type="date" placeholder="To" formControlName="round_robin_period_to"></ion-input>
                     </ion-item>
                     <ion-label floating>Playoff Period</ion-label>
                     <ion-item>
                         <ion-label>From</ion-label>
-                        <ion-input type="date" placeholder="From" formControlName="playoff_period.from"></ion-input>
+                        <ion-input type="date" placeholder="From" formControlName="playoff_period_from"></ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label>To</ion-label>
-                        <ion-input type="date" placeholder="To" formControlName="playoff_period.to"></ion-input>
+                        <ion-input type="date" placeholder="To" formControlName="playoff_period_to"></ion-input>
                     </ion-item>
                     <!-- <ion-item>
                             <ion-input type="checkbox" name="categories" value="Mens & Womens">Men & Women<br>
@@ -207,10 +209,10 @@
                             <ion-input type="checkbox" name="categories" value="Men Doubles">Men Doubles<br>
                             <ion-input type="checkbox" name="categories" value="Women Doubles">Women Doubles<br>
                         </ion-item> -->
-                        <ion-item>
-                                <ion-label floating>Enter Scoring Point System</ion-label>
-                                <ion-input type="text" placeholder="Enter Scoring Point System" formControlName="scoring_point"></ion-input>
-                            </ion-item>
+                    <ion-item>
+                        <ion-label floating>Enter Scoring Point System</ion-label>
+                        <ion-input type="text" placeholder="Enter Scoring Point System" formControlName="scoring_point"></ion-input>
+                    </ion-item>
 
                     <div *ngIf=addLeague>
                         <button ion-button>Create League</button>
