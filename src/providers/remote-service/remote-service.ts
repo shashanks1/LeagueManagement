@@ -89,8 +89,8 @@ export class RemoteServiceProvider {
     return this.http.put('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/' + id, data);
   }
 
-  getUserData() {
-    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/');
+  getUserData(id) {
+    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/' + id);
   }
 
   getGroupData() {
