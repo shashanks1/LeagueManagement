@@ -89,34 +89,34 @@
 
             <div class="tableDiv">
                 <ion-row class="tableDivHeader">
-                    <ion-col col-2>
+                    <ion-col col-4>
                         Group Name
                     </ion-col>
 
-                    <ion-col col-2>
+                    <ion-col col-4>
                         Players Name
                     </ion-col>
 
-                    <ion-col col-2>
+                    <ion-col col-4 text-center>
                         Action
                     </ion-col>
                 </ion-row>
 
                 <ion-row class="tableDivRow" *ngFor="let group of groupData">
 
-                    <ion-col col-2>
+                    <ion-col col-4>
 
                         {{group.group_name}}
 
                     </ion-col>
 
-                    <ion-col col-2>
+                    <ion-col col-4>
                         <span *ngFor="let player of playerData">
                             {{player.full_name}}
                         </span>
                     </ion-col>
 
-                    <ion-col col-2 class="actionLink">
+                    <ion-col col-4 text-center class="actionLink">
                         <a href="#" (click)="editGroupFunc(group)"><i class="zmdi zmdi-edit" ></i></a>
                         <a href="#" (click)="deleteGroup(group.id)"><i class="zmdi zmdi-delete"></i></a>
 
@@ -134,7 +134,7 @@
 
     <ion-row>
         <ion-col col-6 offset-3>
-            <div class="tableContent" *ngIf="addGroup || editGroup">
+            <div class="" *ngIf="addGroup || editGroup">
                 <form [formGroup]="modificationForm" (ngSubmit)='submitNewGroup(modificationForm.value)'>
 
 
