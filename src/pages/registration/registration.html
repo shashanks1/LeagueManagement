@@ -125,7 +125,8 @@
                   <ion-item>
                     <ion-input type="text" placeholder="Full Name" formControlName="full_name"></ion-input>
                   </ion-item>
-                  <p class="errorMessage" *ngIf="registrationForm.controls.full_name.errors && registrationForm.controls.full_name.dirty">Full name is required.</p>
+                  <p class="errorMessage" *ngIf="registrationForm.controls.full_name.errors && registrationForm.controls.full_name.dirty && registrationForm.controls.full_name.errors.pattern">Full Name can only be text.</p>
+                  <p class="errorMessage" *ngIf="registrationForm.controls.full_name.errors && registrationForm.controls.full_name.dirty && registrationForm.controls.full_name.errors.required">Full Name is required.</p>
 
                   <ion-item>
                     <ion-input type="text" placeholder="Username" formControlName="username"></ion-input>

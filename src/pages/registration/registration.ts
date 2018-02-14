@@ -24,12 +24,11 @@ export class RegistrationPage {
     this.errorMessage = '';
 
     this.registrationForm = fb.group({
-      'email': ['', Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
-      'full_name': ['', Validators.required],
-      'username': ['', Validators.required],
-      'password': ['', Validators.required],
-      'agree': [''],
-      'profile': ['']
+      'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
+      'full_name': [null, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z \-\']+')])],
+      'username': [null, Validators.required],
+      'password': [null, Validators.required],
+      'agree': [null]
 
     });
   }
