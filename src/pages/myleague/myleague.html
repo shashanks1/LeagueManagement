@@ -116,7 +116,7 @@
 
                     <ion-col col-2>
 
-                        {{lgdata.name}}
+                        {{lgdata.league_name}}
 
                     </ion-col>
 
@@ -129,7 +129,7 @@
 
                     <ion-col col-2>
 
-                        {{lgdata.location}}
+                        {{lgdata.league_location}}
 
                     </ion-col>
 
@@ -165,23 +165,58 @@
         <ion-col col-6 offset-3>
             <div class="tableContent" *ngIf="addLeague || editLeague">
                 <form [formGroup]="modificationForm" (ngSubmit)='submitNewLeague(modificationForm.value)'>
+
                     <ion-item>
-                        <ion-input type="text" placeholder="League name" formControlName="name"></ion-input>
+                        <ion-label floating>Enter League Name</ion-label>
+                        <ion-input type="text" placeholder="Enter League Name" formControlName="league_name"></ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input type="text" placeholder="Player name" formControlName="players"></ion-input>
+                        <ion-label floating>Enter Description</ion-label>
+                        <ion-input type="text" placeholder="Enter Description" formControlName="description"></ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input type="text" placeholder="Location" formControlName="location"></ion-input>
+                        <ion-label floating>Enter Player Name</ion-label>
+                        <ion-input type="text" placeholder="Enter Player Name" formControlName="players"></ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-input type="text" placeholder="Created" formControlName="created"></ion-input>
+                        <ion-label floating>Enter Location</ion-label>
+                        <ion-input type="text" placeholder="Enter Location" formControlName="league_location"></ion-input>
                     </ion-item>
+                    <ion-label floating>Round Robin Period</ion-label>
+                    <ion-item>
+                        <ion-label>From</ion-label>
+                        <ion-input type="date" placeholder="From" formControlName="round_robin_period.from"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>To</ion-label>
+                        <ion-input type="date" placeholder="To" formControlName="round_robin_period.to"></ion-input>
+                    </ion-item>
+                    <ion-label floating>Playoff Period</ion-label>
+                    <ion-item>
+                        <ion-label>From</ion-label>
+                        <ion-input type="date" placeholder="From" formControlName="playoff_period.from"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>To</ion-label>
+                        <ion-input type="date" placeholder="To" formControlName="playoff_period.to"></ion-input>
+                    </ion-item>
+                    <!-- <ion-item>
+                            <ion-input type="checkbox" name="categories" value="Mens & Womens">Men & Women<br>
+                            <ion-input type="checkbox" name="categories" value="Mens Singles">Men Singles<br>
+                            <ion-input type="checkbox" name="categories" value="Wormen Singles">Wormen Singles<br>
+                            <ion-input type="checkbox" name="categories" value="Men Doubles">Men Doubles<br>
+                            <ion-input type="checkbox" name="categories" value="Women Doubles">Women Doubles<br>
+                        </ion-item> -->
+                    <ion-item>
+                        <ion-label floating>Enter Scoring Point System</ion-label>
+                        <ion-input type="text" placeholder="Enter Scoring Point System" formControlName="scoring_point"></ion-input>
+                    </ion-item>
+
                     <div *ngIf=addLeague>
-                        <button ion-button>Add</button>
+                        <button ion-button>Create League</button>
                     </div>
                     <div *ngIf=editLeague>
-                        <button ion-button>Edit</button>
+                        <button ion-button>Save Changes</button>
                     </div>
 
                 </form>
