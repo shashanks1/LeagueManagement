@@ -43,7 +43,6 @@ export class MygroupPage {
     this.errorMessage = '';
     this.service.getPlayerData().subscribe((res: any[]) => {
       this.playerData = res;
-      console.log(this.playerData);
     },
       error => {
         this.errorMessage = JSON.stringify(error['error']['res']);

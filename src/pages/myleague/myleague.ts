@@ -63,7 +63,6 @@ export class MyleaguePage {
   getGroups() {
     this.service.getGroups().subscribe((res: any[]) => {
       this.groupsData = res;
-      console.log(this.groupsData);
     },
       error => {
         this.errorMessage = JSON.stringify(error['error']['res']);
