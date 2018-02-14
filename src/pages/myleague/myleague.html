@@ -77,7 +77,7 @@
 
     <!-- /table -->
     <div class="tableContent" *ngIf="!addLeague && !editLeague">
-           
+
         <div class="container">
             <ion-row>
                 <ion-col col-12 text-right>
@@ -133,7 +133,7 @@
 
                     </ion-col>
 
-                    <ion-col col-2 >
+                    <ion-col col-2>
                         <span *ngFor="let category of lgdata.categories">
                         {{category}}
                         </span>
@@ -148,7 +148,7 @@
                     <ion-col col-2 class="actionLink">
                         <a href="#" (click)="editLeagueFunc(lgdata)"><i class="zmdi zmdi-edit" ></i></a>
                         <a href="#" (click)="deleteLeague(lgdata.id)"><i class="zmdi zmdi-delete"></i></a>
-                     
+
                     </ion-col>
                 </ion-row>
 
@@ -158,37 +158,37 @@
 
             </div>
         </div>
-   
+
     </div>
 
-<ion-row>
-    <ion-col col-6 offset-3>
-            <div class="tableContent" *ngIf="addLeague || editLeague" >
-                    <form [formGroup]="modificationForm" (ngSubmit)='submitNewLeague(modificationForm.value)'>
-                        <ion-item>
-                            <ion-input type="text" placeholder="League name" formControlName="name"></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-input type="text" placeholder="Player name" formControlName="players"></ion-input>
-                        </ion-item>
-                        <ion-item>
-                            <ion-input type="text" placeholder="Location" formControlName="location"></ion-input>
-                        </ion-item>
-                        <ion-item>
+    <ion-row>
+        <ion-col col-6 offset-3>
+            <div class="tableContent" *ngIf="addLeague || editLeague">
+                <form [formGroup]="modificationForm" (ngSubmit)='submitNewLeague(modificationForm.value)'>
+                    <ion-item>
+                        <ion-input type="text" placeholder="League name" formControlName="name"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input type="text" placeholder="Player name" formControlName="players"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input type="text" placeholder="Location" formControlName="location"></ion-input>
+                    </ion-item>
+                    <ion-item>
                         <ion-input type="text" placeholder="Created" formControlName="created"></ion-input>
-                        </ion-item>
-                        <div *ngIf=addLeague>
-                        <button ion-button >Add</button>
-                        </div>
-                        <div *ngIf=editLeague>
-                                <button ion-button >Edit</button>
-                                </div>
-                       
-                    </form>
-                </div>
-    </ion-col>
-</ion-row>
-    
+                    </ion-item>
+                    <div *ngIf=addLeague>
+                        <button ion-button>Add</button>
+                    </div>
+                    <div *ngIf=editLeague>
+                        <button ion-button>Edit</button>
+                    </div>
+
+                </form>
+            </div>
+        </ion-col>
+    </ion-row>
+
 
 
 
@@ -199,8 +199,7 @@
                 <ion-row>
                     <ion-col col-lg-3 col-md-6 col-12>
                         <img src="assets/imgs/footer-logo.png" />
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                            nulla pariatur.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore nulla pariatur.</p>
                         <a href="#"><img src="assets/imgs/social-icon.png" alt="" class="socialIcon"></a>
                     </ion-col>
 
