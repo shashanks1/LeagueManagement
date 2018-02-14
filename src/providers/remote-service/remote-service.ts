@@ -69,6 +69,10 @@ export class RemoteServiceProvider {
     return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league');
   }
 
+  getGroups() {
+    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/group');
+  }
+
   deleteLeague(id){
     return this.http.delete('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/'+id);
   }

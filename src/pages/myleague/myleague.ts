@@ -13,7 +13,9 @@ export class MyleaguePage {
   modificationForm: FormGroup;
   addLeague: boolean;
   editLeague: boolean;
+  showGroup: boolean;
   leagueData: Array<any>;
+  groupsData: Array<any>;
   editValue: any;
   testarray: Array<any> = [];
   successMessage: string;
@@ -23,10 +25,12 @@ export class MyleaguePage {
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     this.addLeague = false;
     this.editLeague = false;
+    this.showGroup = false;
     this.editValue = '';
     this.successMessage = '';
     this.errorMessage = '';
     this.leagueData = [];
+    this.groupsData = [];
 
     this.modificationForm = fb.group({
       'league_name': [null, Validators.required],
@@ -38,10 +42,12 @@ export class MyleaguePage {
       'playoff_period_from': [null],
       'playoff_period_to': [null],
       'categories': [null],
+      'groups': [null],
       'scoring_point': [null]
     });
 
     this.getLeagueData();
+    this.getGroups();
   }
 
   getLeagueData() {
@@ -56,11 +62,28 @@ export class MyleaguePage {
       });
   }
 
+  getGroups() {
+    this.service.getGroups().subscribe((res: any[]) => {
+      this.groupsData = res;
+      console.log(this.groupsData);
+    },
+      error => {
+        this.errorMessage = JSON.stringify(error['error']['res']);
+        this.errorMessage = JSON.parse(this.errorMessage);
+      });
+  }
+
   addNewLeague() {
     this.successMessage = '';
     this.errorMessage = '';
     this.addLeague = true;
     this.editLeague = false;
+  }
+
+  addGroup() {
+    this.successMessage = '';
+    this.errorMessage = '';
+    this.showGroup = true;
   }
 
   backToListing() {
@@ -87,6 +110,7 @@ export class MyleaguePage {
       'playoff_period_from': editValue.playoff_period_from,
       'playoff_period_to': editValue.playoff_period_to,
       'categories': editValue.categories,
+      'groups':  editValue.groups,
       'scoring_point': editValue.scoring_point
     })
   }
