@@ -13,7 +13,6 @@ export class MyleaguePage {
   modificationForm: FormGroup;
   addLeague: boolean;
   editLeague: boolean;
-  showGroup: boolean;
   leagueData: Array<any>;
   groupsData: Array<any>;
   editValue: any;
@@ -25,7 +24,6 @@ export class MyleaguePage {
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     this.addLeague = false;
     this.editLeague = false;
-    this.showGroup = false;
     this.editValue = '';
     this.successMessage = '';
     this.errorMessage = '';
@@ -78,12 +76,6 @@ export class MyleaguePage {
     this.errorMessage = '';
     this.addLeague = true;
     this.editLeague = false;
-  }
-
-  addGroup() {
-    this.successMessage = '';
-    this.errorMessage = '';
-    this.showGroup = true;
   }
 
   backToListing() {

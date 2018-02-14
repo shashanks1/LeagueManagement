@@ -23,7 +23,7 @@ export class EditPage {
 
         this.profileForm = fb.group({
             'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
-            'full_name': [null, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z \-\']+')])]],
+            'full_name': [null, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z \-\']+')])],
             'username': [null],
             'office_phone': [null],
             'home_phone': [null],
