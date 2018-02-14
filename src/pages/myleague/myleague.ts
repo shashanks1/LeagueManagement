@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormArray } from '@angular/forms';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 /**
@@ -21,6 +21,7 @@ export class MyleaguePage {
   editLeague: boolean;
   leagueData: any;
   editValue : any;
+  testarray : Array<any> =[];
 
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
@@ -28,13 +29,29 @@ export class MyleaguePage {
     this.addLeague = false;
     this.editLeague = false;
     this.editValue = '';
+    
 
 
     this.modificationForm = fb.group({
-      'name': [''],
+      'league_name': [''],
+      'description' : [''],
       'players': [''],
-      'location': [''],
-      'created': [''],
+      'league_location': [''],
+      
+      /*'round_robin_period' : {
+        'from' : [''],
+        'to' : ['']
+      },
+      'playoff_period' : {
+        'from' : [''],
+        'to' : ['']
+      },*/
+      'round_robin_period.from' : [''],
+      'round_robin_period.to' : [''],
+      'playoff_period.from' : [''],
+      'playoff_period.to' : [''],
+      'scoring_point' : ['']
+
     });
   }
 
@@ -53,22 +70,33 @@ export class MyleaguePage {
   editLeagueFunc(editValue) {
     this.editLeague = true;
     this.addLeague = false;
+    this.editValue = editValue;
 
     this.modificationForm.setValue({
-      'name' : editValue.name,
+      'league_name' : editValue.league_name,
       'players' : editValue.players ,
-      'location' : editValue.location,
-      'created' : editValue.created
-    })
+      'league_location' : editValue.league_location,
+      'description' : editValue.description,
+      'round_robin_period.from' : editValue.round_robin_period,
+      'round_robin_period.to' : editValue.round_robin_period,
+      'playoff_period.from' : editValue.playoff_period,
+      'playoff_period.to' : editValue.playoff_period,
+      'scoring_point' : editValue.scoring_point
+     })
   }
 
   submitNewLeague(postData) {
     if (this.addLeague) {
+      console.log(postData);
+      this.testarray.push(postData.players);
+      console.log(this.testarray);
+      postData.players = this.testarray;
+      console.log(postData);
       this.service.addNewLeague(postData).subscribe((res: any[]) => {
       })
     }
     else {
-      this.service.updateLeague(postData.id, postData).subscribe((res: any[]) => {
+      this.service.updateLeague(this.editValue.id, postData).subscribe((res: any[]) => {
         
       })
 
