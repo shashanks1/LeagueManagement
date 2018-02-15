@@ -131,50 +131,54 @@
                         Action
                     </ion-col>
                 </ion-row>
+                <div *ngIf="!noLeagueData">
+                    <ion-row class="tableDivRow" *ngFor="let lgdata of leagueData">
 
-                <ion-row class="tableDivRow" *ngFor="let lgdata of leagueData">
+                        <ion-col col-2>
 
-                    <ion-col col-2>
+                            {{lgdata.league_name}}
 
-                        {{lgdata.league_name}}
+                        </ion-col>
 
-                    </ion-col>
+                        <ion-col col-2>
+                            <span *ngFor="let player of lgdata.players">
+                                {{player}}
+                            </span>
 
-                    <ion-col col-2>
-                        <span *ngFor="let player of lgdata.players">
-                            {{player}}
-                        </span>
+                        </ion-col>
 
-                    </ion-col>
+                        <ion-col col-2>
 
-                    <ion-col col-2>
+                            {{lgdata.league_location}}
 
-                        {{lgdata.league_location}}
+                        </ion-col>
 
-                    </ion-col>
+                        <ion-col col-2>
+                            <span *ngFor="let category of lgdata.categories">
+                                {{category}}
+                            </span>
+                        </ion-col>
 
-                    <ion-col col-2>
-                        <span *ngFor="let category of lgdata.categories">
-                            {{category}}
-                        </span>
-                    </ion-col>
+                        <ion-col col-2>
 
-                    <ion-col col-2>
+                            {{lgdata.created}}
 
-                        {{lgdata.created}}
+                        </ion-col>
 
-                    </ion-col>
+                        <ion-col col-2 class="actionLink">
+                            <a href="#" (click)="editLeagueFunc(lgdata)">
+                                <i class="zmdi zmdi-edit"></i>
+                            </a>
+                            <a href="#" (click)="deleteLeague(lgdata.id)">
+                                <i class="zmdi zmdi-delete"></i>
+                            </a>
 
-                    <ion-col col-2 class="actionLink">
-                        <a href="#" (click)="editLeagueFunc(lgdata)">
-                            <i class="zmdi zmdi-edit"></i>
-                        </a>
-                        <a href="#" (click)="deleteLeague(lgdata.id)">
-                            <i class="zmdi zmdi-delete"></i>
-                        </a>
-
-                    </ion-col>
-                </ion-row>
+                        </ion-col>
+                    </ion-row>
+                </div>
+                <div *ngIf="noLeagueData">
+                    <p class="errorMessage">No data to display, please add a league.</p>
+                </div>
             </div>
             <!-- <div *ngIf="leagueData.length == 0">
                 <p class="errorMessage">No League Added Till Now. Please Add New League.</p>

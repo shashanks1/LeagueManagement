@@ -13,6 +13,7 @@ export class MygroupPage {
   modificationForm: FormGroup;
   addGroup: boolean;
   editGroup: boolean;
+  noGroupData: boolean;
   groupData: Array<any>;
   playerData: Array<any>;
   editValue: any;
@@ -24,6 +25,7 @@ export class MygroupPage {
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     this.addGroup = false;
     this.editGroup = false;
+    this.noGroupData = false;
     this.editValue = '';
     this.successMessage = '';
     this.errorMessage = '';
@@ -49,10 +51,13 @@ export class MygroupPage {
   }
 
   getGroupData() {
-    this.successMessage = '';
-    this.errorMessage = '';
+    this.noGroupData = false;
     this.service.getGroupData().subscribe((res: any[]) => {
       this.groupData = res;
+      if (this.groupData.length == 0)
+        this.noGroupData = true;
+      else
+        this.noGroupData = false;
     },
       error => {
         this.errorMessage = JSON.stringify(error['error']['res']);

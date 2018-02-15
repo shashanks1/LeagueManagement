@@ -13,6 +13,7 @@ export class MyleaguePage {
   modificationForm: FormGroup;
   addLeague: boolean;
   editLeague: boolean;
+  noLeagueData: boolean;
   leagueData: Array<any>;
   groupsData: Array<any>;
   editValue: any;
@@ -24,6 +25,7 @@ export class MyleaguePage {
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     this.addLeague = false;
     this.editLeague = false;
+    this.noLeagueData = false;
     this.editValue = '';
     this.successMessage = '';
     this.errorMessage = '';
@@ -48,8 +50,13 @@ export class MyleaguePage {
   }
 
   getLeagueData() {
+    this.noLeagueData = false;
     this.service.getLeagueData().subscribe((res: any[]) => {
       this.leagueData = res;
+      if (this.leagueData.length == 0)
+        this.noLeagueData = true;
+      else
+        this.noLeagueData = false;
     },
       error => {
         this.errorMessage = JSON.stringify(error['error']['res']);
