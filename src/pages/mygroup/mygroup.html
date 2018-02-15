@@ -120,30 +120,35 @@
                     </ion-col>
                 </ion-row>
 
-                <ion-row class="tableDivRow" *ngFor="let group of groupData">
+                <div *ngIf="!noGroupData">
+                    <ion-row class="tableDivRow" *ngFor="let group of groupData">
 
-                    <ion-col col-4>
+                        <ion-col col-4>
 
-                        {{group.group_name}}
+                            {{group.group_name}}
 
-                    </ion-col>
+                        </ion-col>
 
-                    <ion-col col-4>
-                        <span *ngFor="let player of group.players">
-                            {{player.full_name}}
-                        </span>
-                    </ion-col>
+                        <ion-col col-4>
+                            <span *ngFor="let player of group.players">
+                                {{player.full_name}}
+                            </span>
+                        </ion-col>
 
-                    <ion-col col-4 text-center class="actionLink">
-                        <a href="#" (click)="editGroup(group)">
-                            <i class="zmdi zmdi-edit"></i>
-                        </a>
-                        <a href="#" (click)="deleteGroup(group.id)">
-                            <i class="zmdi zmdi-delete"></i>
-                        </a>
+                        <ion-col col-4 text-center class="actionLink">
+                            <a href="#" (click)="editGroup(group)">
+                                <i class="zmdi zmdi-edit"></i>
+                            </a>
+                            <a href="#" (click)="deleteGroup(group.id)">
+                                <i class="zmdi zmdi-delete"></i>
+                            </a>
 
-                    </ion-col>
-                </ion-row>
+                        </ion-col>
+                    </ion-row>
+                </div>
+                <div *ngIf="noGroupData">
+                    <p class="errorMessage">No data to display, please add a group.</p>
+                </div>
             </div>
         </div>
 
@@ -163,7 +168,7 @@
                     <ion-item style="margin-top:20px;">
                         <ion-label>Players*</ion-label>
                         <ion-select formControlName="players" multiple="true">
-                                <ion-option *ngFor="let player of playerData" value="{{player.id}}">{{player.full_name}}</ion-option>
+                            <ion-option *ngFor="let player of playerData" value="{{player.id}}">{{player.full_name}}</ion-option>
                         </ion-select>
                     </ion-item>
                     <p class="errorMessage" *ngIf="modificationForm.controls.players.errors && modificationForm.controls.players.dirty">Atleast one player is required.</p>
