@@ -26,7 +26,7 @@ export class HomePage {
     this.userIsLogged = false;
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
       this.userIsLogged = true;
-      this.userEmail = JSON.parse(sessionStorage.getItem("loggedUserEmail"));
+      this.userEmail = JSON.parse(sessionStorage.getItem("loggedUserName"));
     }
   }
 
@@ -49,7 +49,7 @@ export class HomePage {
   logout() {
     sessionStorage.setItem("loginDone", null);
     sessionStorage.setItem("loggedUserId", null);
-    sessionStorage.setItem("loggedUserEmail", null);
+    sessionStorage.setItem("loggedUserName", null);
     this.navCtrl.push(HomePage);
   }
 }

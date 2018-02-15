@@ -50,7 +50,7 @@ export class RegistrationPage {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.signInWithGoogle().then((res) => {
-      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+      sessionStorage.setItem("loggedUserName", JSON.stringify(res['additionalUserInfo']['profile']['name']));
       sessionStorage.setItem("loginDone", 'userIsLogged');
       this.navCtrl.push(HomePage);
     })
@@ -61,7 +61,7 @@ export class RegistrationPage {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.signInWithFacebook().then((res) => {
-      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+      sessionStorage.setItem("loggedUserName", JSON.stringify(res['additionalUserInfo']['profile']['name']));
       sessionStorage.setItem("loginDone", 'userIsLogged');
       this.navCtrl.push(HomePage);
     })

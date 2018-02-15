@@ -161,7 +161,7 @@
                     <p class="errorMessage" *ngIf="modificationForm.controls.group_name.errors && modificationForm.controls.group_name.dirty">Group Name is required.</p>
 
                     <ion-item style="margin-top:20px;">
-                        <ion-label>Players</ion-label>
+                        <ion-label>Players*</ion-label>
                         <ion-select formControlName="players" multiple="true">
                                 <ion-option *ngFor="let player of playerData" value="{{player.id}}">{{player.full_name}}</ion-option>
                         </ion-select>

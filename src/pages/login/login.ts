@@ -54,7 +54,8 @@ export class LoginPage {
     this.service.submitLogin(value).subscribe((res: any[]) => {
       sessionStorage.setItem("loginDone", 'userIsLogged');
       sessionStorage.setItem("loggedUserId", JSON.stringify(res['res']['id']));
-      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['res']['email']));
+      sessionStorage.setItem("loggedUserName", JSON.stringify(res['res']['full_name']));
+
       this.navCtrl.push(HomePage);
     },
       error => {
@@ -138,7 +139,7 @@ export class LoginPage {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.signInWithGoogle().then((res) => {
-      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+      sessionStorage.setItem("loggedUserName", JSON.stringify(res['additionalUserInfo']['profile']['name']));
       sessionStorage.setItem("loginDone", 'userIsLogged');
       this.navCtrl.push(HomePage);
     })
@@ -149,7 +150,7 @@ export class LoginPage {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.signInWithFacebook().then((res) => {
-      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+      sessionStorage.setItem("loggedUserName", JSON.stringify(res['additionalUserInfo']['profile']['name']));
       sessionStorage.setItem("loginDone", 'userIsLogged');
       this.navCtrl.push(HomePage);
     })
