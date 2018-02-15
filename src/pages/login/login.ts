@@ -28,15 +28,15 @@ export class LoginPage {
     this.changePassword = false;
     sessionStorage.setItem("loginDone", null);
     this.loginForm = fb.group({
-      'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
+      'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')])],
       'password': [null, Validators.required]
     });
     this.forgotForm = fb.group({
-      'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])]
+      'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')])]
     });
 
     this.changePasswordForm = fb.group({
-      'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
+      'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')])],
       'old_password': [null, Validators.required],
       'new_password': [null, Validators.required]
     });
