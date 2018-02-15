@@ -38,7 +38,7 @@ export class MyleaguePage {
       'round_robin_period_to': [null],
       'playoff_period_from': [null],
       'playoff_period_to': [null],
-      'categories': [null],
+      'categories': [null, Validators.required],
       'groups': [null],
       'scoring_point': [null]
     });
