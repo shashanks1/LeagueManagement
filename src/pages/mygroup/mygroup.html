@@ -129,7 +129,7 @@
 
                         </ion-col>
 
-                        <ion-col col-4>
+                        <ion-col col-4 class="nameList">
                             <span *ngFor="let player of group.players">
                                 {{player.full_name}}
                             </span>
@@ -155,7 +155,7 @@
     </div>
 
     <ion-row>
-        <ion-col col-6 offset-3>
+        <ion-col col-12 col-lg-4 offset-lg-4 col-md-8 offset-md-2>
             <div class="" *ngIf="addGroup || editGroupValue">
                 <form [formGroup]="modificationForm" (ngSubmit)='submitNewGroup(modificationForm.value)'>
 
