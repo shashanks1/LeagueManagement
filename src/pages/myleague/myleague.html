@@ -205,9 +205,7 @@
 
 
                     <div class="fromToWrapper">
-
                         <h5>Round Robin Period</h5>
-
                         <div class="formDiv">
                             <ion-item>
                                 <ion-label>From</ion-label>
@@ -243,7 +241,7 @@
                         </div>
                     </div>
                     <ion-item style="margin-top:20px;">
-                        <ion-label>Category</ion-label>
+                        <ion-label>Category*</ion-label>
                         <ion-select formControlName="categories" multiple="true">
                             <ion-option value="Men Singles">Men Singles</ion-option>
                             <ion-option value="Women Singles">Women Singles</ion-option>
@@ -252,6 +250,7 @@
                             <ion-option value="Mixed">Mixed</ion-option>
                         </ion-select>
                     </ion-item>
+                    <p class="errorMessage" *ngIf="modificationForm.controls.categories.errors && modificationForm.controls.categories.dirty">Please select atleast one category.</p>
 
                     <ion-item style="margin-top:20px;">
                         <ion-label>Group</ion-label>
