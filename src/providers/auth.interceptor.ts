@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/observable';
 // import { SessionService } from './services/session.service';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    private token = '';
-    session;
+    //private token = '';
+    //session;
     // constructor (private sessionService: SessionService) { }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // this.session = this.sessionService.getSession();

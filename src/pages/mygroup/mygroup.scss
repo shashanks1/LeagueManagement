@@ -290,13 +290,6 @@ $green:#8bc34a;
             }
         }
     }
-
-    .fromToWrapper {
-        overflow: hidden;
-        h5 {font-size: 1.5rem; color:#999; margin-top:40px; margin-left:15px; font-weight: normal;}
-        .formDiv {float:left; width: 45%}
-        .toDiv {float:right; width:45%;}
-    }
     @media screen and (max-width:991px) {
         .mainNav {
             display: none;

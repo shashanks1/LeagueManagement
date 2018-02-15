@@ -9,12 +9,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
-/*
-  Generated class for the RemoteServiceProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class RemoteServiceProvider {
   private user: Observable<firebase.User>;
@@ -69,6 +64,10 @@ export class RemoteServiceProvider {
     return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league');
   }
 
+  getGroups() {
+    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/group');
+  }
+
   deleteLeague(id){
     return this.http.delete('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/'+id);
   }
@@ -85,7 +84,29 @@ export class RemoteServiceProvider {
     return this.http.put('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/' + id, data);
   }
 
-  getUserData(id) {
+  getUser(id) {
     return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/' + id);
   }
+
+  getGroupData() {
+    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/group');
+  }
+
+  deleteGroup(id) {
+    return this.http.delete('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/group/'+id);
+
+  }
+
+  updateGroup(id,data){
+    return this.http.put('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/group/'+id,data);
+  }
+
+  addNewGroup(data){
+    return this.http.post('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league/group',data)
+  }
+
+  getPlayerData(){
+    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user?q=players');
+  }
+
 }

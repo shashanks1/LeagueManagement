@@ -22,8 +22,8 @@ export class EditPage {
         this.errorMessage = '';
 
         this.profileForm = fb.group({
-            'email': [null, Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
-            'full_name': [null, Validators.required],
+            'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')])],
+            'full_name': [null, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z \-\']+')])],
             'username': [null],
             'office_phone': [null],
             'home_phone': [null],
@@ -48,6 +48,7 @@ export class EditPage {
         this.getUserData();
     }
 
+    //function to update user profile
     saveProfile(value) {
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
         this.service.saveProfile(id, value).subscribe((res: any[]) => {
@@ -60,13 +61,15 @@ export class EditPage {
             });
     }
 
+    //function to cancel editing user profile and go back to home page
     cancel() {
         this.navCtrl.push(HomePage);
     }
 
+    //function to get data from API for edit profile form
     getUserData() {
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
-        this.service.getUserData(id).subscribe((res: any[]) => {
+        this.service.getUser(id).subscribe((res: any[]) => {
             this.profileForm.setValue({
                 'email': res['res']['email'],
                 'full_name': res['res']['full_name'],

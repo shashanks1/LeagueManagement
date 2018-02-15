@@ -24,16 +24,16 @@ export class RegistrationPage {
     this.errorMessage = '';
 
     this.registrationForm = fb.group({
-      'email': ['', Validators.compose([Validators.required, Validators.pattern('[^ @]*@[^ @]*')])],
-      'full_name': ['', Validators.required],
-      'username': ['', Validators.required],
-      'password': ['', Validators.required],
-      'agree': [''],
-      'profile': ['']
+      'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')])],
+      'full_name': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z ]*')])],
+      'username': [null, Validators.required],
+      'password': [null, Validators.required],
+      'agree': [null]
 
     });
   }
 
+  // function to submit registration details to the API
   signUp(postData) {
     this.successMessage = '';
     this.errorMessage = '';
@@ -47,22 +47,24 @@ export class RegistrationPage {
       });
   }
 
+  //function to sign in with google
   signInWithGoogle() {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.signInWithGoogle().then((res) => {
-      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+      sessionStorage.setItem("loggedUserName", JSON.stringify(res['additionalUserInfo']['profile']['name']));
       sessionStorage.setItem("loginDone", 'userIsLogged');
       this.navCtrl.push(HomePage);
     })
       .catch((err) => console.log(err));
   }
 
+  //function to sign in with facebook
   signInWithFacebook() {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.signInWithFacebook().then((res) => {
-      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+      sessionStorage.setItem("loggedUserName", JSON.stringify(res['additionalUserInfo']['profile']['name']));
       sessionStorage.setItem("loginDone", 'userIsLogged');
       this.navCtrl.push(HomePage);
     })
