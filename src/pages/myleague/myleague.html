@@ -140,7 +140,7 @@
 
                         </ion-col>
 
-                        <ion-col col-2>
+                        <ion-col col-2 class="nameList">
                             <span *ngFor="let player of lgdata.players">
                                 {{player}}
                             </span>
@@ -148,21 +148,17 @@
                         </ion-col>
 
                         <ion-col col-2>
-
                             {{lgdata.league_location}}
-
                         </ion-col>
 
-                        <ion-col col-2>
+                        <ion-col col-2 class="nameList">
                             <span *ngFor="let category of lgdata.categories">
                                 {{category}}
                             </span>
                         </ion-col>
 
                         <ion-col col-2>
-
                             {{lgdata.created}}
-
                         </ion-col>
 
                         <ion-col col-2 class="actionLink">
@@ -172,7 +168,6 @@
                             <a href="#" (click)="deleteLeague(lgdata.id)">
                                 <i class="zmdi zmdi-delete"></i>
                             </a>
-
                         </ion-col>
                     </ion-row>
 
@@ -187,7 +182,7 @@
     </div>
 
     <ion-row>
-        <ion-col col-6 offset-3>
+        <ion-col col-12 col-lg-6 offset-lg-3 col-md-10 offset-md-1>
             <div class="" *ngIf="addLeague || editLeagueValue">
                 <form [formGroup]="modificationForm" (ngSubmit)='submitNewLeague(modificationForm.value)'>
 

@@ -4,9 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import { File } from '@ionic-native/file';
-import { Camera } from '@ionic-native/camera';
+
 
 import { AuthInterceptor } from '../providers/auth.interceptor';
 import { MyApp } from './app.component';
@@ -71,10 +69,7 @@ export const environment = {
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     RemoteServiceProvider,
-    FileTransfer,
-    FileTransferObject,
-    File,
-    Camera,
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
