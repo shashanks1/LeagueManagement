@@ -165,26 +165,23 @@
 
                         </ion-col>
 
-                       
-
-                    <ion-col col-2 class="actionLink">
-                        <a href="#" (click)="editLeague(lgdata)">
+                        <ion-col col-2 class="actionLink">
+                            <a href="#" (click)="editLeague(lgdata)">
                             <i class="zmdi zmdi-edit"></i>
                         </a>
-                        <a href="#" (click)="deleteLeague(lgdata.id)">
+                            <a href="#" (click)="deleteLeague(lgdata.id)">
                             <i class="zmdi zmdi-delete"></i>
                         </a>
 
-                    </ion-col>
-                </ion-row>
                         </ion-col>
                     </ion-row>
+
                 </div>
                 <div *ngIf="noLeagueData">
                     <p class="errorMessage">No data to display, please add a league.</p>
                 </div>
             </div>
-        
+
         </div>
 
     </div>
@@ -407,6 +404,3 @@
 
 
 </ion-content>
-
-
-
