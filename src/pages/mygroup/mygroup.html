@@ -75,13 +75,13 @@
         <div class="container">
             <ion-row text-center>
                 <ion-col class="col-12 col-sm-8">
-                    <div class="" *ngIf="!addGroup && !editGroup">
+                    <div class="" *ngIf="!addGroup && !editGroupValue">
                         <h1>Group List</h1>
                     </div>
                     <div class="" *ngIf="addLeague">
                         <h1>Add New Group </h1>
                     </div>
-                    <div class="" *ngIf="editLeague">
+                    <div class="" *ngIf="editLeagueValue">
                         <h1>Edit Group </h1>
                     </div>
                 </ion-col>
@@ -90,7 +90,7 @@
         </div>
     </div>
 
-    <div class="tableContent" *ngIf="!addGroup && !editGroup ">
+    <div class="tableContent" *ngIf="!addGroup && !editGroupValue ">
         <div *ngIf="successMessage">
             <p class="successMessage">{{successMessage}}</p>
         </div>
@@ -119,6 +119,7 @@
                         Action
                     </ion-col>
                 </ion-row>
+
                 <div *ngIf="!noGroupData">
                     <ion-row class="tableDivRow" *ngFor="let group of groupData">
 
@@ -128,14 +129,14 @@
 
                         </ion-col>
 
-                        <ion-col col-4>
+                        <ion-col col-4 class="nameList">
                             <span *ngFor="let player of group.players">
                                 {{player.full_name}}
                             </span>
                         </ion-col>
 
                         <ion-col col-4 text-center class="actionLink">
-                            <a href="#" (click)="editGroupFunc(group)">
+                            <a href="#" (click)="editGroup(group)">
                                 <i class="zmdi zmdi-edit"></i>
                             </a>
                             <a href="#" (click)="deleteGroup(group.id)">
@@ -154,8 +155,8 @@
     </div>
 
     <ion-row>
-        <ion-col col-6 offset-3>
-            <div class="" *ngIf="addGroup || editGroup">
+        <ion-col col-12 col-lg-4 offset-lg-4 col-md-8 offset-md-2>
+            <div class="" *ngIf="addGroup || editGroupValue">
                 <form [formGroup]="modificationForm" (ngSubmit)='submitNewGroup(modificationForm.value)'>
 
                     <ion-item>
@@ -176,7 +177,7 @@
                         <button ion-button (click)="backToGroup()">Back To Group</button>
                         <button ion-button [disabled]="!modificationForm.valid">Create Group</button>
                     </div>
-                    <div *ngIf=editGroup>
+                    <div *ngIf=editGroupValue>
                         <button ion-button (click)="backToGroup()">Back To Group</button>
                         <button ion-button [disabled]="!modificationForm.valid">Save Changes</button>
                     </div>

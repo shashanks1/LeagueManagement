@@ -6,6 +6,10 @@ import { RemoteServiceProvider } from '../../providers/remote-service/remote-ser
 
 import { HomePage } from '../home/home';
 
+import { LoadingController, ToastController } from 'ionic-angular';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { FileOpener } from '@ionic-native/file-opener';
 
 @Component({
     selector: 'edit-profile',
@@ -16,7 +20,14 @@ export class EditPage {
     successMessage: string;
     errorMessage: string;
 
-    constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
+    imageURI:any;
+    imageFileName:any;
+
+    constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider,private transfer: FileTransfer,
+        private camera: Camera,
+         public loadingCtrl: LoadingController,
+         public toastCtrl: ToastController
+        ) {
 
         this.successMessage = '';
         this.errorMessage = '';
@@ -48,6 +59,7 @@ export class EditPage {
         this.getUserData();
     }
 
+    //function to update user profile
     saveProfile(value) {
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
         this.service.saveProfile(id, value).subscribe((res: any[]) => {
@@ -60,10 +72,12 @@ export class EditPage {
             });
     }
 
+    //function to cancel editing user profile and go back to home page
     cancel() {
         this.navCtrl.push(HomePage);
     }
 
+    //function to get data from API for edit profile form
     getUserData() {
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
         this.service.getUser(id).subscribe((res: any[]) => {
@@ -97,5 +111,81 @@ export class EditPage {
                 this.errorMessage = JSON.parse(this.errorMessage);
             });
     }
+
+
+    // getImage() {
+    //     const options: CameraOptions = {
+            
+    //       quality: 100,
+    //       destinationType: this.camera.DestinationType.FILE_URI,
+    //       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+    //     }
+      
+    //     this.camera.getPicture(options).then((imageData) => {
+    //       this.imageURI = imageData;
+    //     }, (err) => {
+    //       console.log(err);
+    //       this.presentToast(err);
+    //     });
+    //   }
+
+
+    //   uploadFile() {
+   
+    //     let loader = this.loadingCtrl.create({
+    //       content: "Uploading..."
+    //     });
+    //     loader.present();
+    //     const fileTransfer: FileTransferObject = this.transfer.create();
+      
+    //     let options: FileUploadOptions = {
+    //       fileKey: 'ionicfile',
+    //       fileName: 'ionicfile',
+    //       chunkedMode: false,
+    //       mimeType: "image/jpeg",
+    //       headers: {}
+    //     }
+      
+    //     this.fileOpener.open('path/to/file.pdf', 'application/pdf')
+    //     .then(() => console.log('File is opened'))
+    //     .catch(e => console.log('Error openening file', e));
+
+    //     fileTransfer.upload(this.imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
+    //       .then((data) => {
+    //       console.log(data+" Uploaded Successfully");
+    //       this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
+    //       loader.dismiss();
+    //       this.presentToast("Image uploaded successfully");
+    //     }, (err) => {
+    //       console.log(err);
+    //       loader.dismiss();
+    //       this.presentToast(err);
+    //     });
+    //   }
+
+    //   presentToast(msg) {
+    //     let toast = this.toastCtrl.create({
+    //       message: msg,
+    //       duration: 3000,
+    //       position: 'bottom'
+    //     });
+      
+    //     toast.onDidDismiss(() => {
+    //       console.log('Dismissed toast');
+    //     });
+      
+    //     toast.present();
+    //   }
+
+    // //   callMyAction() {
+    // //     // options = {sourceType: 0}
+    // //    Camera.getPicture(options).then((imageData) => {
+    // //      // imageData is either a base64 encoded string or a file URI
+    // //      // If it's base64:
+    // //      let base64Image = 'data:image/jpeg;base64,' + imageData;
+    // //    }, (err) => {
+    // //      // Handle error
+    // //    });
+    // //  }
 }
 

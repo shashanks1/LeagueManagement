@@ -33,6 +33,7 @@ export class RegistrationPage {
     });
   }
 
+  // function to submit registration details to the API
   signUp(postData) {
     this.successMessage = '';
     this.errorMessage = '';
@@ -46,6 +47,7 @@ export class RegistrationPage {
       });
   }
 
+  //function to sign in with google
   signInWithGoogle() {
     this.successMessage = '';
     this.errorMessage = '';
@@ -57,6 +59,7 @@ export class RegistrationPage {
       .catch((err) => console.log(err));
   }
 
+  //function to sign in with facebook
   signInWithFacebook() {
     this.successMessage = '';
     this.errorMessage = '';
