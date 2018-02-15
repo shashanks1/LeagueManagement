@@ -12,7 +12,7 @@ import { RemoteServiceProvider } from '../../providers/remote-service/remote-ser
 export class MygroupPage {
   modificationForm: FormGroup;
   addGroup: boolean;
-  editGroup: boolean;
+  editGroupValue: boolean;
   groupData: Array<any>;
   playerData: Array<any>;
   editValue: any;
@@ -23,7 +23,7 @@ export class MygroupPage {
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     this.addGroup = false;
-    this.editGroup = false;
+    this.editGroupValue = false;
     this.editValue = '';
     this.successMessage = '';
     this.errorMessage = '';
@@ -38,6 +38,7 @@ export class MygroupPage {
     this.getPlayerData();
   }
 
+  //function to get player data from API
   getPlayerData() {
     this.service.getPlayerData().subscribe((res: any[]) => {
       this.playerData = res;
@@ -48,6 +49,7 @@ export class MygroupPage {
       });
   }
 
+  //function to get group data from API for mygroup page
   getGroupData() {
     this.successMessage = '';
     this.errorMessage = '';
@@ -60,26 +62,29 @@ export class MygroupPage {
       });
   }
 
+  //function to open Add new group form
   addNewGroup() {
     this.modificationForm.reset();
     this.successMessage = '';
     this.errorMessage = '';
     this.addGroup = true;
-    this.editGroup = false;
+    this.editGroupValue = false;
   }
 
+  //function to cancel adding or editing group form
   backToGroup() {
     this.modificationForm.reset();
     this.successMessage = '';
     this.errorMessage = '';
     this.addGroup = false;
-    this.editGroup = false;
+    this.editGroupValue = false;
   }
 
-  editGroupFunc(editValue) {
+  //function to open edit group form
+  editGroup(editValue) {
     this.successMessage = '';
     this.errorMessage = '';
-    this.editGroup = true;
+    this.editGroupValue = true;
     this.addGroup = false;
     this.editValue = editValue;
     let selectedGroup = []
@@ -95,6 +100,7 @@ export class MygroupPage {
     })
   }
 
+  //function to submit added and edited group to the API
   submitNewGroup(postData) {
     this.successMessage = '';
     this.errorMessage = '';
@@ -105,7 +111,7 @@ export class MygroupPage {
         this.getGroupData();
         this.successMessage = JSON.stringify(res['res']);
         this.successMessage = JSON.parse(this.successMessage);
-        this.editGroup = false;
+        this.editGroupValue = false;
         this.addGroup = false;
 
       },
@@ -120,7 +126,7 @@ export class MygroupPage {
         this.getGroupData();
         this.successMessage = JSON.stringify(res['res']);
         this.successMessage = JSON.parse(this.successMessage);
-        this.editGroup = false;
+        this.editGroupValue = false;
         this.addGroup = false;
 
       },
@@ -131,6 +137,7 @@ export class MygroupPage {
     }
   }
 
+  //function to delete group
   deleteGroup(id) {
     this.successMessage = '';
     this.errorMessage = '';

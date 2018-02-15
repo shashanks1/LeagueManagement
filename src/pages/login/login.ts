@@ -135,6 +135,7 @@ export class LoginPage {
     this.forgotPassword = false;
   }
 
+  //function to sign in with google
   signInWithGoogle() {
     this.successMessage = '';
     this.errorMessage = '';
@@ -146,6 +147,7 @@ export class LoginPage {
       .catch((err) => console.log(err));
   }
 
+  //function to sign in with facebook
   signInWithFacebook() {
     this.successMessage = '';
     this.errorMessage = '';

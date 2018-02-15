@@ -48,6 +48,7 @@ export class EditPage {
         this.getUserData();
     }
 
+    //function to update user profile
     saveProfile(value) {
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
         this.service.saveProfile(id, value).subscribe((res: any[]) => {
@@ -60,10 +61,12 @@ export class EditPage {
             });
     }
 
+    //function to cancel editing user profile and go back to home page
     cancel() {
         this.navCtrl.push(HomePage);
     }
 
+    //function to get data from API for edit profile form
     getUserData() {
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
         this.service.getUser(id).subscribe((res: any[]) => {

@@ -12,7 +12,7 @@ import { RemoteServiceProvider } from '../../providers/remote-service/remote-ser
 export class MyleaguePage {
   modificationForm: FormGroup;
   addLeague: boolean;
-  editLeague: boolean;
+  editLeagueValue: boolean;
   leagueData: Array<any>;
   groupsData: Array<any>;
   editValue: any;
@@ -23,7 +23,7 @@ export class MyleaguePage {
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     this.addLeague = false;
-    this.editLeague = false;
+    this.editLeagueValue = false;
     this.editValue = '';
     this.successMessage = '';
     this.errorMessage = '';
@@ -47,6 +47,7 @@ export class MyleaguePage {
     this.getGroups();
   }
 
+  //function to get league data from API for myleague page
   getLeagueData() {
     this.service.getLeagueData().subscribe((res: any[]) => {
       this.leagueData = res;
@@ -57,6 +58,7 @@ export class MyleaguePage {
       });
   }
 
+  //function to get group data from API
   getGroups() {
     this.service.getGroups().subscribe((res: any[]) => {
       this.groupsData = res;
@@ -67,24 +69,27 @@ export class MyleaguePage {
       });
   }
 
+  //function to open Add new league form
   addNewLeague() {
     this.successMessage = '';
     this.errorMessage = '';
     this.addLeague = true;
-    this.editLeague = false;
+    this.editLeagueValue = false;
   }
 
+  //function to cancel adding or editing league form and go back to myleague page
   backToListing() {
     this.successMessage = '';
     this.errorMessage = '';
     this.addLeague = false;
-    this.editLeague = false;
+    this.editLeagueValue = false;
   }
 
-  editLeagueFunc(editValue) {
+    //function to open Edit league form
+  editLeague(editValue) {
     this.successMessage = '';
     this.errorMessage = '';
-    this.editLeague = true;
+    this.editLeagueValue = true;
     this.addLeague = false;
     this.editValue = editValue;
     let selectedGroup = []
@@ -107,6 +112,7 @@ export class MyleaguePage {
     })
   }
 
+  //function to submit added and edited league to the API
   submitNewLeague(postData) {
     this.testarray = [];
     this.testarray.push(postData.players);
@@ -119,7 +125,7 @@ export class MyleaguePage {
         this.getLeagueData();
         this.successMessage = JSON.stringify(res['res']);
         this.successMessage = JSON.parse(this.successMessage);
-        this.editLeague = false;
+        this.editLeagueValue = false;
         this.addLeague = false;
 
       },
@@ -134,7 +140,7 @@ export class MyleaguePage {
         this.getLeagueData();
         this.successMessage = JSON.stringify(res['res']);
         this.successMessage = JSON.parse(this.successMessage);
-        this.editLeague = false;
+        this.editLeagueValue = false;
         this.addLeague = false;
 
       },
@@ -146,6 +152,7 @@ export class MyleaguePage {
     }
   }
 
+  //function to delete league
   deleteLeague(id) {
     this.successMessage = '';
     this.errorMessage = '';

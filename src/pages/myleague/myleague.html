@@ -75,13 +75,13 @@
         <div class="container">
             <ion-row text-center>
                 <ion-col class="col-12 col-sm-8">
-                    <div class="" *ngIf="!addLeague && !editLeague">
+                    <div class="" *ngIf="!addLeague && !editLeagueValue">
                         <h1>League List</h1>
                     </div>
                     <div class="" *ngIf="addLeague">
                         <h1>Add New League </h1>
                     </div>
-                    <div class="" *ngIf="editLeague">
+                    <div class="" *ngIf="editLeagueValue">
                         <h1>Edit League </h1>
                     </div>
                 </ion-col>
@@ -90,7 +90,7 @@
         </div>
     </div>
 
-    <div class="tableContent" *ngIf="!addLeague && !editLeague">
+    <div class="tableContent" *ngIf="!addLeague && !editLeagueValue">
         <div *ngIf="successMessage">
             <p class="successMessage">{{successMessage}}</p>
         </div>
@@ -166,7 +166,7 @@
                     </ion-col>
 
                     <ion-col col-2 class="actionLink">
-                        <a href="#" (click)="editLeagueFunc(lgdata)">
+                        <a href="#" (click)="editLeague(lgdata)">
                             <i class="zmdi zmdi-edit"></i>
                         </a>
                         <a href="#" (click)="deleteLeague(lgdata.id)">
@@ -185,7 +185,7 @@
 
     <ion-row>
         <ion-col col-6 offset-3>
-            <div class="" *ngIf="addLeague || editLeague">
+            <div class="" *ngIf="addLeague || editLeagueValue">
                 <form [formGroup]="modificationForm" (ngSubmit)='submitNewLeague(modificationForm.value)'>
 
                     <ion-item>
@@ -280,7 +280,7 @@
                     <ion-grid>
                         <ion-row>
                             <ion-col text-center>
-                                <div *ngIf=editLeague>
+                                <div *ngIf=editLeagueValue>
                                     <button ion-button (click)="backToListing()">Back To League</button>
                                     <button ion-button [disabled]="!modificationForm.valid">Save Changes</button>
                                 </div>
@@ -404,12 +404,3 @@
 
 
 
-<!-- <ion-content padding>
-      <h3>Ionic Menu Starter</h3>
-  
-      <p>
-          If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-      </p>
-  
-      <button ion-button secondary menuToggle>Toggle Menu</button>
-  </ion-content> -->
