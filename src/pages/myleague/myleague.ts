@@ -82,12 +82,16 @@ export class MyleaguePage {
   }
 
   editLeagueFunc(editValue) {
-    console.log(editValue)
     this.successMessage = '';
     this.errorMessage = '';
     this.editLeague = true;
     this.addLeague = false;
     this.editValue = editValue;
+    let selectedGroup = []
+    editValue.groups.forEach(function (obj) {
+      selectedGroup.push(obj.id);
+    });
+    editValue.groups = selectedGroup;
 
     this.modificationForm.setValue({
       'league_name': editValue.league_name,

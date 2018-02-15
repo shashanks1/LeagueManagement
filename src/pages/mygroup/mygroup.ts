@@ -77,12 +77,16 @@ export class MygroupPage {
   }
 
   editGroupFunc(editValue) {
-    console.log(editValue)
     this.successMessage = '';
     this.errorMessage = '';
     this.editGroup = true;
     this.addGroup = false;
     this.editValue = editValue;
+    let selectedGroup = []
+    editValue.players.forEach(function (obj) {
+      selectedGroup.push(obj.id);
+    });
+    editValue.players = selectedGroup;
 
     this.modificationForm.setValue({
       'group_name': editValue.group_name,
