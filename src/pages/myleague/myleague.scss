@@ -274,12 +274,18 @@ ion-header {
         border: 1px solid #d7d7d7;
         margin-top: 50px;
         font-size: 18px;
+        overflow-x: auto;
         .tableDivHeader {
             background: $green;
             color: $white;
         }
-        .col {
+        .col,
+        .rowCol {
             padding: 15px 10px;
+        }
+        .rowCol {
+            width: calc(16.66% - 4px);
+            display: inline-block;
         }
         .tableDivRow {
             border-bottom: 1px solid #d7d7d7;
@@ -345,6 +351,12 @@ ion-header {
     .welcomeContent .container .welcomeContentDiv {
         padding: 40px 20px;
         margin-top: 0;
+    }
+    .scroolTable {
+        .tableDivHeader,
+        .tableRow {
+            width: 900px;
+        }
     }
 }
 
