@@ -144,9 +144,7 @@
                             </div>
 
                             <div class="rowCol nameList">
-                                <span *ngFor="let player of lgdata.players">
-                                                        {{player}}
-                                                </span>
+                                <span *ngFor="let player of lgdata.players">{{player}}</span>
                             </div>
 
                             <div class="rowCol">
@@ -155,8 +153,8 @@
 
                             <div class="rowCol nameList">
                                 <span *ngFor="let category of lgdata.categories">
-                                                        {{category}}
-                                                    </span>
+                                    {{category}}
+                                </span>
                             </div>
 
                             <div class="rowCol">
@@ -165,11 +163,11 @@
 
                             <div class="rowCol actionLink">
                                 <a href="#" (click)="editLeague(lgdata)">
-                                        <i class="zmdi zmdi-edit"></i>
-                                    </a>
+                                    <i class="zmdi zmdi-edit"></i>
+                                </a>
                                 <a href="#" (click)="deleteLeague(lgdata.id)">
-                                        <i class="zmdi zmdi-delete"></i>
-                                    </a>
+                                    <i class="zmdi zmdi-delete"></i>
+                                </a>
                             </div>
                         </div>
 

@@ -31,12 +31,14 @@ ion-header {
 
 .successMessage {
     color: green;
-    text-align: center
+    text-align: center;
+    font-size:20px
 }
 
 .errorMessage {
     color: red;
-    text-align: center
+    text-align: center;
+    font-size:20px
 }
 
 .mainNav {
@@ -377,11 +379,11 @@ ion-header {
 }
 
 .nameList span {
-    display: inline-block;
+    display: inline;
 }
 
 .nameList span:after {
-    content: ','
+    content: ', '
 }
 
 .nameList span:last-child:after {
