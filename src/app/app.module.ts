@@ -25,6 +25,7 @@ import { EditPage } from '../pages/editprofile/editprofile';
 import { MyleaguePage } from '../pages/myleague/myleague';
 import { MygroupPage } from '../pages/mygroup/mygroup';
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
+import { CameraMock } from '../providers/remote-service/Camera-Service';
 
 export const environment = {
   production: false,
@@ -72,6 +73,8 @@ export const environment = {
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: Camera, useClass: CameraMock },
+    CameraMock,
     RemoteServiceProvider,
     FileTransfer,
     FileTransferObject,

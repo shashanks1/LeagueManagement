@@ -7,6 +7,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
+import { CameraMock } from '../../providers/remote-service/Camera-Service';
 import { HomePage } from '../home/home';
 
 @Component({
@@ -20,7 +21,7 @@ export class EditPage {
 
 
 
-    constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
+    constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider,public cameraService : CameraMock) {
 
         this.successMessage = '';
         this.errorMessage = '';
@@ -47,6 +48,7 @@ export class EditPage {
             'user_others': [null],
             'strength': [null],
             'weakness': [null],
+            'image' : [null]
         });
         this.getUserData();
     }
@@ -187,5 +189,11 @@ export class EditPage {
 
     // //     });
     // // }
+
+    getImage(){
+        this.cameraService.getPicture().then((res: any[]) => {
+       console.log(res);
+        })
+    }
 }
 
