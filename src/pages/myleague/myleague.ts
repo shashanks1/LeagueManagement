@@ -134,12 +134,12 @@ export class MyleaguePage {
     this.errorMessage = '';
     if (this.addLeague) {
       this.service.addNewLeague(postData).subscribe((res: any[]) => {
-        this.getLeagueData();
+        this.modificationForm.reset();
         this.successMessage = JSON.stringify(res['res']);
         this.successMessage = JSON.parse(this.successMessage);
         this.editLeagueValue = false;
         this.addLeague = false;
-
+        this.getLeagueData();
       },
         error => {
           this.errorMessage = JSON.stringify(error['error']['res']);
@@ -149,11 +149,12 @@ export class MyleaguePage {
     else {
 
       this.service.updateLeague(this.editValue.id, postData).subscribe((res: any[]) => {
-        this.getLeagueData();
+        this.modificationForm.reset();
         this.successMessage = JSON.stringify(res['res']);
         this.successMessage = JSON.parse(this.successMessage);
         this.editLeagueValue = false;
         this.addLeague = false;
+        this.getLeagueData();
 
       },
         error => {
@@ -170,6 +171,7 @@ export class MyleaguePage {
     this.service.deleteLeague(id).subscribe((res: any[]) => {
       this.successMessage = JSON.stringify(res['res']);
       this.successMessage = JSON.parse(this.successMessage);
+      this.modificationForm.reset();
       this.getLeagueData()
     },
       error => {
