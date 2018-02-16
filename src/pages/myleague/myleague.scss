@@ -379,11 +379,11 @@ ion-header {
 }
 
 .nameList span {
-    display: inline-block;
+    display: inline;
 }
 
 .nameList span:after {
-    content: ','
+    content: ', '
 }
 
 .nameList span:last-child:after {
