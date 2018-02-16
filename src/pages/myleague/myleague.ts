@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
@@ -13,7 +14,6 @@ export class MyleaguePage {
   modificationForm: FormGroup;
   addLeague: boolean;
   editLeagueValue: boolean;
-
   noLeagueData: boolean;
   leagueData: Array<any>;
   groupsData: Array<any>;
@@ -160,7 +160,6 @@ export class MyleaguePage {
           this.errorMessage = JSON.stringify(error['error']['res']);
           this.errorMessage = JSON.parse(this.errorMessage);
         })
-
     }
   }
 

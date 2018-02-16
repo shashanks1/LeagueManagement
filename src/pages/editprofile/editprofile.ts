@@ -2,16 +2,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
-
-import { HomePage } from '../home/home';
-
 import { LoadingController, ToastController } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { FileOpener } from '@ionic-native/file-opener';
-import {File} from '@ionic-native/file';
-import {Storage} from '@ionic/storage';
+
+import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
+import { HomePage } from '../home/home';
 
 @Component({
     selector: 'edit-profile',
@@ -22,22 +18,12 @@ export class EditPage {
     successMessage: string;
     errorMessage: string;
 
-    imageURI:any;
-    imageFileName:any;
-    downloads : any;
 
-    constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider,private transfer: FileTransfer,
-        private camera: Camera,
-         public loadingCtrl: LoadingController,
-         public toastCtrl: ToastController,
-         public file : File
-        ) {
+
+    constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
 
         this.successMessage = '';
         this.errorMessage = '';
-
-        this.downloads = 0;
-
         this.profileForm = fb.group({
             'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')])],
             'full_name': [null, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z \-\']+')])],
@@ -121,12 +107,12 @@ export class EditPage {
 
     // getImage() {
     //     const options: CameraOptions = {
-            
+
     //       quality: 100,
     //       destinationType: this.camera.DestinationType.FILE_URI,
     //       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
     //     }
-      
+
     //     this.camera.getPicture(options).then((imageData) => {
     //       this.imageURI = imageData;
     //     }, (err) => {
@@ -137,13 +123,13 @@ export class EditPage {
 
 
     //   uploadFile() {
-   
+
     //     let loader = this.loadingCtrl.create({
     //       content: "Uploading..."
     //     });
     //     loader.present();
     //     const fileTransfer: FileTransferObject = this.transfer.create();
-      
+
     //     let options: FileUploadOptions = {
     //       fileKey: 'ionicfile',
     //       fileName: 'ionicfile',
@@ -151,7 +137,7 @@ export class EditPage {
     //       mimeType: "image/jpeg",
     //       headers: {}
     //     }
-      
+
     //     // this.fileOpener.open('path/to/file.pdf', 'application/pdf')
     //     // .then(() => console.log('File is opened'))
     //     // .catch(e => console.log('Error openening file', e));
@@ -175,11 +161,11 @@ export class EditPage {
     //       duration: 3000,
     //       position: 'bottom'
     //     });
-      
+
     //     toast.onDidDismiss(() => {
     //       console.log('Dismissed toast');
     //     });
-      
+
     //     toast.present();
     //   }
 
