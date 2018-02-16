@@ -282,6 +282,7 @@ edit-profile {
                 font-family: 'Montserrat', sans-serif;
             }
         }
+        .signupForm ion-item .item-inner .input-wrapper ion-label {color: #000}
         .signupForm {
             padding: 30px 30px 5px;
             background: #f7f7f7;
@@ -307,9 +308,12 @@ edit-profile {
             .submitBtn .button {
                 background: $blue-color
             }
-
+         
             
         }
+
+
+
     }
     @media screen and (max-width:991px) {
         .mainNav {
