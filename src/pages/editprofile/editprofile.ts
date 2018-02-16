@@ -10,6 +10,8 @@ import { LoadingController, ToastController } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileOpener } from '@ionic-native/file-opener';
+import {File} from '@ionic-native/file';
+import {Storage} from '@ionic/storage';
 
 @Component({
     selector: 'edit-profile',
@@ -22,15 +24,19 @@ export class EditPage {
 
     imageURI:any;
     imageFileName:any;
+    downloads : any;
 
     constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider,private transfer: FileTransfer,
         private camera: Camera,
          public loadingCtrl: LoadingController,
-         public toastCtrl: ToastController
+         public toastCtrl: ToastController,
+         public file : File
         ) {
 
         this.successMessage = '';
         this.errorMessage = '';
+
+        this.downloads = 0;
 
         this.profileForm = fb.group({
             'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')])],
@@ -146,9 +152,9 @@ export class EditPage {
     //       headers: {}
     //     }
       
-    //     this.fileOpener.open('path/to/file.pdf', 'application/pdf')
-    //     .then(() => console.log('File is opened'))
-    //     .catch(e => console.log('Error openening file', e));
+    //     // this.fileOpener.open('path/to/file.pdf', 'application/pdf')
+    //     // .then(() => console.log('File is opened'))
+    //     // .catch(e => console.log('Error openening file', e));
 
     //     fileTransfer.upload(this.imageURI, 'http://192.168.0.7:8080/api/uploadImage', options)
     //       .then((data) => {
@@ -187,5 +193,13 @@ export class EditPage {
     // //      // Handle error
     // //    });
     // //  }
+
+    // // ionViewDidLoad() {
+    // //     this.file.listDir(this.file.externalRootDirectory,'Downloads')
+    // //     .then((data) =>{
+    // //         this.downloads = data;
+
+    // //     });
+    // // }
 }
 

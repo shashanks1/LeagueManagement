@@ -13,7 +13,7 @@ export class MyleaguePage {
   modificationForm: FormGroup;
   addLeague: boolean;
   editLeagueValue: boolean;
-  
+
   noLeagueData: boolean;
   leagueData: Array<any>;
   groupsData: Array<any>;
@@ -26,7 +26,7 @@ export class MyleaguePage {
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     this.addLeague = false;
     this.editLeagueValue = false;
-  
+
     this.noLeagueData = false;
     this.editValue = '';
     this.successMessage = '';
@@ -80,6 +80,7 @@ export class MyleaguePage {
 
   //function to open Add new league form
   addNewLeague() {
+    this.modificationForm.reset();
     this.successMessage = '';
     this.errorMessage = '';
     this.addLeague = true;
@@ -94,7 +95,7 @@ export class MyleaguePage {
     this.editLeagueValue = false;
   }
 
-    //function to open Edit league form
+  //function to open Edit league form
   editLeague(editValue) {
     this.successMessage = '';
     this.errorMessage = '';
@@ -102,9 +103,11 @@ export class MyleaguePage {
     this.addLeague = false;
     this.editValue = editValue;
     let selectedGroup = []
-    editValue.groups.forEach(function (obj) {
-      selectedGroup.push(obj.id);
-    });
+    if (editValue.groups) {
+      editValue.groups.forEach(function (obj) {
+        selectedGroup.push(obj.id);
+      });
+    }
     editValue.groups = selectedGroup;
 
     this.modificationForm.setValue({

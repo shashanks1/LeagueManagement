@@ -42,7 +42,7 @@ export class RegistrationPage {
       this.navCtrl.push(LoginPage);
     },
       error => {
-        this.errorMessage = JSON.parse(error['error']['res']);
+        this.errorMessage = JSON.stringify(error['error']['res']);
         this.errorMessage = JSON.parse(this.errorMessage);
       });
   }

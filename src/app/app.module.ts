@@ -8,6 +8,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 
+
 import { AuthInterceptor } from '../providers/auth.interceptor';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -55,6 +56,7 @@ export const environment = {
     AngularFireAuthModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
+  
   ],
   bootstrap: [IonicApp],
   entryComponents: [
