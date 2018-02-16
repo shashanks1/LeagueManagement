@@ -39,6 +39,14 @@ export class MyApp {
 
   // function to open the page on sideMenu click
   openPage(page) {
-    this.nav.setRoot(page.component);
+    if (page.title == 'My League' || page.title == 'My Group') {
+      if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
+        this.nav.setRoot(LoginPage);
+      } else {
+        this.nav.setRoot(page.component);
+      }
+    } else {
+      this.nav.setRoot(page.component);
+    }
   }
 }
