@@ -40,7 +40,9 @@
         <ion-grid>
             <ion-row>
                 <ion-col col-3>
-                    <img src="assets/imgs/logo.png" alt="">
+                    <a>
+                        <img src="assets/imgs/logo.png" alt="" (click)="openHomePage()">
+                    </a>
                 </ion-col>
 
                 <ion-col col-7>
@@ -136,9 +138,11 @@
                                                 </div>
                                               </ng4-files-drop> -->
 
-                                             
 
-                                             
+                                    <!-- <ion-item>
+                                        <button (click)="getImage()">Browse Images</button>
+                                    </ion-item> -->
+
 
                                     <ion-item>
                                         <ion-label>User Name</ion-label>

@@ -40,10 +40,13 @@
   <div class="container">
     <ion-grid>
       <ion-row>
+          <a>
         <ion-col col-3>
-          <img src="assets/imgs/logo.png" alt="">
+          
+            <img src="assets/imgs/logo.png" alt="" (click)="openHomePage()">
+          
         </ion-col>
-
+      </a>
         <ion-col col-7>
           <ion-list>
             <ul class="mainNav">
@@ -140,8 +143,9 @@
 
                   <ion-item class="withoutBg">
                     <ion-label>I agree to the terms of services</ion-label>
-                    <ion-checkbox color="dark" checked="true" formControlName="agree"></ion-checkbox>
+                    <ion-checkbox color="dark"  formControlName="agree"></ion-checkbox>
                   </ion-item>
+                  <p class="errorMessage" *ngIf="registrationForm.controls.agree.errors">Agree terms and conditions.</p>
 
                   <div padding class="submitBtn">
                     <button ion-button block large color="dark" [disabled]="!registrationForm.valid">Sign Up</button>

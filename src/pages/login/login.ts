@@ -157,5 +157,10 @@ export class LoginPage {
     })
       .catch((err) => console.log(err));
   }
+
+  //function to redirect to home page
+  openHomePage() {
+    this.navCtrl.push(HomePage);
+  }
 }
 

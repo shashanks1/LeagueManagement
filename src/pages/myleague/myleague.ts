@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
@@ -21,9 +22,12 @@ export class MyleaguePage {
   testarray: Array<any> = [];
   successMessage: string;
   errorMessage: string;
-
+  userEmail: string;
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
+    if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
+      this.userEmail = JSON.parse(sessionStorage.getItem("loggedUserName"));
+    }
     this.addLeague = false;
     this.editLeagueValue = false;
 
@@ -178,6 +182,19 @@ export class MyleaguePage {
         this.errorMessage = JSON.stringify(error['error']['res']);
         this.errorMessage = JSON.parse(this.errorMessage);
       });
+  }
+
+  //function to redirect to home page
+  openHomePage() {
+    this.navCtrl.push(HomePage);
+  }
+
+  //function to logout of the application
+  logout() {
+    sessionStorage.setItem("loginDone", null);
+    sessionStorage.setItem("loggedUserId", null);
+    sessionStorage.setItem("loggedUserName", null);
+    this.navCtrl.push(HomePage);
   }
 }
 

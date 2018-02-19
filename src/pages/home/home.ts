@@ -46,7 +46,11 @@ export class HomePage {
 
   //function to open legaue page for the application
   openLeague() {
-    this.navCtrl.push(MyleaguePage);
+    if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
+      this.navCtrl.setRoot(LoginPage);
+    } else {
+      this.navCtrl.push(MyleaguePage);
+    }
   }
 
   //function to logout of the application

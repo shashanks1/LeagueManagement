@@ -21,7 +21,7 @@ export class EditPage {
 
 
 
-    constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider,public cameraService : CameraMock) {
+    constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider, public cameraService: CameraMock) {
 
         this.successMessage = '';
         this.errorMessage = '';
@@ -48,7 +48,8 @@ export class EditPage {
             'user_others': [null],
             'strength': [null],
             'weakness': [null],
-            'image' : [null]
+
+
         });
         this.getUserData();
     }
@@ -98,12 +99,18 @@ export class EditPage {
                 'user_others': res['res']['user_others'],
                 'strength': res['res']['strength'],
                 'weakness': res['res']['weakness'],
+
             });
         },
             error => {
                 this.errorMessage = JSON.stringify(error['error']['res']);
                 this.errorMessage = JSON.parse(this.errorMessage);
             });
+    }
+
+    //function to redirect to home page
+    openHomePage() {
+        this.navCtrl.push(HomePage);
     }
 
 
@@ -190,9 +197,9 @@ export class EditPage {
     // //     });
     // // }
 
-    getImage(){
+    getImage() {
         this.cameraService.getPicture().then((res: any[]) => {
-       console.log(res);
+            console.log(res);
         })
     }
 }
