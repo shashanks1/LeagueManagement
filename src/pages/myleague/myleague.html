@@ -149,47 +149,73 @@
                             <div class="rowCol">
                                 {{lgdata.league_name}}
                             </div>
-                            <span *ngFor="let group of lgdata.groups">
-                                <div class="rowCol">
-                                    <span>{{group.group_name}}</span>
-                                </div>
 
+                            
+
+
+
+                                <div class="groupWrapper">
+                                <span class="groupName" *ngFor="let group of lgdata.groups">
+                                        <div class="nameList">
+                                            {{group.group_name}}
+                                        </div>
+
+                                        <div class="nameList">
+                                            <span *ngFor="let player of group.players">
+                                                {{player}}
+                                            </span>
+                                        </div>
+                                    </span>
+                                </div>
+                            
+
+
+
+
+
+                            <!-- <span *ngFor="let group of lgdata.groups">
                                 <div class="rowCol nameList">
-                                    <span *ngFor="let player of group.players">{{player}}</span>
+                                    <span>{{group.group_name}}</span>
+
+                                    <span class="nameList">
+                                            <span *ngFor="let player of group.players">{{player}}</span>
+                                    </span>
                                 </div>
-                            </span>
 
-                            <div class="rowCol">
-                                {{lgdata.league_location}}
-                            </div>
 
-                            <div class="rowCol nameList">
-                                <span *ngFor="let category of lgdata.categories">
+                            </span> -->
+
+                        <div class="rowCol">
+                            {{lgdata.league_location}}
+                        </div>
+
+                        <div class="rowCol nameList">
+                            <span *ngFor="let category of lgdata.categories">
                                     {{category}}
                                 </span>
-                            </div>
+                        </div>
 
-                            <div class="rowCol">
-                                {{lgdata.created}}
-                            </div>
+                        <div class="rowCol">
+                            {{lgdata.created}}
+                        </div>
 
-                            <div class="rowCol actionLink">
-                                <a href="#" (click)="editLeague(lgdata)">
+                        <div class="rowCol actionLink">
+                            <a href="#" (click)="editLeague(lgdata)">
                                     <i class="zmdi zmdi-edit"></i>
                                 </a>
-                                <a href="#" (click)="deleteLeague(lgdata.id)">
+                            <a href="#" (click)="deleteLeague(lgdata.id)">
                                     <i class="zmdi zmdi-delete"></i>
                                 </a>
-                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div *ngIf="noLeagueData">
-                    <p class="errorMessage">No data to display, please add a league.</p>
-                </div>
+            <div *ngIf="noLeagueData">
+                <p class="errorMessage">No data to display, please add a league.</p>
             </div>
         </div>
+    </div>
 
     </div>
 

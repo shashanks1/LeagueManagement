@@ -293,6 +293,7 @@ ion-header {
         .rowCol {
             width: calc(14.3% - 4px);
             display: inline-block;
+            vertical-align: top;
         }
         .tableDivRow {
             border-bottom: 1px solid #d7d7d7;
@@ -389,9 +390,13 @@ ion-header {
 }
 
 .nameList span:after {
-    content: ', '
+    content: ', ';
 }
 
 .nameList span:last-child:after {
     content: ' '
 }
+
+.groupWrapper {width:28%; display: inline-block;}
+.groupName {display: inline-block; width: 100%;}
+.nameList {display: inline-block; width:calc(50% - 4px); margin-bottom: 15px; vertical-align: top;}
