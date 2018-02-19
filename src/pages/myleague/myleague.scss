@@ -291,7 +291,7 @@ ion-header {
             padding: 15px 10px;
         }
         .rowCol {
-            width: calc(16.66% - 4px);
+            width: calc(14.3% - 4px);
             display: inline-block;
         }
         .tableDivRow {
@@ -383,8 +383,9 @@ ion-header {
     }
 }
 
-.nameList span {
-    display: inline;
+.nameList { 
+    span {display: inline;}
+    .groupName {display: block;}
 }
 
 .nameList span:after {
