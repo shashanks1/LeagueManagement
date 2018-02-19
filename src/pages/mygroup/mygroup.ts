@@ -153,6 +153,7 @@ export class MyGroupPage {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.deleteGroup(id).subscribe((res: any[]) => {
+      this.modificationForm.reset();
       this.successMessage = JSON.stringify(res['res']);
       this.successMessage = JSON.parse(this.successMessage);
       this.getGroupData()
