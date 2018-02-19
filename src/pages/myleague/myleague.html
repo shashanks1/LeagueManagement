@@ -149,14 +149,15 @@
                             <div class="rowCol">
                                 {{lgdata.league_name}}
                             </div>
+                            <span *ngFor="let group of lgdata.groups">
+                                <div class="rowCol">
+                                    <span>{{group.group_name}}</span>
+                                </div>
 
-                            <div class="rowCol nameList">
-                                <span class="groupName" *ngFor="let group of lgdata.groups">{{group.group_name}}</span>
-                            </div>
-                      
-                            <div class="rowCol nameList">
-                                <span *ngFor="let player of lgdata.players">{{player}}</span>
-                            </div>
+                                <div class="rowCol nameList">
+                                    <span *ngFor="let player of group.players">{{player}}</span>
+                                </div>
+                            </span>
 
                             <div class="rowCol">
                                 {{lgdata.league_location}}
