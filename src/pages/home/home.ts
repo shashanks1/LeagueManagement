@@ -68,4 +68,10 @@ export class HomePage {
     sessionStorage.setItem("loggedUserName", null);
     this.navCtrl.push(HomePage);
   }
+
+  openIpad(){
+    $( document ).ready(function() {
+      alert('dfsdfs')
+  });
+  }
 }
