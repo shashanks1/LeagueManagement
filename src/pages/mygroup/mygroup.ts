@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
@@ -10,7 +11,7 @@ import { RemoteServiceProvider } from '../../providers/remote-service/remote-ser
   selector: 'page-mygroup',
   templateUrl: 'mygroup.html',
 })
-export class MygroupPage {
+export class MyGroupPage {
   modificationForm: FormGroup;
   addGroup: boolean;
   editGroupValue: boolean;
@@ -22,9 +23,12 @@ export class MygroupPage {
   testarray: Array<any>;
   successMessage: string;
   errorMessage: string;
-
+  userEmail: string;
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
+    if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
+      this.userEmail = JSON.parse(sessionStorage.getItem("loggedUserName"));
+    }
     this.addGroup = false;
     this.editGroupValue = false;
     this.noGroupData = false;
@@ -157,5 +161,18 @@ export class MygroupPage {
         this.errorMessage = JSON.stringify(error['error']['res']);
         this.errorMessage = JSON.parse(this.errorMessage);
       });
+  }
+
+  //function to redirect to home page
+  openHomePage() {
+    this.navCtrl.push(HomePage);
+  }
+
+  //function to logout of the application
+  logout() {
+    sessionStorage.setItem("loginDone", null);
+    sessionStorage.setItem("loggedUserId", null);
+    sessionStorage.setItem("loggedUserName", null);
+    this.navCtrl.push(HomePage);
   }
 }

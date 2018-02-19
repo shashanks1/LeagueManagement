@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController, ToastController } from 'ionic-angular';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
+
 import { HomePage } from '../home/home';
 
 @Component({
@@ -47,6 +47,8 @@ export class EditPage {
             'user_others': [null],
             'strength': [null],
             'weakness': [null],
+
+
         });
         this.getUserData();
     }
@@ -96,12 +98,18 @@ export class EditPage {
                 'user_others': res['res']['user_others'],
                 'strength': res['res']['strength'],
                 'weakness': res['res']['weakness'],
+
             });
         },
             error => {
                 this.errorMessage = JSON.stringify(error['error']['res']);
                 this.errorMessage = JSON.parse(this.errorMessage);
             });
+    }
+
+    //function to redirect to home page
+    openHomePage() {
+        this.navCtrl.push(HomePage);
     }
 
 
@@ -187,5 +195,11 @@ export class EditPage {
 
     // //     });
     // // }
+
+    // getImage() {
+    //     this.cameraService.getPicture().then((res: any[]) => {
+    //         console.log(res);
+    //     })
+    // }
 }
 

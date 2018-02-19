@@ -7,6 +7,7 @@ import { RemoteServiceProvider } from '../../providers/remote-service/remote-ser
 import { LoginPage } from '../login/login';
 import { HomePage } from '../home/home';
 
+
 @Component({
   selector: 'page-registration',
   templateUrl: 'registration.html',
@@ -28,7 +29,7 @@ export class RegistrationPage {
       'full_name': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z ]*')])],
       'username': [null, Validators.required],
       'password': [null, Validators.required],
-      'agree': [null]
+      'agree': [false, Validators.pattern('true')]
 
     });
   }
@@ -70,4 +71,10 @@ export class RegistrationPage {
     })
       .catch((err) => console.log(err));
   }
+
+  //function to redirect to home page
+  openHomePage() {
+    this.navCtrl.push(HomePage);
+  }
+
 }

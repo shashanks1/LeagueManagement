@@ -20,8 +20,8 @@ import { HomePage } from '../pages/home/home';
 import { RegistrationPage } from '../pages/registration/registration';
 import { LoginPage } from '../pages/login/login';
 import { EditPage } from '../pages/editprofile/editprofile';
-import { MyleaguePage } from '../pages/myleague/myleague';
-import { MygroupPage } from '../pages/mygroup/mygroup';
+import { MyLeaguePage } from '../pages/myleague/myleague';
+import { MyGroupPage } from '../pages/mygroup/mygroup';
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
 
 export const environment = {
@@ -43,8 +43,8 @@ export const environment = {
     RegistrationPage,
     LoginPage,
     EditPage,
-    MyleaguePage,
-    MygroupPage
+    MyLeaguePage,
+    MyGroupPage
   ],
   imports: [
     BrowserModule,
@@ -63,13 +63,15 @@ export const environment = {
     EditPage,
     RegistrationPage,
     LoginPage,
-    MyleaguePage,
-    MygroupPage
+    MyLeaguePage,
+    MyGroupPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+   
+
     RemoteServiceProvider,
 
     {
