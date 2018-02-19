@@ -5,8 +5,8 @@ import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { EditPage } from '../editprofile/editprofile';
 import { RegistrationPage } from '../registration/registration';
-import { MyleaguePage } from '../myleague/myleague';
-import { MygroupPage } from '../mygroup/mygroup';
+import { MyLeaguePage } from '../myleague/myleague';
+import { MyGroupPage } from '../mygroup/mygroup';
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
 @Component({
@@ -49,7 +49,15 @@ export class HomePage {
     if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
       this.navCtrl.setRoot(LoginPage);
     } else {
-      this.navCtrl.push(MyleaguePage);
+      this.navCtrl.push(MyLeaguePage);
+    }
+  }
+
+  openGroup() {
+    if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
+      this.navCtrl.setRoot(LoginPage);
+    } else {
+      this.navCtrl.push(MyGroupPage);
     }
   }
 

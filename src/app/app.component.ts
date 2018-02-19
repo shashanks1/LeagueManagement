@@ -5,8 +5,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { MyleaguePage } from '../pages/myleague/myleague';
-import { MygroupPage } from '../pages/mygroup/mygroup';
+import { MyLeaguePage } from '../pages/myleague/myleague';
+import { MyGroupPage } from '../pages/mygroup/mygroup';
 import { LoginPage } from '../pages/login/login';
 
 @Component({
@@ -23,8 +23,8 @@ export class MyApp {
     this.initializeApp();
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'My League', component: MyleaguePage },
-      { title: 'My Group', component: MygroupPage }
+      { title: 'My League', component: MyLeaguePage },
+      { title: 'My Group', component: MyGroupPage }
     ];
 
   }

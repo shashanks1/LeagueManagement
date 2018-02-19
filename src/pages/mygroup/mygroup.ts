@@ -11,7 +11,7 @@ import { RemoteServiceProvider } from '../../providers/remote-service/remote-ser
   selector: 'page-mygroup',
   templateUrl: 'mygroup.html',
 })
-export class MygroupPage {
+export class MyGroupPage {
   modificationForm: FormGroup;
   addGroup: boolean;
   editGroupValue: boolean;

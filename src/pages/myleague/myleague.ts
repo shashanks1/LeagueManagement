@@ -11,7 +11,7 @@ import { RemoteServiceProvider } from '../../providers/remote-service/remote-ser
   selector: 'page-myleague',
   templateUrl: 'myleague.html',
 })
-export class MyleaguePage {
+export class MyLeaguePage {
   modificationForm: FormGroup;
   addLeague: boolean;
   editLeagueValue: boolean;
