@@ -19,7 +19,7 @@
                 <ion-col col-12 col-md-4 text-right class="pull-right">
                     <span class="loggedInUserEmail">Welcome, {{userEmail}}</span>
                     <a href="#" (click)="logout()">
-                          <i class="zmdi zmdi-logout"></i> Logout</a>
+                        <i class="zmdi zmdi-logout"></i> Logout</a>
                 </ion-col>
             </ion-row>
         </ion-grid>
@@ -116,6 +116,10 @@
                     </div>
 
                     <div class="rowCol">
+                        Group Name
+                    </div>
+
+                    <div class="rowCol">
                         Player Name
                     </div>
 
@@ -147,6 +151,10 @@
                             </div>
 
                             <div class="rowCol nameList">
+                                <span *ngFor="let group of lgdata.groups">{{group.group_name}}</span>
+                            </div>
+                      
+                            <div class="rowCol nameList">
                                 <span *ngFor="let player of lgdata.players">{{player}}</span>
                             </div>
 
@@ -173,12 +181,8 @@
                                 </a>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-
-
 
                 <div *ngIf="noLeagueData">
                     <p class="errorMessage">No data to display, please add a league.</p>
