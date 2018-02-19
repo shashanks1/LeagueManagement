@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
+import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 import { LoginPage } from '../login/login';
 import { HomePage } from '../home/home';
 
@@ -42,7 +42,7 @@ export class RegistrationPage {
       this.navCtrl.push(LoginPage);
     },
       error => {
-        this.errorMessage = JSON.parse(error['error']['res']);
+        this.errorMessage = JSON.stringify(error['error']['res']);
         this.errorMessage = JSON.parse(this.errorMessage);
       });
   }

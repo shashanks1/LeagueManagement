@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
@@ -13,7 +14,6 @@ export class MyleaguePage {
   modificationForm: FormGroup;
   addLeague: boolean;
   editLeagueValue: boolean;
-  
   noLeagueData: boolean;
   leagueData: Array<any>;
   groupsData: Array<any>;
@@ -26,7 +26,7 @@ export class MyleaguePage {
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     this.addLeague = false;
     this.editLeagueValue = false;
-  
+
     this.noLeagueData = false;
     this.editValue = '';
     this.successMessage = '';
@@ -80,6 +80,7 @@ export class MyleaguePage {
 
   //function to open Add new league form
   addNewLeague() {
+    this.modificationForm.reset();
     this.successMessage = '';
     this.errorMessage = '';
     this.addLeague = true;
@@ -94,7 +95,7 @@ export class MyleaguePage {
     this.editLeagueValue = false;
   }
 
-    //function to open Edit league form
+  //function to open Edit league form
   editLeague(editValue) {
     this.successMessage = '';
     this.errorMessage = '';
@@ -102,9 +103,11 @@ export class MyleaguePage {
     this.addLeague = false;
     this.editValue = editValue;
     let selectedGroup = []
-    editValue.groups.forEach(function (obj) {
-      selectedGroup.push(obj.id);
-    });
+    if (editValue.groups) {
+      editValue.groups.forEach(function (obj) {
+        selectedGroup.push(obj.id);
+      });
+    }
     editValue.groups = selectedGroup;
 
     this.modificationForm.setValue({
@@ -131,12 +134,12 @@ export class MyleaguePage {
     this.errorMessage = '';
     if (this.addLeague) {
       this.service.addNewLeague(postData).subscribe((res: any[]) => {
-        this.getLeagueData();
+        this.modificationForm.reset();
         this.successMessage = JSON.stringify(res['res']);
         this.successMessage = JSON.parse(this.successMessage);
         this.editLeagueValue = false;
         this.addLeague = false;
-
+        this.getLeagueData();
       },
         error => {
           this.errorMessage = JSON.stringify(error['error']['res']);
@@ -146,18 +149,18 @@ export class MyleaguePage {
     else {
 
       this.service.updateLeague(this.editValue.id, postData).subscribe((res: any[]) => {
-        this.getLeagueData();
+        this.modificationForm.reset();
         this.successMessage = JSON.stringify(res['res']);
         this.successMessage = JSON.parse(this.successMessage);
         this.editLeagueValue = false;
         this.addLeague = false;
+        this.getLeagueData();
 
       },
         error => {
           this.errorMessage = JSON.stringify(error['error']['res']);
           this.errorMessage = JSON.parse(this.errorMessage);
         })
-
     }
   }
 
@@ -168,6 +171,7 @@ export class MyleaguePage {
     this.service.deleteLeague(id).subscribe((res: any[]) => {
       this.successMessage = JSON.stringify(res['res']);
       this.successMessage = JSON.parse(this.successMessage);
+      this.modificationForm.reset();
       this.getLeagueData()
     },
       error => {

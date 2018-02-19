@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
+
 import { NavController } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
 import { EditPage } from '../editprofile/editprofile';
 import { RegistrationPage } from '../registration/registration';
 import { MyleaguePage } from '../myleague/myleague';
-import { MygroupPage} from '../mygroup/mygroup'; 
-
+import { MygroupPage } from '../mygroup/mygroup';
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
 @Component({
@@ -14,7 +14,6 @@ import { RemoteServiceProvider } from '../../providers/remote-service/remote-ser
   templateUrl: 'home.html'
 })
 export class HomePage {
-  //@ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
   userIsLogged: boolean;
@@ -30,22 +29,27 @@ export class HomePage {
     }
   }
 
+  //function to open login page for the application
   openLogin() {
     this.navCtrl.push(LoginPage);
   }
 
+  //function to open edit profile page for the application
   editProfile() {
     this.navCtrl.push(EditPage);
   }
 
+  //function to open registration page for the application
   openRegistration() {
     this.navCtrl.push(RegistrationPage);
   }
 
+  //function to open legaue page for the application
   openLeague() {
     this.navCtrl.push(MyleaguePage);
   }
 
+  //function to logout of the application
   logout() {
     sessionStorage.setItem("loginDone", null);
     sessionStorage.setItem("loggedUserId", null);
