@@ -27,13 +27,6 @@
             <i class="zmdi zmdi-account"></i> Login</a>
         </ion-col>
 
-        <!-- <ion-col col-12 col-md-8>
-            <div class="col topLink">
-                <a href="http://www.damcogroup.com/" rel="0" class="newWindow" (click)="openIpad()">Ipad</a>
-                <a href="http://www.damcogroup.com/" rel="1" class="newWindow">Mobile</a>
-            </div>
-          </ion-col> -->
-
         <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="userIsLogged">
           <span class="loggedInUserEmail">Welcome, {{userEmail}}</span>
           <a href="#" (click)="editProfile()">
@@ -192,16 +185,16 @@
           </ion-col>
 
           <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
-              <a>
-            <ion-card (click)="openLeague()">                       
-                <img src="assets/imgs/popularTabs-img-2.jpg" >           
-              <ion-card-content>            
-                <ion-card-title>
-                  My Leagues
-                </ion-card-title>
-              </ion-card-content>
-            </ion-card>
-          </a>  
+            <a>
+              <ion-card (click)="openLeague()">
+                <img src="assets/imgs/popularTabs-img-2.jpg">
+                <ion-card-content>
+                  <ion-card-title>
+                    My Leagues
+                  </ion-card-title>
+                </ion-card-content>
+              </ion-card>
+            </a>
           </ion-col>
 
           <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
