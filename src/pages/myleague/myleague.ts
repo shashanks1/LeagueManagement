@@ -23,20 +23,31 @@ export class MyLeaguePage {
   successMessage: string;
   errorMessage: string;
   userEmail: string;
+  is_admin: boolean;
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
       this.userEmail = JSON.parse(sessionStorage.getItem("loggedUserName"));
     }
+
+    if (JSON.parse(sessionStorage.getItem("is_admin"))) {
+      this.is_admin = true;
+      this.getLeagueData();
+    }
+    else {
+      console.log("hello");
+      this.getLeaguePlayerData();
+    }
     this.addLeague = false;
     this.editLeagueValue = false;
-
     this.noLeagueData = false;
     this.editValue = '';
     this.successMessage = '';
     this.errorMessage = '';
     this.leagueData = [];
     this.groupsData = [];
+
+
 
     this.modificationForm = fb.group({
       'league_name': [null, Validators.required],
@@ -47,16 +58,15 @@ export class MyLeaguePage {
       'playoff_period_from': [null],
       'playoff_period_to': [null],
       'categories': [null, Validators.required],
-      'groups': [null],
-      'scoring_point': [null]
+      'scoring_point': [null],
+
     });
 
-    this.getLeagueData();
-    this.getGroups();
   }
 
   //function to get league data from API for myleague page
   getLeagueData() {
+
     this.noLeagueData = false;
     this.service.getLeagueData().subscribe((res: any[]) => {
       this.leagueData = res;
@@ -69,6 +79,7 @@ export class MyLeaguePage {
         this.errorMessage = JSON.stringify(error['error']['res']);
         this.errorMessage = JSON.parse(this.errorMessage);
       });
+
   }
 
   //function to get group data from API
@@ -124,14 +135,16 @@ export class MyLeaguePage {
       'playoff_period_to': editValue.playoff_period_to,
       'categories': editValue.categories,
       'groups': editValue.groups,
-      'scoring_point': editValue.scoring_point
+      'scoring_point': editValue.scoring_point,
     })
   }
 
   //function to submit added and edited league to the API
   submitNewLeague(postData) {
+
     this.testarray = [];
     this.testarray.push(postData.players);
+    postData.created_by = JSON.parse(sessionStorage.getItem("loggedUserEmail"));
     postData.players = this.testarray;
 
     this.successMessage = '';
@@ -194,7 +207,24 @@ export class MyLeaguePage {
     sessionStorage.setItem("loginDone", null);
     sessionStorage.setItem("loggedUserId", null);
     sessionStorage.setItem("loggedUserName", null);
+    sessionStorage.setItem("loggedUserEmail", null);
     this.navCtrl.push(HomePage);
+  }
+
+  //function to get league data for player
+  getLeaguePlayerData() {
+    this.noLeagueData = false;
+    this.service.getLeaguePlayerData(JSON.parse(sessionStorage.getItem("loggedUserId"))).subscribe((res: any[]) => {
+      this.leagueData = res;
+      if (this.leagueData.length == 0)
+        this.noLeagueData = true;
+      else
+        this.noLeagueData = false;
+    },
+      error => {
+        this.errorMessage = JSON.stringify(error['error']['res']);
+        this.errorMessage = JSON.parse(this.errorMessage);
+      });
   }
 }
 

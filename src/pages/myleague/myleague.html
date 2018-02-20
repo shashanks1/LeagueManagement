@@ -116,10 +116,10 @@
                     </div>
 
                     <div class="rowCol">
-                        Group Name
+                        Category
                     </div>
 
-                    <div class="rowCol">
+                    <div class="rowCol" *ngIf="is_admin">
                         Player Name
                     </div>
 
@@ -128,14 +128,10 @@
                     </div>
 
                     <div class="rowCol">
-                        Category
-                    </div>
-
-                    <div class="rowCol">
                         Created
                     </div>
 
-                    <div class="rowCol">
+                    <div class="rowCol" *ngIf="is_admin">
                         Action
                     </div>
 
@@ -150,72 +146,43 @@
                                 {{lgdata.league_name}}
                             </div>
 
-                            
-
-
-
-                                <div class="groupWrapper">
-                                <span class="groupName" *ngFor="let group of lgdata.groups">
-                                        <div class="nameList">
-                                            {{group.group_name}}
-                                        </div>
-
-                                        <div class="nameList">
-                                            <span *ngFor="let player of group.players">
-                                                {{player}}
-                                            </span>
-                                        </div>
-                                    </span>
-                                </div>
-                            
-
-
-
-
-
-                            <!-- <span *ngFor="let group of lgdata.groups">
-                                <div class="rowCol nameList">
-                                    <span>{{group.group_name}}</span>
-
-                                    <span class="nameList">
-                                            <span *ngFor="let player of group.players">{{player}}</span>
-                                    </span>
-                                </div>
-
-
-                            </span> -->
-
-                        <div class="rowCol">
-                            {{lgdata.league_location}}
-                        </div>
-
-                        <div class="rowCol nameList">
                             <span *ngFor="let category of lgdata.categories">
-                                    {{category}}
-                                </span>
-                        </div>
+                                <div class="rowCol nameList">
+                                    <span>{{category}}</span>
 
-                        <div class="rowCol">
-                            {{lgdata.created}}
-                        </div>
+                                    <span class="nameList" *ngIf="is_admin">
+                                            <span *ngFor="let player of category.players">{{player}}</span>
+                                    </span>
+                                </div>
+                            </span>
 
-                        <div class="rowCol actionLink">
-                            <a href="#" (click)="editLeague(lgdata)">
+
+                            <div class="rowCol">
+                                {{lgdata.league_location}}
+                            </div>
+
+
+                            <div class="rowCol">
+                                {{lgdata.created}}
+                            </div>
+
+                            <div class="rowCol actionLink" *ngIf="is_admin">
+                                <a href="#" (click)="editLeague(lgdata)">
                                     <i class="zmdi zmdi-edit"></i>
                                 </a>
-                            <a href="#" (click)="deleteLeague(lgdata.id)">
+                                <a href="#" (click)="deleteLeague(lgdata.id)">
                                     <i class="zmdi zmdi-delete"></i>
                                 </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div *ngIf="noLeagueData">
-                <p class="errorMessage">No data to display, please add a league.</p>
+                <div *ngIf="noLeagueData">
+                    <p class="errorMessage">No data to display, please add a league.</p>
+                </div>
             </div>
         </div>
-    </div>
 
     </div>
 
@@ -229,6 +196,7 @@
                         <ion-input type="text" formControlName="league_name"></ion-input>
                     </ion-item>
                     <p class="errorMessage" *ngIf="modificationForm.controls.league_name.errors && modificationForm.controls.league_name.dirty">League Name is required.</p>
+
                     <ion-item>
                         <ion-label floating>Description</ion-label>
                         <ion-textarea formControlName="description"></ion-textarea>
@@ -237,8 +205,6 @@
                         <ion-label floating>Location</ion-label>
                         <ion-input type="text" formControlName="league_location"></ion-input>
                     </ion-item>
-
-
 
                     <div class="fromToWrapper">
                         <h5>Round Robin Period</h5>
@@ -288,12 +254,7 @@
                     </ion-item>
                     <p class="errorMessage" *ngIf="modificationForm.controls.categories.errors && modificationForm.controls.categories.dirty">Please select atleast one category.</p>
 
-                    <ion-item style="margin-top:20px;">
-                        <ion-label>Group</ion-label>
-                        <ion-select formControlName="groups" multiple="true">
-                            <ion-option *ngFor="let group of groupsData" value="{{group.id}}">{{group.group_name}}</ion-option>
-                        </ion-select>
-                    </ion-item>
+
 
 
                     <ion-item>

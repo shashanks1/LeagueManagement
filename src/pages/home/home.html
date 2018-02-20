@@ -26,13 +26,9 @@
           <a href="#" (click)="openLogin()">
             <i class="zmdi zmdi-account"></i> Login</a>
         </ion-col>
+        
 
-        <!-- <ion-col col-12 col-md-8>
-            <div class="col topLink">
-                <a href="http://www.damcogroup.com/" rel="0" class="newWindow" (click)="openIpad()">Ipad</a>
-                <a href="http://www.damcogroup.com/" rel="1" class="newWindow">Mobile</a>
-            </div>
-          </ion-col> -->
+        
 
         <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="userIsLogged">
           <span class="loggedInUserEmail">Welcome, {{userEmail}}</span>
@@ -42,13 +38,29 @@
             <i class="zmdi zmdi-logout"></i> Logout</a>
         </ion-col>
 
+
+        
+
       </ion-row>
     </ion-grid>
   </div>
+
+  <ion-col col-12 class="responsiveLink">
+      <a href="http://172.29.100.173:8100/" rel="0" class="newWindow">Ipad</a>
+      <a href="http://172.29.100.173:8100/" rel="1" class="newWindow">Mobile</a>
+</ion-col>
 </ion-header>
 
 <ion-content class="headerContent">
+
   <div class="container">
+      <ion-grid>
+          <ion-row>
+              
+          </ion-row>
+        </ion-grid>
+
+
     <ion-grid>
       <ion-row>
         <ion-col col-3>

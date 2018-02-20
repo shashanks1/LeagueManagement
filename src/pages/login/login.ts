@@ -54,6 +54,8 @@ export class LoginPage {
       sessionStorage.setItem("loginDone", 'userIsLogged');
       sessionStorage.setItem("loggedUserId", JSON.stringify(res['res']['id']));
       sessionStorage.setItem("loggedUserName", JSON.stringify(res['res']['full_name']));
+      sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['res']['email']));
+      sessionStorage.setItem("is_admin", JSON.stringify(res['res']['is_admin']));
 
       this.navCtrl.push(HomePage);
     },
