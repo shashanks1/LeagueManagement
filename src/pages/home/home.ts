@@ -69,8 +69,4 @@ export class HomePage {
     sessionStorage.setItem("loggedUserEmail",null);
     this.navCtrl.push(HomePage);
   }
-
-  openIpad(){
-
-  }
 }
