@@ -103,12 +103,12 @@
         </div>
         <div class="container">
             <ion-row>
-                <ion-col col-12 text-right>
+                <ion-col col-12 text-right *ngIf="is_admin">
                     <button ion-button color="dark" (click)="addNewLeague()">Add New League</button>
                 </ion-col>
             </ion-row>
 
-            <div class="tableDiv scroolTable">
+            <div class="tableDiv scroolTable dataCol6" *ngIf="is_admin">
                 <div class="tableDivHeader">
 
                     <div class="rowCol">
@@ -119,7 +119,7 @@
                         Category
                     </div>
 
-                    <div class="rowCol" *ngIf="is_admin">
+                    <div class="rowCol">
                         Player Name
                     </div>
 
@@ -131,7 +131,7 @@
                         Created
                     </div>
 
-                    <div class="rowCol" *ngIf="is_admin">
+                    <div class="rowCol text-center">
                         Action
                     </div>
 
@@ -146,45 +146,110 @@
                                 {{lgdata.league_name}}
                             </div>
 
-                            <span *ngFor="let category of lgdata.groups">
-                                <div class="rowCol nameList">
-                                    <span>{{category.name}}</span>
+                            <div class="rowCol groupWrapper">
+                                <span *ngFor="let category of lgdata.groups">
+                                <div class="groupName">
+                                    <span class="nameList">{{category.name}}</span>
 
-                                    <span class="nameList" *ngIf="is_admin">
+                                <span class="nameList">
                                         <span *ngFor="let player of category.players">
                                             {{player}}
                                         </span>
-                                    </span>
-                                </div>
+                                </span>
+                            </div>
                             </span>
+                        </div>
 
 
-                            <div class="rowCol">
-                                {{lgdata.league_location}}
-                            </div>
+                        <div class="rowCol">
+                            {{lgdata.league_location}}
+                        </div>
 
 
-                            <div class="rowCol">
-                                {{lgdata.created}}
-                            </div>
+                        <div class="rowCol">
+                            {{lgdata.created}}
+                        </div>
 
-                            <div class="rowCol actionLink" *ngIf="is_admin">
-                                <a href="#" (click)="editLeague(lgdata)">
+                        <div class="rowCol actionLink text-center">
+                            <a href="#" (click)="editLeague(lgdata)">
                                     <i class="zmdi zmdi-edit"></i>
                                 </a>
-                                <a href="#" (click)="deleteLeague(lgdata.id)">
+                            <a href="#" (click)="deleteLeague(lgdata.id)">
                                     <i class="zmdi zmdi-delete"></i>
                                 </a>
-                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div *ngIf="noLeagueData">
-                    <p class="errorMessage">No data to display, please add a league.</p>
-                </div>
+            <div *ngIf="noLeagueData">
+                <p class="errorMessage">No data to display, please add a league.</p>
             </div>
         </div>
+
+        <div class="tableDiv scroolTable dataCol4" *ngIf="!is_admin">
+            <div class="tableDivHeader">
+
+                <div class="rowCol">
+                    League Name
+                </div>
+
+                <div class="rowCol">
+                    Category
+                </div>
+
+                <div class="rowCol">
+                    Location
+                </div>
+
+                <div class="rowCol">
+                    Created
+                </div>
+
+
+            </div>
+
+            <div class="tableRow">
+                <div *ngIf="!noLeagueData">
+                    <div class="tableDivRow" *ngFor="let lgdata of leagueData">
+
+                        <div class="rowCol">
+                            {{lgdata.league_name}}
+                        </div>
+
+                        <div class="rowCol">
+                            <div class="nameSpace" *ngFor="let category of lgdata.groups">
+                                <span>{{category.name}}</span>
+                            </div>
+                        </div>
+
+                        <!-- <span *ngFor="let category of lgdata.groups">
+                                    <div class="rowCol">
+                                        <span>{{category.name}}</span>
+    
+                                    </div>
+                                </span> -->
+
+
+                        <div class="rowCol">
+                            {{lgdata.league_location}}
+                        </div>
+
+
+                        <div class="rowCol">
+                            {{lgdata.created}}
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="noLeagueData">
+                <p class="errorMessage">No data to display, please add a league.</p>
+            </div>
+        </div>
+    </div>
 
     </div>
 
@@ -244,7 +309,7 @@
                             </ion-item>
                         </div>
                     </div>
-                    <ion-item style="margin-top:20px;">
+                    <ion-item style="margin-top:20px;" *ngIf="addLeague">
                         <ion-label>Category*</ion-label>
                         <ion-select formControlName="categories" multiple="true">
                             <ion-option value="Men Singles">Men Singles</ion-option>

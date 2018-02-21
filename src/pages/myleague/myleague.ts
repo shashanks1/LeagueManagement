@@ -24,6 +24,7 @@ export class MyLeaguePage {
   errorMessage: string;
   userEmail: string;
   is_admin: boolean;
+  widthVar : any;
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
@@ -36,7 +37,7 @@ export class MyLeaguePage {
       this.getLeagueData();
     }
     else {
-      this.getLeaguePlayerData();
+      this.getLeaguePlayerData(); 
     }
     this.addLeague = false;
     this.editLeagueValue = false;
@@ -59,7 +60,6 @@ export class MyLeaguePage {
       'playoff_period_to': [null],
       'categories': [null, Validators.required],
       'scoring_point': [null],
-
     });
 
   }
@@ -117,13 +117,13 @@ export class MyLeaguePage {
     this.editLeagueValue = true;
     this.addLeague = false;
     this.editValue = editValue;
-    let selectedGroup = []
-    if (editValue.groups) {
-      editValue.groups.forEach(function (obj) {
-        selectedGroup.push(obj.id);
-      });
-    }
-    editValue.groups = selectedGroup;
+    // let selectedGroup = []
+    // if (editValue.groups) {
+    //   editValue.groups.forEach(function (obj) {
+    //     selectedGroup.push(obj.id);
+    //   });
+    // }
+    // editValue.groups = selectedGroup;
 
     this.modificationForm.setValue({
       'league_name': editValue.league_name,
@@ -134,7 +134,6 @@ export class MyLeaguePage {
       'playoff_period_from': editValue.playoff_period_from,
       'playoff_period_to': editValue.playoff_period_to,
       'categories': editValue.categories,
-      'groups': editValue.groups,
       'scoring_point': editValue.scoring_point,
     })
   }
@@ -157,7 +156,13 @@ export class MyLeaguePage {
         this.successMessage = JSON.parse(this.successMessage);
         this.editLeagueValue = false;
         this.addLeague = false;
-        this.getLeagueData();
+        if (JSON.parse(sessionStorage.getItem("is_admin")) == 'true') {
+          this.is_admin = true;
+          this.getLeagueData();
+        }
+        else {
+          this.getLeaguePlayerData(); 
+        }
       },
         error => {
           this.errorMessage = JSON.stringify(error['error']['res']);
