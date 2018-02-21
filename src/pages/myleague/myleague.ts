@@ -29,23 +29,13 @@ export class MyLeaguePage {
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
       this.userEmail = JSON.parse(sessionStorage.getItem("loggedUserName"));
     }
-    this.is_admin=false;
-    // if (JSON.parse(sessionStorage.getItem("is_admin"))) {
-    //   this.is_admin = true;
-    //   this.getLeagueData();
-    // }
-    // else {
-    //   console.log("hello");
-    //   this.getLeaguePlayerData();
-    // }
-    
-    if(JSON.parse(sessionStorage.getItem("is_admin")) == 'true' ){
-      console.log("if")
-      this.is_admin=true;
+    this.is_admin = false;
+
+    if (JSON.parse(sessionStorage.getItem("is_admin")) == 'true') {
+      this.is_admin = true;
       this.getLeagueData();
     }
-    else{
-      console.log("else")
+    else {
       this.getLeaguePlayerData();
     }
     this.addLeague = false;
@@ -56,7 +46,7 @@ export class MyLeaguePage {
     this.errorMessage = '';
     this.leagueData = [];
     this.groupsData = [];
-    
+
 
 
     this.modificationForm = fb.group({
@@ -156,7 +146,7 @@ export class MyLeaguePage {
     this.testarray.push(postData.players);
     postData.players = this.testarray;
     postData.created_by = JSON.parse(sessionStorage.getItem("loggedUserEmail"));
-    
+
 
     this.successMessage = '';
     this.errorMessage = '';
@@ -225,8 +215,8 @@ export class MyLeaguePage {
   //function to get league data for player
   getLeaguePlayerData() {
     this.noLeagueData = false;
-    this.service.getLeaguePlayerData(JSON.parse(sessionStorage.getItem("loggedUserId"))).subscribe((res: any[]) => {
-      this.leagueData = res;
+    this.service.getLeaguePlayerData(JSON.parse(sessionStorage.getItem("loggedUserId"))).subscribe((response: any[]) => {
+      this.leagueData = response['res'];
       if (this.leagueData.length == 0)
         this.noLeagueData = true;
       else

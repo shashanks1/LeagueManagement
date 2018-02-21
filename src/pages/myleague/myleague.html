@@ -148,12 +148,12 @@
 
                             <span *ngFor="let category of lgdata.groups">
                                 <div class="rowCol nameList">
-                                    <span>{{category}}</span>
+                                    <span>{{category.name}}</span>
 
                                     <span class="nameList" *ngIf="is_admin">
-                                            <span *ngFor="let player of category.players">
-                                                {{player}}
-                                            </span>
+                                        <span *ngFor="let player of category.players">
+                                            {{player}}
+                                        </span>
                                     </span>
                                 </div>
                             </span>
