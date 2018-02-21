@@ -126,7 +126,7 @@ export class RemoteServiceProvider {
   }
 
   getLeaguePlayerData(id){
-    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/usr_id/categories/'+id);
+    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/'+id+'/categories/');
   }
 
 }

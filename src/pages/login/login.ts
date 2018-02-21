@@ -56,7 +56,7 @@ export class LoginPage {
       sessionStorage.setItem("loggedUserName", JSON.stringify(res['res']['full_name']));
       sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['res']['email']));
       sessionStorage.setItem("is_admin", JSON.stringify(res['res']['is_admin']));
-
+      console.log(sessionStorage.getItem("is_admin"));
       this.navCtrl.push(HomePage);
     },
       error => {
