@@ -282,7 +282,7 @@ ion-header {
     }
 
     .dataCol4 {
-        .rowCol {width: calc(25% - 4px);}
+        .rowCol {width: calc(19% - 4px);}
     }
 
     .tableDiv {
@@ -395,7 +395,7 @@ ion-header {
 }
 
 .nameList { 
-    span {display: inline;}
+    span {display: inline-block; padding: 0 10px;}
     .groupName {display: block;}
 }
 
@@ -415,7 +415,7 @@ ion-header {
     }
 
     .dataCol4 {
-        .groupWrapper {width:50%;}
+        .groupWrapper {width:37.8%;}
     }
 } 
 .groupWrapper {display: inline-block;}

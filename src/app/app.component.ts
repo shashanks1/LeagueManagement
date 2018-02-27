@@ -24,7 +24,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'My League', component: MyLeaguePage },
-      { title: 'My Group', component: MyGroupPage }
+      // { title: 'My Group', component: MyGroupPage }
     ];
 
   }

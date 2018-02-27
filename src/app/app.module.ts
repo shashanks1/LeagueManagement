@@ -27,6 +27,7 @@ import { MyGroupPage } from '../pages/mygroup/mygroup';
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
 import { CameraMock } from '../providers/remote-service/Camera-Service';
 
+
 export const environment = {
   production: false,
   firebase: {

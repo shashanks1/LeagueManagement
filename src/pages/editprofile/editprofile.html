@@ -25,6 +25,8 @@
                 </ion-col>
 
                 <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="userIsLogged == 'userIsLogged'">
+                    <a href="#" (click)="logout()">
+                        <i class="zmdi zmdi-logout"></i> Logout</a>
 
                 </ion-col>
 
@@ -143,7 +145,25 @@
                                         <button (click)="getImage()">Browse Images</button>
                                     </ion-item> -->
 
+                                    <!-- <ion-item>
+                                            <ion-input type="file">Upload</ion-input>
+                                        </ion-item>
+                                        <ion-item>
+                                        <img  style="width: 100px; height: 100px;">
+                                        <input  type="file">
+                                        </ion-item>>
+                                        <input type='file' (change)="readUrl($event)">
+                                        <img [src]="url"> -->
+                                    <!-- <input type='file' id="uploadBannerImage" (change)="readURL(this);" />
+                                         -->
+                                    <!-- <img  style="width: 100px; height: 100px;">
+                                         <input  type="file" (change)="PreviewImage()">  -->
 
+                                    <!-- <input type='file' id="uploadBannerImage"  /> -->
+                                    <!-- <img src="" id="tableBanner" /> -->
+
+                                    <!-- <img [src]="profile_pic" height="200"> <br/>
+                                         <input type='file' (change)="onSelectFile($event)"> -->
                                     <ion-item>
                                         <ion-label>User Name</ion-label>
                                         <ion-input type="text" placeholder="User Name" formControlName="username"></ion-input>

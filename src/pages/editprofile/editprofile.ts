@@ -18,7 +18,8 @@ export class EditPage {
     profileForm: FormGroup;
     successMessage: string;
     errorMessage: string;
-
+    profile_pic: any;
+    result: any;
 
 
     constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider, public cameraService: CameraMock) {
@@ -51,6 +52,7 @@ export class EditPage {
 
 
         });
+        this.profile_pic = sessionStorage.getItem("profile_pic");
         this.getUserData();
     }
 
@@ -110,6 +112,15 @@ export class EditPage {
 
     //function to redirect to home page
     openHomePage() {
+        this.navCtrl.push(HomePage);
+    }
+
+    //function to logout of the application
+    logout() {
+        sessionStorage.setItem("loginDone", null);
+        sessionStorage.setItem("loggedUserId", null);
+        sessionStorage.setItem("loggedUserName", null);
+        sessionStorage.setItem("loggedUserEmail", null);
         this.navCtrl.push(HomePage);
     }
 
@@ -202,5 +213,20 @@ export class EditPage {
             console.log(res);
         })
     }
-}
 
+    // onSelectFile(event) { // called each time file input changes
+    //     if (event.target.files && event.target.files[0]) {
+    //       var reader = new FileReader();
+
+    //       reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+    //       reader.onload = (event) => { // called once readAsDataURL is completed
+    //         sessionStorage.setItem("profile_pic",event.target.result);
+    //         this.profile_pic = sessionStorage.getItem("profile_pic");
+    //       }
+    //     }
+    // }
+
+
+
+}

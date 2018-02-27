@@ -6,7 +6,7 @@ import { LoginPage } from '../login/login';
 import { EditPage } from '../editprofile/editprofile';
 import { RegistrationPage } from '../registration/registration';
 import { MyLeaguePage } from '../myleague/myleague';
-import { MyGroupPage } from '../mygroup/mygroup';
+// import { MyGroupPage } from '../mygroup/mygroup';
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
 @Component({
@@ -53,13 +53,13 @@ export class HomePage {
     }
   }
 
-  openGroup() {
-    if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
-      this.navCtrl.setRoot(LoginPage);
-    } else {
-      this.navCtrl.push(MyGroupPage);
-    }
-  }
+  // openGroup() {
+  //   if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
+  //     this.navCtrl.setRoot(LoginPage);
+  //   } else {
+  //     this.navCtrl.push(MyGroupPage);
+  //   }
+  // }
 
   //function to logout of the application
   logout() {
@@ -67,6 +67,7 @@ export class HomePage {
     sessionStorage.setItem("loggedUserId", null);
     sessionStorage.setItem("loggedUserName", null);
     sessionStorage.setItem("loggedUserEmail",null);
+    sessionStorage.setItem("profile_pic",null);
     this.navCtrl.push(HomePage);
   }
 }
