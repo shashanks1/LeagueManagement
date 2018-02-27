@@ -20,9 +20,6 @@
                 </ion-col>
 
 
-
-
-
                 <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="!userIsLogged">
                     <a href="#" (click)="openRegistration()">
                         <i class="zmdi zmdi-edit"></i> Register</a>
@@ -30,12 +27,6 @@
                         <i class="zmdi zmdi-account"></i> Login</a>
                 </ion-col>
 
-                <ion-col col-12>
-                    <div class="topLink">
-                        <a href="http://172.29.100.173:8100/" rel="0" class="newWindow">Ipad</a>
-                        <a href="http://172.29.100.173:8100/" rel="1" class="newWindow">Mobile</a>
-                    </div>
-                </ion-col>
 
                 <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="userIsLogged">
                     <span class="loggedInUserEmail">Welcome, {{userEmail}}</span>
@@ -45,13 +36,29 @@
                         <i class="zmdi zmdi-logout"></i> Logout</a>
                 </ion-col>
 
+
+
+
             </ion-row>
         </ion-grid>
     </div>
+
+    <ion-col col-12 class="responsiveLink">
+        <a href="http://172.29.100.173:8100/" rel="0" class="newWindow">Ipad</a>
+        <a href="http://172.29.100.173:8100/" rel="1" class="newWindow">Mobile</a>
+    </ion-col>
 </ion-header>
 
 <ion-content class="headerContent">
+
     <div class="container">
+        <ion-grid>
+            <ion-row>
+
+            </ion-row>
+        </ion-grid>
+
+
         <ion-grid>
             <ion-row>
                 <ion-col col-3>
@@ -106,41 +113,6 @@
                     </div>
                 </ion-col>
             </ion-row>
-
-        </div>
-    </div>
-
-    <!-- live feed -->
-    <div class="liveFeed">
-        <div class="container">
-            <ion-grid>
-                <ion-row>
-                    <ion-col col-12 col-lg-1 class="liveFeedText">
-                        <strong>Live Feed</strong>
-                    </ion-col>
-                    <ion-col col-12 col-lg-11>
-
-                        <ion-slides autoplay="2000">
-
-                            <ion-slide>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                </p>
-                            </ion-slide>
-
-                            <ion-slide>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                </p>
-                            </ion-slide>
-
-                            <ion-slide>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                </p>
-                            </ion-slide>
-
-                        </ion-slides>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
 
         </div>
     </div>
@@ -255,6 +227,40 @@
 
 
 
+            <!-- live feed -->
+            <div class="liveFeed">
+                <div class="container">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col col-12 col-lg-1 class="liveFeedText">
+                                <strong>Live Feed</strong>
+                            </ion-col>
+                            <ion-col col-12 col-lg-11>
+
+                                <ion-slides autoplay="2000">
+
+                                    <ion-slide>
+                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+                                        </p>
+                                    </ion-slide>
+
+                                    <ion-slide>
+                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+                                        </p>
+                                    </ion-slide>
+
+                                    <ion-slide>
+                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+                                        </p>
+                                    </ion-slide>
+
+                                </ion-slides>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+
+                </div>
+            </div>
         </div>
         <!-- /welcome div -->
 
@@ -273,27 +279,27 @@
                 <ion-grid>
                     <ion-row>
                         <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
-                            <ion-card>
+                            <ion-card (click)="openGroup()">
                                 <img src="assets/imgs/popularTabs-img-1.jpg" />
                                 <ion-card-content>
                                     <ion-card-title>
-                                        My History
+                                        My Group
                                     </ion-card-title>
                                 </ion-card-content>
                             </ion-card>
                         </ion-col>
 
                         <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
-                            <ion-card>
-
-                                <img src="assets/imgs/popularTabs-img-2.jpg" click="openLeague()">
-
-                                <ion-card-content>
-                                    <ion-card-title>
-                                        My Leagues
-                                    </ion-card-title>
-                                </ion-card-content>
-                            </ion-card>
+                            <a>
+                                <ion-card (click)="openLeague()">
+                                    <img src="assets/imgs/popularTabs-img-2.jpg">
+                                    <ion-card-content>
+                                        <ion-card-title>
+                                            My Leagues
+                                        </ion-card-title>
+                                    </ion-card-content>
+                                </ion-card>
+                            </a>
                         </ion-col>
 
                         <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
@@ -367,108 +373,219 @@
 
 
             </div>
-        </div>
-        <!-- /Popular Tabs -->
+            <!-- /welcome div -->
+
+            <!-- Popular Tabs -->
+            <div class="popularTabs">
+                <div class="container">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col col text-center>
+                                <h1>Popular Tabs</h1>
+                                <span></span>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
+                                <ion-card>
+                                    <img src="assets/imgs/popularTabs-img-1.jpg" />
+                                    <ion-card-content>
+                                        <ion-card-title>
+                                            My History
+                                        </ion-card-title>
+                                    </ion-card-content>
+                                </ion-card>
+                            </ion-col>
+
+                            <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
+                                <ion-card>
+
+                                    <img src="assets/imgs/popularTabs-img-2.jpg" click="openLeague()">
+
+                                    <ion-card-content>
+                                        <ion-card-title>
+                                            My Leagues
+                                        </ion-card-title>
+                                    </ion-card-content>
+                                </ion-card>
+                            </ion-col>
+
+                            <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
+                                <ion-card>
+                                    <img src="assets/imgs/popularTabs-img-3.jpg">
+                                    <ion-card-content>
+                                        <ion-card-title>
+                                            Find a Partner
+                                        </ion-card-title>
+                                    </ion-card-content>
+                                </ion-card>
+                            </ion-col>
+
+                            <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
+                                <ion-card>
+                                    <img src="assets/imgs/popularTabs-img-4.jpg" />
+                                    <ion-card-content>
+                                        <ion-card-title>
+                                            Maxime Placeat
+                                        </ion-card-title>
+                                    </ion-card-content>
+                                </ion-card>
+                            </ion-col>
+
+                            <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
+                                <ion-card>
+                                    <img src="assets/imgs/popularTabs-img-5.jpg" />
+                                    <ion-card-content>
+                                        <ion-card-title>
+                                            Lorem Ipsum
+                                        </ion-card-title>
+                                    </ion-card-content>
+                                </ion-card>
+                            </ion-col>
+
+                            <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
+                                <ion-card>
+                                    <img src="assets/imgs/popularTabs-img-6.jpg" />
+                                    <ion-card-content>
+                                        <ion-card-title>
+                                            Ut Enim Ad
+                                        </ion-card-title>
+                                    </ion-card-content>
+                                </ion-card>
+                            </ion-col>
+
+                            <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
+                                <ion-card>
+                                    <img src="assets/imgs/popularTabs-img-7.jpg" />
+                                    <ion-card-content>
+                                        <ion-card-title>
+                                            Excepteur Sint
+                                        </ion-card-title>
+                                    </ion-card-content>
+                                </ion-card>
+                            </ion-col>
+
+                            <ion-col col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3>
+                                <ion-card>
+                                    <img src="assets/imgs/popularTabs-img-8.jpg" />
+                                    <ion-card-content>
+                                        <ion-card-title>
+                                            Voluptatem
+                                        </ion-card-title>
+                                    </ion-card-content>
+                                </ion-card>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
 
 
-        <!-- footer -->
-        <div class="footer">
-            <div class="container">
-                <ion-grid>
-                    <ion-row>
-                        <ion-col col-lg-3 col-md-6 col-12>
-                            <img src="assets/imgs/footer-logo.png" />
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore nulla pariatur.</p>
-                            <a href="#">
-                                <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
-                            </a>
-                        </ion-col>
 
-                        <ion-col col-lg-3 col-md-6 col-12>
-                            <ul class="footerList">
-                                <li>
-                                    <a href="#">About</a>
-                                </li>
-                                <li>
-                                    <a href="#">Leatest News</a>
-                                </li>
-                                <li>
-                                    <a href="#">Help</a>
-                                </li>
-                                <li>
-                                    <a href="#">Donate</a>
-                                </li>
-                                <li>
-                                    <a href="#">Career</a>
-                                </li>
-                            </ul>
-                        </ion-col>
-
-                        <ion-col col-lg-3 col-md-6 col-12 class="footerContact">
-                            <h5>Contact Us</h5>
-                            <p>
-                                <strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
-
-                            <p>
-                                <strong>Call Us</strong> (123) 456-78-90</p>
-
-                            <p>
-                                <strong>Email</strong> info@mytenniscloud.com</p>
-                        </ion-col>
-
-                        <ion-col col-lg-3 col-md-6 col-12>
-                            <h5>Latest Blog Posts</h5>
-
-                            <ion-list>
-                                <ion-item>
-                                    <ion-avatar item-start>
-                                        <img src="assets/imgs/blog-img-1.jpg" />
-                                    </ion-avatar>
-                                    <h2>Improve Your Strokes Using The Wall</h2>
-                                    <p>
-                                        <a href="#">February 7, 2018</a> by
-                                        <a href="#">John Doe</a>
-                                    </p>
-                                </ion-item>
-
-                                <ion-item>
-                                    <ion-avatar item-start>
-                                        <img src="assets/imgs/blog-img-2.jpg" />
-                                    </ion-avatar>
-                                    <h2>Improve Your Strokes Using The Wall</h2>
-                                    <p>
-                                        <a href="#">February 7, 2018</a> by
-                                        <a href="#">John Doe</a>
-                                    </p>
-                                </ion-item>
-
-
-                            </ion-list>
-
-
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
+                </div>
             </div>
-        </div>
-        <!-- /footer -->
+            <!-- /Popular Tabs -->
 
-        <!-- Bottom footer -->
-        <div class="footerBottom">
-            <div class="container">
-                <ion-grid>
-                    <ion-row>
-                        <ion-col col-12 text-center>
-                            <p>My Tennis Cloud © 2018 All Rights Reserved
-                                <a href="#">Terms of Use</a> and
-                                <a href="#">Privacy Policy</a>
-                            </p>
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
+
+            <!-- footer -->
+            <div class="footer">
+                <div class="container">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col col-lg-3 col-md-6 col-12>
+                                <img src="assets/imgs/footer-logo.png" />
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore nulla pariatur.</p>
+                                <a href="#">
+                                    <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
+                                </a>
+                            </ion-col>
+
+                            <ion-col col-lg-3 col-md-6 col-12>
+                                <ul class="footerList">
+                                    <li>
+                                        <a href="#">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Leatest News</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Help</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Donate</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Career</a>
+                                    </li>
+                                </ul>
+                            </ion-col>
+
+                            <ion-col col-lg-3 col-md-6 col-12 class="footerContact">
+                                <h5>Contact Us</h5>
+                                <p>
+                                    <strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
+
+                                <p>
+                                    <strong>Call Us</strong> (123) 456-78-90</p>
+
+                                <p>
+                                    <strong>Email</strong> info@mytenniscloud.com</p>
+                            </ion-col>
+
+                            <ion-col col-lg-3 col-md-6 col-12>
+                                <h5>Latest Blog Posts</h5>
+
+                                <ion-list>
+                                    <ion-item>
+                                        <ion-avatar item-start>
+                                            <img src="assets/imgs/blog-img-1.jpg" />
+                                        </ion-avatar>
+                                        <h2>Improve Your Strokes Using The Wall</h2>
+                                        <p>
+                                            <a href="#">February 7, 2018</a> by
+                                            <a href="#">John Doe</a>
+                                        </p>
+                                    </ion-item>
+
+                                    <ion-item>
+                                        <ion-avatar item-start>
+                                            <img src="assets/imgs/blog-img-2.jpg" />
+                                        </ion-avatar>
+                                        <h2>Improve Your Strokes Using The Wall</h2>
+                                        <p>
+                                            <a href="#">February 7, 2018</a> by
+                                            <a href="#">John Doe</a>
+                                        </p>
+                                    </ion-item>
+
+
+                                </ion-list>
+
+
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
             </div>
-        </div>
-        <!-- /Bottom footer -->
+            <!-- /footer -->
+
+            <!-- Bottom footer -->
+            <div class="footerBottom">
+                <div class="container">
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col col-12 text-center>
+                                <p>My Tennis Cloud © 2018 All Rights Reserved
+                                    <a href="#">Terms of Use</a> and
+                                    <a href="#">Privacy Policy</a>
+                                </p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </div>
+            <!-- /Bottom footer -->
 
 
 </ion-content>

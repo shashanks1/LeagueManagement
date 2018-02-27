@@ -264,6 +264,9 @@ ion-header {
         color: $white;
     }
 }
+
+.welcomeText {color: $green;}
+
 .loggedInUserEmail {color: #8bc34a;margin-top: 7px;
     display: inline-block;}
 
@@ -274,6 +277,14 @@ ion-header {
     button {
         background: $blue-color
     }
+    .dataCol6 {
+        .rowCol {width: calc(16% - 4px);}
+    }
+
+    .dataCol4 {
+        .rowCol {width: calc(25% - 4px);}
+    }
+
     .tableDiv {
         border: 1px solid #d7d7d7;
         margin-top: 50px;
@@ -288,9 +299,12 @@ ion-header {
             padding: 15px 10px;
         }
         .rowCol {
-            width: calc(16.66% - 4px);
+            
             display: inline-block;
+            vertical-align: top;
         }
+
+        
         .tableDivRow {
             border-bottom: 1px solid #d7d7d7;
         }
@@ -380,14 +394,32 @@ ion-header {
     }
 }
 
-.nameList span {
-    display: inline;
+.nameList { 
+    span {display: inline;}
+    .groupName {display: block;}
 }
 
 .nameList span:after {
-    content: ', '
+    content: ', ';
+    display: inline-block;
+    margin-left:-3px;
 }
 
 .nameList span:last-child:after {
     content: ' '
 }
+
+.tableContent {
+    .dataCol6 {
+        .groupWrapper {width:32%;}
+    }
+
+    .dataCol4 {
+        .groupWrapper {width:50%;}
+    }
+} 
+.groupWrapper {display: inline-block;}
+.groupName {display: inline-block; width: 100%;}
+.nameList {display: inline-block; width:calc(50% - 4px); margin-bottom: 15px; vertical-align: top;}
+.nameSpace {margin-bottom: 12px;}
+.text-center {text-align: center;}

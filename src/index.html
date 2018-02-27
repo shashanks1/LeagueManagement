@@ -20,6 +20,7 @@
   <script src="cordova.js"></script>
 
   <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script>
     // Initialize Firebase
     var config = {
@@ -33,6 +34,25 @@
     firebase.initializeApp(config);
   </script>
 
+
+<script type="text/javascript">
+  var windowSizeArray = [ "width=768,height=1024",
+                          "width=375,height=667,scrollbars=yes" ];
+
+  $(document).ready(function(){
+      $('.newWindow').click(function (event){
+
+          var url = $(this).attr("href");
+          var windowName = "popUp";//$(this).attr("name");
+          var windowSize = windowSizeArray[$(this).attr("rel")];
+
+          window.open(url, windowName, windowSize);
+
+          event.preventDefault();
+
+      });
+  });
+</script>
   <!-- un-comment this code to enable service worker
   <script>
     if ('serviceWorker' in navigator) {

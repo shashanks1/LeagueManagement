@@ -66,6 +66,7 @@ export class HomePage {
     sessionStorage.setItem("loginDone", null);
     sessionStorage.setItem("loggedUserId", null);
     sessionStorage.setItem("loggedUserName", null);
+    sessionStorage.setItem("loggedUserEmail",null);
     this.navCtrl.push(HomePage);
   }
 }

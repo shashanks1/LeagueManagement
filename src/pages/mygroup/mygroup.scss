@@ -21,8 +21,11 @@ $green:#8bc34a;
             margin: 0 15px;
         }
     }
+
+    .welcomeText {color: $green;}
     .loggedInUserEmail {color: #8bc34a;margin-top: 7px;
         display: inline-block;}
+        
     .headerContent {
         .socialIcon {
             margin-top: 32px;
