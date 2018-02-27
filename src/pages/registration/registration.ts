@@ -49,10 +49,32 @@ export class RegistrationPage {
   }
 
   //function to sign in with google
+  // signInWithGoogle() {
+  //   this.successMessage = '';
+  //   this.errorMessage = '';
+  //   this.service.signInWithGoogle().then((res) => {
+  //     sessionStorage.setItem("loggedUserName", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+  //     sessionStorage.setItem("loginDone", 'userIsLogged');
+  //     this.navCtrl.push(HomePage);
+  //   })
+  //     .catch((err) => console.log(err));
+  // }
   signInWithGoogle() {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.signInWithGoogle().then((res) => {
+      let postData = {
+        'email' : (res['additionalUserInfo']['profile']['email']),
+        'full_name' : (res['additionalUserInfo']['profile']['name']),
+        'username' : (res['additionalUserInfo']['profile']['name'])
+      }
+      console.log(postData);
+      this.service.signUp(postData).subscribe((res: any[]) => {      
+      },
+        error => {
+          this.errorMessage = JSON.stringify(error['error']['res']);
+          this.errorMessage = JSON.parse(this.errorMessage);
+        });
       sessionStorage.setItem("loggedUserName", JSON.stringify(res['additionalUserInfo']['profile']['name']));
       sessionStorage.setItem("loginDone", 'userIsLogged');
       this.navCtrl.push(HomePage);
@@ -77,4 +99,7 @@ export class RegistrationPage {
     this.navCtrl.push(HomePage);
   }
 
+  openLogin() {
+    this.navCtrl.push(LoginPage);
+  }
 }

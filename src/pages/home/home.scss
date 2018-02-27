@@ -270,6 +270,11 @@ page-home {
             padding: 40px 20px;
             margin-top: 0;
         }
+        .banner {
+            h1 {
+                font-size: 36px;
+            }
+        }
     }
     @media (min-width:768px) and (max-width:991px) {
         .container {
@@ -298,5 +303,17 @@ page-home {
         font-weight: bold;
         text-decoration: none;
         margin: 0 10px;
+    }
+}
+
+.menu-inner {
+    margin-top: 56px;
+    width: 100%;
+    .content {
+        background: #1a3150;
+    }
+    .item {
+        background: #1a3150;
+        color: #fff;
     }
 }

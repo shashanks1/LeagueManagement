@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { EditPage } from '../editprofile/editprofile';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
@@ -23,22 +24,18 @@ export class MyLeaguePage {
   successMessage: string;
   errorMessage: string;
   userEmail: string;
-  is_admin: boolean;
-  widthVar : any;
+  widthVar: any;
+  created_by: any;
+  logged_user: any;
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
       this.userEmail = JSON.parse(sessionStorage.getItem("loggedUserName"));
     }
-    this.is_admin = false;
 
-    if (JSON.parse(sessionStorage.getItem("is_admin")) == 'true') {
-      this.is_admin = true;
-      this.getLeagueData();
-    }
-    else {
-      this.getLeaguePlayerData(); 
-    }
+    this.getLeagueData();
+
+  
     this.addLeague = false;
     this.editLeagueValue = false;
     this.noLeagueData = false;
@@ -47,6 +44,7 @@ export class MyLeaguePage {
     this.errorMessage = '';
     this.leagueData = [];
     this.groupsData = [];
+    this.logged_user = JSON.parse(sessionStorage.getItem("loggedUserEmail"));
 
 
 
@@ -146,7 +144,6 @@ export class MyLeaguePage {
     postData.players = this.testarray;
     postData.created_by = JSON.parse(sessionStorage.getItem("loggedUserEmail"));
 
-
     this.successMessage = '';
     this.errorMessage = '';
     if (this.addLeague) {
@@ -156,13 +153,14 @@ export class MyLeaguePage {
         this.successMessage = JSON.parse(this.successMessage);
         this.editLeagueValue = false;
         this.addLeague = false;
-        if (JSON.parse(sessionStorage.getItem("is_admin")) == 'true') {
-          this.is_admin = true;
-          this.getLeagueData();
-        }
-        else {
-          this.getLeaguePlayerData(); 
-        }
+        this.getLeagueData();
+        // if (JSON.parse(sessionStorage.getItem("is_admin")) == 'true') {
+        //   this.is_admin = true;
+        //   this.getLeagueData();
+        // }
+        // else {
+        //   this.getLeaguePlayerData();
+        // }
       },
         error => {
           this.errorMessage = JSON.stringify(error['error']['res']);
@@ -208,6 +206,11 @@ export class MyLeaguePage {
     this.navCtrl.push(HomePage);
   }
 
+  //function to open edit profile page for the application
+  editProfile() {
+    this.navCtrl.push(EditPage);
+  }
+
   //function to logout of the application
   logout() {
     sessionStorage.setItem("loginDone", null);
@@ -218,19 +221,19 @@ export class MyLeaguePage {
   }
 
   //function to get league data for player
-  getLeaguePlayerData() {
-    this.noLeagueData = false;
-    this.service.getLeaguePlayerData(JSON.parse(sessionStorage.getItem("loggedUserId"))).subscribe((response: any[]) => {
-      this.leagueData = response['res'];
-      if (this.leagueData.length == 0)
-        this.noLeagueData = true;
-      else
-        this.noLeagueData = false;
-    },
-      error => {
-        this.errorMessage = JSON.stringify(error['error']['res']);
-        this.errorMessage = JSON.parse(this.errorMessage);
-      });
-  }
+  // getLeaguePlayerData() {
+  //   this.noLeagueData = false;
+  //   this.service.getLeaguePlayerData(JSON.parse(sessionStorage.getItem("loggedUserId"))).subscribe((response: any[]) => {
+  //     this.leagueData = response['res'];
+  //     if (this.leagueData.length == 0)
+  //       this.noLeagueData = true;
+  //     else
+  //       this.noLeagueData = false;
+  //   },
+  //     error => {
+  //       this.errorMessage = JSON.stringify(error['error']['res']);
+  //       this.errorMessage = JSON.parse(this.errorMessage);
+  //     });
+  // }
 }
 

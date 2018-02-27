@@ -24,6 +24,7 @@ import { MyLeaguePage } from '../pages/myleague/myleague';
 import { MyGroupPage } from '../pages/mygroup/mygroup';
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
 
+
 export const environment = {
   production: false,
   firebase: {
