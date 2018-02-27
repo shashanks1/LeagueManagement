@@ -1,4 +1,3 @@
-
 $blue-color:#1a3150;
 $white:#fff;
 page-home {
@@ -21,28 +20,35 @@ page-home {
             margin: 8px 15px;
             float: left;
         }
-
-        .pull-right a{float:right;}
-
-        .bar-buttons {height: 2.6rem; float:left;}
+        .pull-right a {
+            float: right;
+        }
+        .bar-buttons {
+            height: 2.6rem;
+            float: left;
+        }
     }
-    .loggedInUserEmail {color: #8bc34a;margin-top: 7px;
-        display: inline-block;}
+    .loggedInUserEmail {
+        color: #8bc34a;
+        margin-top: 7px;
+        display: inline-block;
+    }
     .headerContent {
         .socialIcon {
-            margin-top: 32px;
+            margin-top: 0;
         }
     }
     .mainNav {
         list-style: none;
-        margin: 40px 0 0 0;
+        margin: 8px 0 0 0;
         padding: 0;
+        float: right;
         li {
             float: left;
             margin: 0 30px;
             a {
                 color: #606060;
-                font-size: 18px;
+                font-size: 16px;
                 text-decoration: none;
             }
         }
@@ -58,11 +64,11 @@ page-home {
     // banner
     .banner {
         background: url(../assets/imgs/banner.jpg) no-repeat 50% 0;
-        height: 551px;
+        height: 210px;
         h1 {
             color: #fff;
             font-size: 50px;
-            margin-top: 160px;
+            margin-top: 70px;
         }
         h2 {
             color: #fff;
@@ -94,14 +100,14 @@ page-home {
         background: #ececec;
         padding: 10px 0;
         .liveFeedText {
-            font-size: 18px;
+            font-size: 16px;
             color: $blue-color;
         }
         .swiper-slide {
             display: block;
             p {
                 margin: 0;
-                font-size: 18px;
+                font-size: 16px;
             }
         }
     }
@@ -136,11 +142,10 @@ page-home {
     }
     // popularTabs
     .popularTabs {
-        margin-top: 80px;
-        background: #f9faf7;
-        padding: 40px 0;
+        margin-top: 0;
+        padding: 0;
         h1 {
-            font-size: 50px;
+            font-size: 30px;
             color: $blue-color;
         }
         span {
@@ -150,14 +155,14 @@ page-home {
             background: #96bd42
         }
         .card {
-            margin-bottom: 80px;
+            margin-bottom: 20px;
         }
         .card-content {
             background: $blue-color;
-            padding: 8px 0;
+            padding: 2px 0;
             .card-title {
                 color: $white;
-                font-size: 20px;
+                font-size: 16px;
                 text-align: center;
             }
         }
@@ -230,6 +235,20 @@ page-home {
         background: $blue-color;
         color: #acb8c9;
         font-size: 12px;
+        .footerList {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li {
+                display: inline-block;
+                margin: 0 30px;
+                a {
+                    color: #dde7f5;
+                    font-size: 14px;
+                    text-decoration: none;
+                }
+            }
+        }
         a {
             text-decoration: none;
             color: $white;
@@ -268,7 +287,16 @@ page-home {
     }
 }
 
-
-.responsiveLink {background: #ccc; padding: 5px 0; display: block; text-align: center;
-    a {color: #333; text-transform: uppercase; font-weight: bold; text-decoration: none; margin: 0 10px;}
+.responsiveLink {
+    background: #ccc;
+    padding: 5px 0;
+    display: block;
+    text-align: center;
+    a {
+        color: #333;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-decoration: none;
+        margin: 0 10px;
+    }
 }
