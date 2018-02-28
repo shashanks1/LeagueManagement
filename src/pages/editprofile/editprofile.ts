@@ -207,11 +207,11 @@ export class EditPage {
     // //     });
     // // }
 
-    getImage() {
-        this.cameraService.getPicture().then((res: any[]) => {
-            console.log(res);
-        })
-    }
+    // getImage() {
+    //     this.cameraService.getPicture().then((res: any[]) => {
+    //         console.log(res);
+    //     })
+    // }
 
     // onSelectFile(event) { // called each time file input changes
     //     if (event.target.files && event.target.files[0]) {
