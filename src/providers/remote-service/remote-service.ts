@@ -65,8 +65,9 @@ export class RemoteServiceProvider {
   }
 
   // function to get the league data from the API
-  getLeagueData() {
-    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/league');
+  getLeagueData(id) {
+    
+    return this.http.get('https://8gmku063fh.execute-api.us-east-2.amazonaws.com/demo/user/'+id+'/leagues');
   }
 
   // function to get the group data from the API

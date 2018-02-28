@@ -66,8 +66,8 @@ export class MyLeaguePage {
   getLeagueData() {
 
     this.noLeagueData = false;
-    this.service.getLeagueData().subscribe((res: any[]) => {
-      this.leagueData = res;
+    this.service.getLeagueData(JSON.parse(sessionStorage.getItem('loggedUserId'))).subscribe((res: any[]) => {
+      this.leagueData = res['res'];
       if (this.leagueData.length == 0)
         this.noLeagueData = true;
       else
