@@ -1,17 +1,54 @@
 <ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-header>
+        <ion-toolbar>
+            <!-- <ion-grid *ngIf="!userIsLogged">
+                <ion-row text-center class="userIsLogged">
+                    <ion-col col-6>
+                        <a href="#" (click)="openRegistration()">
+                            <i class="zmdi zmdi-edit"></i> Register</a>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
+                    </ion-col>
+
+                    <ion-col col-6>
+                        <a href="#" (click)="openLogin()">
+                            <i class="zmdi zmdi-account"></i> Login
+                        </a>
+                    </ion-col>
+                </ion-row>
+            </ion-grid> -->
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list>
+            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          {{p.title}}
       </button>
-    </ion-list>
-  </ion-content>
+        </ion-list>
+
+        <!-- <ul class="sideNav">
+            <li><a href="#">Latest</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Donete</a></li>
+            <li><a href="#">Carrer</a></li>
+            <li><a href="#">Contact US</a></li>
+        </ul>
+
+        <ion-grid class="sideFooter">
+            <ion-row>
+                <ion-col col-12>
+                    <a href="#" class="colorWhite"><i class="zmdi zmdi-phone"></i> +1 (0) 1234 56789</a>
+                </ion-col>
+
+                <ion-col col-12>
+                    <a href="#" class="colorWhite"><i class="zmdi zmdi-email"></i> info@mytenniscloud.com</a>
+                </ion-col>
+            </ion-row>
+        </ion-grid> -->
+
+    </ion-content>
 
 </ion-menu>
 

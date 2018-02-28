@@ -258,6 +258,18 @@ page-home {
         .mainNav {
             display: none;
         }
+        .forMobile .top-strip .bar-buttons {
+            float: right;
+        }
+        .forDesktop {
+            display: none;
+        }
+        .toolbar {
+            display: none;
+        }
+        ion-header {
+            background: #fff;
+        }
     }
     @media (min-width:320px) and (max-width:767px) {
         .container {
@@ -289,6 +301,12 @@ page-home {
         .toolbar {
             display: none;
         }
+        .top-strip .bar-buttons {
+            display: none;
+        }
+        .forMobile {
+            display: none;
+        }
     }
 }
 
@@ -310,10 +328,16 @@ page-home {
     margin-top: 56px;
     width: 100%;
     .content {
-        background: #1a3150;
+        background: $blue-color;
     }
     .item {
-        background: #1a3150;
+        background: $blue-color;
         color: #fff;
+    }
+    .list .item-block .item-inner {
+        border-bottom: none;
+        .label {
+            margin: 7px 8px 7px 0;
+        }
     }
 }

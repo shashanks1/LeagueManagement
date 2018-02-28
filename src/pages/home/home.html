@@ -7,8 +7,22 @@
     </ion-navbar>
 
     <div class="container">
-        <ion-grid>
+        <ion-grid class="forMobile">
             <ion-row class="top-strip">
+                <ion-col col-6>
+                    <img src="assets/imgs/logo.png" alt="">
+                </ion-col>
+                <ion-col col-6>
+                    <button ion-button menuToggle>
+                    <ion-icon name="menu"></ion-icon>
+                </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-grid class="forDesktop">
+            <ion-row class="top-strip">
+
                 <ion-col col-12 col-md-8>
                     <button ion-button menuToggle>
                   <ion-icon name="menu"></ion-icon>
@@ -36,9 +50,6 @@
                         <i class="zmdi zmdi-logout"></i> Logout</a>
                 </ion-col>
 
-
-
-
             </ion-row>
         </ion-grid>
     </div>
@@ -51,7 +62,7 @@
 
 <ion-content class="headerContent">
 
-    <div class="container">
+    <div class="container forDesktop">
         <ion-grid>
             <ion-row>
                 <ion-col col-3>
@@ -111,7 +122,7 @@
     </div>
 
     <!-- live feed -->
-    <div class="liveFeed">
+    <!-- <div class="liveFeed">
         <div class="container">
             <ion-grid>
                 <ion-row>
@@ -143,7 +154,7 @@
             </ion-grid>
 
         </div>
-    </div>
+    </div> -->
     <!-- /live feed -->
 
     <!-- welcome div -->
