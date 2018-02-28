@@ -21,7 +21,8 @@
 
 
                 <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="!userIsLogged">
-
+                        <a href="#" (click)="logout()" style="padding-top : 8px;">
+                                <i class="zmdi zmdi-logout"></i> Logout</a>
                 </ion-col>
 
                 <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="userIsLogged == 'userIsLogged'">
