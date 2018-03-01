@@ -24,12 +24,15 @@ export class MyLeaguePage {
   successMessage: string;
   errorMessage: string;
   userEmail: string;
+  userIsLogged: boolean;
   widthVar: any;
   created_by: any;
   logged_user: any;
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
+    this.userIsLogged = false;
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
+      this.userIsLogged = true;
       this.userEmail = JSON.parse(sessionStorage.getItem("loggedUserName"));
     }
 
