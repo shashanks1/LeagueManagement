@@ -28,6 +28,7 @@ import { RemoteServiceProvider } from '../providers/remote-service/remote-servic
 import { CameraMock } from '../providers/remote-service/Camera-Service';
 
 
+
 export const environment = {
   production: false,
   firebase: {

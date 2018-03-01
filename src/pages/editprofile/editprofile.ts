@@ -20,28 +20,63 @@ export class EditPage {
     errorMessage: string;
     profile_pic: any;
     result: any;
+    contactInfoForm: FormGroup;
+    personalInfoForm: FormGroup;
+    tennisInfoForm: FormGroup;
 
 
     constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider, public cameraService: CameraMock) {
 
         this.successMessage = '';
         this.errorMessage = '';
-        this.profileForm = fb.group({
+        // this.profileForm = fb.group({
+        //     'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')])],
+        //     'full_name': [null, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z \-\']+')])],
+        //     'username': [null],
+        //     'office_phone': [null],
+        //     'home_phone': [null,Validators.pattern('^[0-9]*$')],
+        //     'cell_phone': [null,Validators.pattern('^[0-9]*$')],
+        //     'address1': [null],
+        //     'address2': [null],
+        //     'city': [null],
+        //     'user_state': [null],
+        //     'country': [null],
+        //     'zip': [null,Validators.pattern('^[0-9]*$')],
+        //     'height': [null],
+        //     'dob': [null],
+        //     'gender': [null],
+        //     'preferred_location': [null],
+        //     'handedness': [null],
+        //     'rating_type': [null],
+        //     'rating': [null],
+        //     'user_others': [null],
+        //     'strength': [null],
+        //     'weakness': [null],
+
+        // });
+
+        this.contactInfoForm = fb.group({
             'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')])],
             'full_name': [null, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z \-\']+')])],
+        });
+
+        this.personalInfoForm = fb.group({
             'username': [null],
             'office_phone': [null],
-            'home_phone': [null],
-            'cell_phone': [null],
+            'home_phone': [null, Validators.pattern('^[0-9]*$')],
+            'cell_phone': [null, Validators.pattern('^[0-9]*$')],
             'address1': [null],
             'address2': [null],
             'city': [null],
             'user_state': [null],
             'country': [null],
-            'zip': [null],
+            'zip': [null, Validators.pattern('^[0-9]*$')],
             'height': [null],
             'dob': [null],
             'gender': [null],
+        });
+
+        this.tennisInfoForm = fb.group({
             'preferred_location': [null],
             'handedness': [null],
             'rating_type': [null],
@@ -49,15 +84,30 @@ export class EditPage {
             'user_others': [null],
             'strength': [null],
             'weakness': [null],
+        })
 
-
-        });
         this.profile_pic = sessionStorage.getItem("profile_pic");
         this.getUserData();
     }
 
+    // //function to update user profile
+    // saveProfile(value) {
+    //     console.log(value);
+    //     let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
+    //     this.service.saveProfile(id, value).subscribe((res: any[]) => {
+    //         this.successMessage = JSON.stringify(res['res']);
+    //         this.successMessage = JSON.parse(this.successMessage);
+    //     },
+    //         error => {
+    //             this.errorMessage = JSON.stringify(error['error']['res']);
+    //             this.errorMessage = JSON.parse(this.errorMessage);
+    //         });
+    // }
+
     //function to update user profile
-    saveProfile(value) {
+    saveProfile(value1,value2,value3) {
+        let value = {...value1, ...value2, ...value3};
+        console.log(value);
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
         this.service.saveProfile(id, value).subscribe((res: any[]) => {
             this.successMessage = JSON.stringify(res['res']);
@@ -74,13 +124,52 @@ export class EditPage {
         this.navCtrl.push(HomePage);
     }
 
-    //function to get data from API for edit profile form
+    // function to get data from API for edit profile form
+    // getUserData() {
+    //     let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
+    //     this.service.getUser(id).subscribe((res: any[]) => {
+    //         this.profileForm.setValue({
+    //             'email': res['res']['email'],
+    //             'full_name': res['res']['full_name'],
+    //             'username': res['res']['username'],
+    //             'office_phone': res['res']['office_phone'],
+    //             'home_phone': res['res']['home_phone'],
+    //             'cell_phone': res['res']['cell_phone'],
+    //             'address1': res['res']['address1'],
+    //             'address2': res['res']['address2'],
+    //             'city': res['res']['city'],
+    //             'user_state': res['res']['user_state'],
+    //             'country': res['res']['country'],
+    //             'zip': res['res']['zip'],
+    //             'height': res['res']['height'],
+    //             'dob': res['res']['dob'],
+    //             'gender': res['res']['gender'],
+    //             'preferred_location': res['res']['preferred_location'],
+    //             'handedness': res['res']['handedness'],
+    //             'rating_type': res['res']['rating_type'],
+    //             'rating': res['res']['rating'],
+    //             'user_others': res['res']['user_others'],
+    //             'strength': res['res']['strength'],
+    //             'weakness': res['res']['weakness'],
+
+    //         });
+    //     },
+    //         error => {
+    //             this.errorMessage = JSON.stringify(error['error']['res']);
+    //             this.errorMessage = JSON.parse(this.errorMessage);
+    //         });
+    // }
+
+     //function to get data from API for edit profile form
     getUserData() {
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
         this.service.getUser(id).subscribe((res: any[]) => {
-            this.profileForm.setValue({
+
+            this.contactInfoForm.setValue({
                 'email': res['res']['email'],
-                'full_name': res['res']['full_name'],
+                'full_name': res['res']['full_name']
+            });
+            this.personalInfoForm.setValue({
                 'username': res['res']['username'],
                 'office_phone': res['res']['office_phone'],
                 'home_phone': res['res']['home_phone'],
@@ -93,14 +182,16 @@ export class EditPage {
                 'zip': res['res']['zip'],
                 'height': res['res']['height'],
                 'dob': res['res']['dob'],
-                'gender': res['res']['gender'],
+                'gender': res['res']['gender']
+            });
+            this.tennisInfoForm.setValue({
                 'preferred_location': res['res']['preferred_location'],
                 'handedness': res['res']['handedness'],
                 'rating_type': res['res']['rating_type'],
                 'rating': res['res']['rating'],
                 'user_others': res['res']['user_others'],
                 'strength': res['res']['strength'],
-                'weakness': res['res']['weakness'],
+                'weakness': res['res']['weakness']
 
             });
         },
@@ -109,6 +200,10 @@ export class EditPage {
                 this.errorMessage = JSON.parse(this.errorMessage);
             });
     }
+
+
+
+
 
     //function to redirect to home page
     openHomePage() {
@@ -208,11 +303,11 @@ export class EditPage {
     // //     });
     // // }
 
-    getImage() {
-        this.cameraService.getPicture().then((res: any[]) => {
-            console.log(res);
-        })
-    }
+    // getImage() {
+    //     this.cameraService.getPicture().then((res: any[]) => {
+    //         console.log(res);
+    //     })
+    // }
 
     // onSelectFile(event) { // called each time file input changes
     //     if (event.target.files && event.target.files[0]) {

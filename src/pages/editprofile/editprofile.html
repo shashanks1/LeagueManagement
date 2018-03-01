@@ -1,94 +1,293 @@
 <ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>Edit Profile</ion-title>
-    </ion-navbar>
-
-    <div class="container">
-        <ion-grid>
-            <ion-row class="top-strip">
-                <ion-col col-12 col-md-8>
-                    <button ion-button menuToggle>
-                        <ion-icon name="menu"></ion-icon>
-                    </button>
-                    <a href="#">
-                        <i class="zmdi zmdi-phone"></i> +1 (0) 1234 56789</a>
-                    <a href="#">
-                        <i class="zmdi zmdi-email"></i> info@mytenniscloud.com</a>
-                </ion-col>
-
-
-                <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="!userIsLogged">
+        <ion-navbar>
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+            <ion-title>Edit Profile</ion-title>
+        </ion-navbar>
+    
+        <div class="container">
+    
+            <ion-grid class="forMobile">
+                <ion-row class="top-strip">
+                    <ion-col col-6>
+                        <img src="assets/imgs/logo.png" alt="">
+                    </ion-col>
+                    <ion-col col-6>
+                        <button ion-button menuToggle>
+                                <ion-icon name="menu"></ion-icon>
+                            </button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+    
+    
+    
+            <ion-grid class="forDesktop">
+                <ion-row class="top-strip">
+                    <ion-col col-12 col-md-8>
+                        <button ion-button menuToggle>
+                            <ion-icon name="menu"></ion-icon>
+                        </button>
+                        <a href="#">
+                            <i class="zmdi zmdi-phone"></i> +1 (0) 1234 56789</a>
+                        <a href="#">
+                            <i class="zmdi zmdi-email"></i> info@mytenniscloud.com</a>
+                    </ion-col>
+    
+    
+                    <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="!userIsLogged">
                         <a href="#" (click)="logout()" style="padding-top : 8px;">
-                                <i class="zmdi zmdi-logout"></i> Logout</a>
-                </ion-col>
+                            <i class="zmdi zmdi-logout"></i> Logout</a>
+                    </ion-col>
+    
+                    <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="userIsLogged == 'userIsLogged'">
+                        <a href="#" (click)="logout()">
+                            <i class="zmdi zmdi-logout"></i> Logout</a>
+    
+                    </ion-col>
+    
+                </ion-row>
+            </ion-grid>
+        </div>
+    </ion-header>
 
-                <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="userIsLogged == 'userIsLogged'">
-                    <a href="#" (click)="logout()">
-                        <i class="zmdi zmdi-logout"></i> Logout</a>
-
-                </ion-col>
-
-            </ion-row>
-        </ion-grid>
-    </div>
-</ion-header>
 
 
+<ion-content>
+        <div class="container">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-3>
+                            <a>
+                                <img src="assets/imgs/logo.png" alt="" (click)="openHomePage()">
+                            </a>
+                        </ion-col>
+        
+                        <ion-col col-7>
+                            <ion-list>
+                                <ul class="mainNav">
+                                    <li class="active">
+                                        <a href="#">Lorem ipsum</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Perspiciatis
+                                            <i class="zmdi zmdi-chevron-down"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Neque porro
+                                            <i class="zmdi zmdi-chevron-down"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">About
+                                            <i class="zmdi zmdi-chevron-down"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </ion-list>
+                        </ion-col>
+        
+                        <ion-col col-2>
+                            <a href="#">
+                                <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
+                            </a>
+                        </ion-col>
+                    </ion-row>
+        
+                </ion-grid>
+            </div>
+            <div class="container signupDiv">
+                    <ion-grid>
+                        <ion-row text-center>
+                            <ion-col col-12>
+                                <img src="assets/imgs/logo.png" alt="">
+                            </ion-col>
+                        </ion-row>
 
-<ion-content padding>
-    <div class="container">
-        <ion-grid>
-            <ion-row>
-                <ion-col col-3>
-                    <a>
-                        <img src="assets/imgs/logo.png" alt="" (click)="openHomePage()">
-                    </a>
-                </ion-col>
 
-                <ion-col col-7>
-                    <ion-list>
-                        <ul class="mainNav">
-                            <li class="active">
-                                <a href="#">Lorem ipsum</a>
-                            </li>
-                            <li>
-                                <a href="#">Perspiciatis
-                                    <i class="zmdi zmdi-chevron-down"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">Neque porro
-                                    <i class="zmdi zmdi-chevron-down"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">About
-                                    <i class="zmdi zmdi-chevron-down"></i>
-                                </a>
-                            </li>
-                        </ul>
+    <div class="editSegment">
+        <ion-row>
+            <ion-col col-12 col-lg-4 offset-lg-4 col-md-8 offset-md-2>
+                <ion-segment [(ngModel)]="editFromGroup">
+                    <ion-segment-button value="contactInfo">
+                        Contact Info
+                    </ion-segment-button>
+                    <ion-segment-button value="personalInfo">
+                        Personal Info
+                    </ion-segment-button>
+
+                    <ion-segment-button value="tennisInfo">
+                        Tennis Info
+                    </ion-segment-button>
+                </ion-segment>
+
+                <div [ngSwitch]="editFromGroup">
+                    <ion-list *ngSwitchCase="'contactInfo'">
+
+                        <form [formGroup] = "contactInfoForm">
+                            <ion-item>
+                                <ion-label>Full Name*</ion-label>
+                                <ion-input type="text" id="firstname" class="form-control" placeholder="Full Name" formControlName="full_name"></ion-input>
+                            </ion-item>
+                            <p class="errorMessage" *ngIf="contactInfoForm.controls.full_name.errors && contactInfoForm.controls.full_name.dirty && contactInfoForm.controls.full_name.errors.pattern">Full Name can only be text.</p>
+                            <p class="errorMessage" *ngIf="contactInfoForm.controls.full_name.errors && contactInfoForm.controls.full_name.dirty && contactInfoForm.controls.full_name.errors.required">Full Name is required.</p>
+
+
+                            <ion-item>
+                                <ion-label>Email*</ion-label>
+                                <ion-input type="text" placeholder="Email" disabled="true" formControlName="email"></ion-input>
+                            </ion-item>
+                            <p class="errorMessage" *ngIf="contactInfoForm.controls.email.errors && contactInfoForm.controls.email.dirty && contactInfoForm.controls.email.errors.pattern">Please provide proper email.</p>
+                            <p class="errorMessage" *ngIf="contactInfoForm.controls.email.errors && contactInfoForm.controls.email.dirty && contactInfoForm.controls.email.errors.required">Email is required.</p>
+                        </form>
+
+
                     </ion-list>
-                </ion-col>
 
-                <ion-col col-2>
-                    <a href="#">
-                        <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
-                    </a>
-                </ion-col>
-            </ion-row>
+                    <ion-list *ngSwitchCase="'personalInfo'">
 
-        </ion-grid>
+                        <form [formGroup]= "personalInfoForm">
+                            <ion-item>
+                                <ion-label>User Name</ion-label>
+                                <ion-input type="text" placeholder="User Name" formControlName="username"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label>Home Phone</ion-label>
+                                <ion-input type="text" placeholder="Home Phone" formControlName="home_phone"></ion-input>
+                            </ion-item>
+                            <p class="errorMessage" *ngIf="personalInfoForm.controls.home_phone.errors && personalInfoForm.controls.home_phone.dirty && personalInfoForm.controls.home_phone.touched">Please provide proper phone number.</p>
+
+                            <ion-item>
+                                <ion-label>Cell Phone</ion-label>
+                                <ion-input type="text" placeholder="Cell Phone" formControlName="cell_phone"></ion-input>
+                            </ion-item>
+                            <p class="errorMessage" *ngIf="personalInfoForm.controls.cell_phone.errors && personalInfoForm.controls.cell_phone.dirty && personalInfoForm.controls.cell_phone.touched">Please provide proper phone number.</p>
+
+                            <ion-item>
+                                <ion-label>Address 1</ion-label>
+                                <ion-input type="text" placeholder="Address 1" formControlName="address1"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label>Address 2</ion-label>
+                                <ion-input type="text" placeholder="Address 2" formControlName="address2"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label>City</ion-label>
+                                <ion-input type="text" placeholder="City" formControlName="city"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label>State</ion-label>
+                                <ion-input type="text" placeholder="State" formControlName="user_state"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label>Country</ion-label>
+                                <ion-input type="text" placeholder="Country" formControlName="country"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label>Zip</ion-label>
+                                <ion-input type="text" placeholder="Zip" formControlName="zip"></ion-input>
+                            </ion-item>
+                            <p class="errorMessage" *ngIf="personalInfoForm.controls.zip.errors && personalInfoForm.controls.zip.dirty && personalInfoForm.controls.zip.touched">Please provide proper zip code.</p>
+
+                            <ion-item>
+                                <ion-label>Height(cm)</ion-label>
+                                <ion-input type="text" placeholder="Height(cm)" formControlName="height"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label>Date of Birth</ion-label>
+                                <ion-input type="text" placeholder="Date of Birth" formControlName="dob"></ion-input>
+                            </ion-item>
+                            <br>
+
+
+                            <ion-item>
+                                <ion-label>Gender :</ion-label>
+                                <ion-select interface="popover" formControlName="gender">
+                                    <ion-option value="male">Male</ion-option>
+                                    <ion-option value="female">Female</ion-option>
+                                </ion-select>
+                            </ion-item>
+                        </form>
+
+
+                    </ion-list>
+
+                    <ion-list *ngSwitchCase="'tennisInfo'" >
+                        <form [formGroup] = "tennisInfoForm" (ngSubmit)="saveProfile(contactInfoForm.value,personalInfoForm.value,tennisInfoForm)">
+                        <ion-item>
+                            <ion-label> Perfered Location</ion-label>
+                            <ion-input type="text" placeholder="Perfered Location" formControlName="preferred_location"></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Handedness</ion-label>
+                            <ion-input type="text" placeholder="Handedness" formControlName="handedness"></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Rating Type</ion-label>
+                            <ion-input type="text" placeholder="Rating Type" formControlName="rating_type"></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Rating</ion-label>
+                            <ion-input type="text" placeholder="Rating" formControlName="rating"></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Others</ion-label>
+                            <ion-input type="text" placeholder="Others" formControlName="user_others"></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Strength</ion-label>
+                            <ion-input type="text" placeholder="Strength" formControlName="strength"></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Weakness</ion-label>
+                            <ion-input type="text" placeholder="Weakness" formControlName="weakness"></ion-input>
+                        </ion-item>
+
+                        <div padding class="submitBtn">
+                            <div *ngIf="successMessage">
+                                <p class="successMessage">{{successMessage}}</p>
+                            </div>
+
+                            <div *ngIf="errorMessage">
+                                <p class="errorMessage">{{errorMessage}}</p>
+                            </div>
+                            <button ion-button block large color="dark" [disabled]="!contactInfoForm.valid || !personalInfoForm.valid || !tennisInfoForm.valid">Save Profile</button>
+                            <a href="#" (click)="cancel()">Cancel</a>
+                        </div>
+                    </form>
+                    </ion-list>
+                </div>
+            </ion-col>
+        </ion-row>
     </div>
-    <div class="signupDiv">
+
+
+    
+    </ion-grid>
+</div>
+
+    <!-- <div class="signupDiv">
         <ion-grid>
             <ion-row text-center>
-                <ion-col col-12>
+                 <ion-col col-12>
                     <img src="assets/imgs/logo.png" alt="">
-                </ion-col>
-            </ion-row>
+                </ion-col> -->
+    <!-- </ion-row>
             <form [formGroup]="profileForm" (ngSubmit)="saveProfile(profileForm.value)">
                 <div class="form-container">
                     <ion-row text-center>
@@ -107,9 +306,9 @@
                                         <ion-input type="text" placeholder="Email" formControlName="email" disabled="true"></ion-input>
                                     </ion-item>
                                     <p class="errorMessage" *ngIf="profileForm.controls.email.errors && profileForm.controls.email.dirty && profileForm.controls.email.errors.pattern">Please provide proper email.</p>
-                                    <p class="errorMessage" *ngIf="profileForm.controls.email.errors && profileForm.controls.email.dirty && profileForm.controls.email.errors.required">Email is required.</p>
+                                    <p class="errorMessage" *ngIf="profileForm.controls.email.errors && profileForm.controls.email.dirty && profileForm.controls.email.errors.required">Email is required.</p> -->
 
-                                    <!-- <ion-item>
+    <!-- <ion-item>
                                         <p>{{imageURI}}</p>
                                         <button ion-button color="secondary" (click)="getImage()">Get Image</button>
                                     </ion-item>
@@ -123,15 +322,15 @@
                                         <button ion-button (click)="uploadFile()">Upload</button>
                                     </ion-item> -->
 
-                                    <!-- <button (click)="callMyAction()">Take photo</button> -->
+    <!-- <button (click)="callMyAction()">Take photo</button> -->
 
-                                    <!-- <ion-list *ngFor="let item of downloads">
+    <!-- <ion-list *ngFor="let item of downloads">
                                         <ion-item *ngIf="(item.name|slice:-4) == '.pdf'">
                                             <h5>{{item.name}}</h5>
                                         </ion-item>
                                     </ion-list> -->
 
-                                    <!-- <ng4-files-click (filesSelect)="filesSelect($event)">
+    <!-- <ng4-files-click (filesSelect)="filesSelect($event)">
                                             <span>Click me to upload</span>
                                           </ng4-files-click>
 
@@ -142,11 +341,11 @@
                                               </ng4-files-drop> -->
 
 
-                                    <!-- <ion-item>
+    <!-- <ion-item>
                                         <button (click)="getImage()">Browse Images</button>
                                     </ion-item> -->
 
-                                    <!-- <ion-item>
+    <!-- <ion-item>
                                             <ion-input type="file">Upload</ion-input>
                                         </ion-item>
                                         <ion-item>
@@ -155,17 +354,17 @@
                                         </ion-item>>
                                         <input type='file' (change)="readUrl($event)">
                                         <img [src]="url"> -->
-                                    <!-- <input type='file' id="uploadBannerImage" (change)="readURL(this);" />
+    <!-- <input type='file' id="uploadBannerImage" (change)="readURL(this);" />
                                          -->
-                                    <!-- <img  style="width: 100px; height: 100px;">
+    <!-- <img  style="width: 100px; height: 100px;">
                                          <input  type="file" (change)="PreviewImage()">  -->
 
-                                    <!-- <input type='file' id="uploadBannerImage"  /> -->
-                                    <!-- <img src="" id="tableBanner" /> -->
+    <!-- <input type='file' id="uploadBannerImage"  /> -->
+    <!-- <img src="" id="tableBanner" /> -->
 
-                                    <!-- <img [src]="profile_pic" height="200"> <br/>
+    <!-- <img [src]="profile_pic" height="200"> <br/>
                                          <input type='file' (change)="onSelectFile($event)"> -->
-                                    <ion-item>
+    <!-- <ion-item>
                                         <ion-label>User Name</ion-label>
                                         <ion-input type="text" placeholder="User Name" formControlName="username"></ion-input>
                                     </ion-item>
@@ -174,11 +373,13 @@
                                         <ion-label>Home Phone</ion-label>
                                         <ion-input type="text" placeholder="Home Phone" formControlName="home_phone"></ion-input>
                                     </ion-item>
+                                    <p class="errorMessage" *ngIf="profileForm.controls.home_phone.errors && profileForm.controls.home_phone.dirty && profileForm.controls.home_phone.touched">Please provide proper phone number.</p>
 
                                     <ion-item>
                                         <ion-label>Cell Phone</ion-label>
                                         <ion-input type="text" placeholder="Cell Phone" formControlName="cell_phone"></ion-input>
                                     </ion-item>
+                                    <p class="errorMessage" *ngIf="profileForm.controls.cell_phone.errors && profileForm.controls.cell_phone.dirty && profileForm.controls.cell_phone.touched">Please provide proper phone number.</p>
 
                                     <ion-item>
                                         <ion-label>Address 1</ion-label>
@@ -209,6 +410,7 @@
                                         <ion-label>Zip</ion-label>
                                         <ion-input type="text" placeholder="Zip" formControlName="zip"></ion-input>
                                     </ion-item>
+                                    <p class="errorMessage" *ngIf="profileForm.controls.zip.errors && profileForm.controls.zip.dirty && profileForm.controls.zip.touched">Please provide proper zip code.</p>
 
                                     <ion-item>
                                         <ion-label>Height(cm)</ion-label>
@@ -285,18 +487,20 @@
                 </div>
             </form>
         </ion-grid>
-    </div>
+    </div> -->
 
 
 
 
     <!-- footer -->
-    <div class="footer">
+    <!-- <div class="footer">
         <div class="container">
             <ion-grid>
                 <ion-row>
                     <ion-col col-lg-3 col-md-6 col-12>
-                        <img src="assets/imgs/footer-logo.png" />
+                        <a>
+                                <img src="assets/imgs/logo.png" alt="" (click)="openHomePage()">
+                            </a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                             nulla pariatur.</p>
                         <a href="#">
@@ -370,23 +574,47 @@
                 </ion-row>
             </ion-grid>
         </div>
-    </div>
+    </div> -->
     <!-- /footer -->
 
     <!-- Bottom footer -->
     <div class="footerBottom">
-        <div class="container">
-            <ion-grid>
-                <ion-row>
-                    <ion-col col-12 text-center>
-                        <p>My Tennis Cloud © 2018 All Rights Reserved
-                            <a href="#">Terms of Use</a> and
-                            <a href="#">Privacy Policy</a>
-                        </p>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
+            <div class="container">
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-12 text-center>
+                            <ul class="footerList">
+                                <li>
+                                    <a href="#">About</a>
+                                </li>
+                                <li>
+                                    <a href="#">Leatest News</a>
+                                </li>
+                                <li>
+                                    <a href="#">Help</a>
+                                </li>
+                                <li>
+                                    <a href="#">Donate</a>
+                                </li>
+                                <li>
+                                    <a href="#">Career</a>
+                                </li>
+                                <li>
+                                    <a href="#">Contact Us</a>
+                                </li>
+                            </ul>
+                        </ion-col>
+    
+    
+                        <ion-col col-12 text-center>
+                            <p>My Tennis Cloud © 2018 All Rights Reserved
+                                <a href="#">Terms of Use</a> and
+                                <a href="#">Privacy Policy</a>
+                            </p>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
         </div>
-    </div>
-    <!-- /Bottom footer -->
+        <!-- /Bottom footer -->
 </ion-content>
