@@ -25,7 +25,7 @@ ion-header {
 
 .headerContent {
     .socialIcon {
-        margin-top: 32px;
+        margin-top: 0;
     }
 }
 
@@ -43,14 +43,15 @@ ion-header {
 
 .mainNav {
     list-style: none;
-    margin: 40px 0 0 0;
+    margin: 8px 0 0 0;
     padding: 0;
+    float: right;
     li {
         float: left;
         margin: 0 30px;
         a {
             color: #606060;
-            font-size: 18px;
+            font-size: 16px;
             text-decoration: none;
         }
     }
@@ -104,9 +105,9 @@ ion-header {
 // Inner banner
 .innerBanner {
     background: url(../assets/imgs/inner-banner.jpg) no-repeat 50% 0;
-    height: 289px;
+    height: 210px;
     h1 {
-        margin-top: 120px;
+        margin-top: 80px;
     }
 }
 
@@ -259,35 +260,56 @@ ion-header {
     background: $blue-color;
     color: #acb8c9;
     font-size: 12px;
+    .footerList {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+            display: inline-block;
+            margin: 0 30px;
+            a {
+                color: #dde7f5;
+                font-size: 14px;
+                text-decoration: none;
+            }
+        }
+    }
     a {
         text-decoration: none;
         color: $white;
     }
 }
 
-.welcomeText {color: $green;}
+.welcomeText {
+    color: $green;
+}
 
-.loggedInUserEmail {color: #8bc34a;margin-top: 7px;
-    display: inline-block;}
+.loggedInUserEmail {
+    color: #8bc34a;
+    margin-top: 7px;
+    display: inline-block;
+}
 
 // table content
 .tableContent {
-    margin-top: 50px;
+    margin-top: 15px;
     margin-bottom: 50px;
     button {
         background: $blue-color
     }
     .dataCol6 {
-        .rowCol {width: calc(16% - 4px);}
+        .rowCol {
+            width: calc(16% - 4px);
+        }
     }
-
     .dataCol4 {
-        .rowCol {width: calc(19% - 4px);}
+        .rowCol {
+            width: calc(19% - 4px);
+        }
     }
-
     .tableDiv {
         border: 1px solid #d7d7d7;
-        margin-top: 50px;
+        margin-top: 5px;
         font-size: 18px;
         overflow-x: auto;
         .tableDivHeader {
@@ -299,12 +321,9 @@ ion-header {
             padding: 15px 10px;
         }
         .rowCol {
-            
             display: inline-block;
             vertical-align: top;
         }
-
-        
         .tableDivRow {
             border-bottom: 1px solid #d7d7d7;
         }
@@ -357,6 +376,18 @@ ion-header {
     .mainNav {
         display: none;
     }
+    .forMobile .top-strip .bar-buttons {
+        float: right;
+    }
+    .forDesktop {
+        display: none;
+    }
+    .toolbar {
+        display: none;
+    }
+    ion-header {
+        background: #fff;
+    }
 }
 
 @media (min-width:320px) and (max-width:767px) {
@@ -390,19 +421,27 @@ ion-header {
 
 @media screen and (min-width:992px) {
     .toolbar {
+        display: none!important;
+    }
+    .forMobile {
         display: none;
     }
 }
 
-.nameList { 
-    span {display: inline-block; padding: 0 10px;}
-    .groupName {display: block;}
+.nameList {
+    span {
+        display: inline-block;
+        padding: 0 10px;
+    }
+    .groupName {
+        display: block;
+    }
 }
 
 .nameList span:after {
     content: ', ';
     display: inline-block;
-    margin-left:-3px;
+    margin-left: -3px;
 }
 
 .nameList span:last-child:after {
@@ -411,15 +450,37 @@ ion-header {
 
 .tableContent {
     .dataCol6 {
-        .groupWrapper {width:32%;}
+        .groupWrapper {
+            width: 32%;
+        }
     }
-
     .dataCol4 {
-        .groupWrapper {width:37.8%;}
+        .groupWrapper {
+            width: 37.8%;
+        }
     }
-} 
-.groupWrapper {display: inline-block;}
-.groupName {display: inline-block; width: 100%;}
-.nameList {display: inline-block; width:calc(50% - 4px); margin-bottom: 15px; vertical-align: top;}
-.nameSpace {margin-bottom: 12px;}
-.text-center {text-align: center;}
+}
+
+.groupWrapper {
+    display: inline-block;
+}
+
+.groupName {
+    display: inline-block;
+    width: 100%;
+}
+
+.nameList {
+    display: inline-block;
+    width: calc(50% - 4px);
+    margin-bottom: 15px;
+    vertical-align: top;
+}
+
+.nameSpace {
+    margin-bottom: 12px;
+}
+
+.text-center {
+    text-align: center;
+}

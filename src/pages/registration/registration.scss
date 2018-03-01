@@ -29,14 +29,15 @@ page-registration {
     }
     .mainNav {
         list-style: none;
-        margin: 40px 0 0 0;
+        margin: 8px 0 0 0;
         padding: 0;
+        float: right;
         li {
             float: left;
             margin: 0 30px;
             a {
                 color: #606060;
-                font-size: 18px;
+                font-size: 16px;
                 text-decoration: none;
             }
         }
@@ -49,10 +50,16 @@ page-registration {
             }
         }
     }
-
-    .successMessage {color:green; text-align: center;font-size:20px}
-    .errorMessage {color:red; text-align: center;font-size:20px}
- 
+    .successMessage {
+        color: green;
+        text-align: center;
+        font-size: 20px
+    }
+    .errorMessage {
+        color: red;
+        text-align: center;
+        font-size: 20px
+    }
     // banner
     .banner {
         background: url(../assets/imgs/banner.jpg) no-repeat 50% 0;
@@ -234,6 +241,20 @@ page-registration {
         background: $blue-color;
         color: #acb8c9;
         font-size: 12px;
+        .footerList {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            li {
+                display: inline-block;
+                margin: 0 30px;
+                a {
+                    color: #dde7f5;
+                    font-size: 14px;
+                    text-decoration: none;
+                }
+            }
+        }
         a {
             text-decoration: none;
             color: $white;
@@ -314,6 +335,18 @@ page-registration {
     @media screen and (max-width:991px) {
         .mainNav {
             display: none;
+        }
+        .forMobile .top-strip .bar-buttons {
+            float: right;
+        }
+        .forDesktop {
+            display: none;
+        }
+        .toolbar {
+            display: none;
+        }
+        ion-header {
+            background: #fff;
         }
     }
     @media (min-width:320px) and (max-width:767px) {

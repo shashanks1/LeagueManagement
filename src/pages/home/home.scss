@@ -287,6 +287,9 @@ page-home {
                 font-size: 36px;
             }
         }
+        .popularTabs .card {
+            margin-bottom: 0;
+        }
     }
     @media (min-width:768px) and (max-width:991px) {
         .container {
@@ -299,9 +302,6 @@ page-home {
     }
     @media screen and (min-width:992px) {
         .toolbar {
-            display: none;
-        }
-        .top-strip .bar-buttons {
             display: none;
         }
         .forMobile {
@@ -326,7 +326,7 @@ page-home {
 
 .menu-inner {
     margin-top: 56px;
-    width: 100%;
+    // width: 100%;
     .content {
         background: $blue-color;
     }

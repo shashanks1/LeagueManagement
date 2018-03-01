@@ -1,264 +1,303 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
+    <ion-navbar>
+        <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>SignUp</ion-title>
-  </ion-navbar>
+        <ion-title>SignUp</ion-title>
+    </ion-navbar>
 
-  <div class="container">
-    <ion-grid>
-      <ion-row class="top-strip">
-        <ion-col col-12 col-md-8>
-          <button ion-button menuToggle>
+    <div class="container">
+        <ion-grid class="forMobile">
+            <ion-row class="top-strip">
+                <ion-col col-6>
+                    <img src="assets/imgs/logo.png" alt="">
+                </ion-col>
+                <ion-col col-6>
+                    <button ion-button menuToggle>
+                  <ion-icon name="menu"></ion-icon>
+              </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+
+        <ion-grid class="forDesktop">
+            <ion-row class="top-strip">
+                <ion-col col-12 col-md-8>
+                    <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
           </button>
-          <a href="#">
-            <i class="zmdi zmdi-phone"></i> +1 (0) 1234 56789</a>
-          <a href="#">
-            <i class="zmdi zmdi-email"></i> info@mytenniscloud.com</a>
-        </ion-col>
+                    <a href="#">
+                        <i class="zmdi zmdi-phone"></i> +1 (0) 1234 56789</a>
+                    <a href="#">
+                        <i class="zmdi zmdi-email"></i> info@mytenniscloud.com</a>
+                </ion-col>
 
 
-        <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="!userIsLogged">
+                <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="!userIsLogged">
 
-        </ion-col>
+                </ion-col>
 
-        <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="userIsLogged == 'userIsLogged'">
-          <a href="#" (click)="editProfile()">
-            <i class="zmdi zmdi-account"></i> Edit Profile</a>
-        </ion-col>
+                <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="userIsLogged == 'userIsLogged'">
+                    <a href="#" (click)="editProfile()">
+                        <i class="zmdi zmdi-account"></i> Edit Profile</a>
+                </ion-col>
 
-      </ion-row>
-    </ion-grid>
-  </div>
+            </ion-row>
+        </ion-grid>
+    </div>
 </ion-header>
 
 
 
-<ion-content padding>
-  <div class="container">
-    <ion-grid>
-      <ion-row>
-          <a>
-        <ion-col col-3>
-          
-            <img src="assets/imgs/logo.png" alt="" (click)="openHomePage()">
-          
-        </ion-col>
-      </a>
-        <ion-col col-7>
-          <ion-list>
-            <ul class="mainNav">
-              <li class="active">
-                <a href="#">Lorem ipsum</a>
-              </li>
-              <li>
-                <a href="#">Perspiciatis
+<ion-content>
+    <div class="container forDesktop">
+        <ion-grid>
+            <ion-row>
+                <a>
+                    <ion-col col-3>
+
+                        <img src="assets/imgs/logo.png" alt="" (click)="openHomePage()">
+
+                    </ion-col>
+                </a>
+                <ion-col col-7>
+                    <ion-list>
+                        <ul class="mainNav">
+                            <li class="active">
+                                <a href="#">Lorem ipsum</a>
+                            </li>
+                            <li>
+                                <a href="#">Perspiciatis
                   <i class="zmdi zmdi-chevron-down"></i>
                 </a>
-              </li>
-              <li>
-                <a href="#">Neque porro
+                            </li>
+                            <li>
+                                <a href="#">Neque porro
                   <i class="zmdi zmdi-chevron-down"></i>
                 </a>
-              </li>
-              <li>
-                <a href="#">About
+                            </li>
+                            <li>
+                                <a href="#">About
                   <i class="zmdi zmdi-chevron-down"></i>
                 </a>
-              </li>
-            </ul>
-          </ion-list>
-        </ion-col>
+                            </li>
+                        </ul>
+                    </ion-list>
+                </ion-col>
 
-        <ion-col col-2>
-          <a href="#">
-            <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
-          </a>
-        </ion-col>
-      </ion-row>
+                <ion-col col-2>
+                    <a href="#">
+                        <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
+                    </a>
+                </ion-col>
+            </ion-row>
 
-    </ion-grid>
-  </div>
-  <div class="signupDiv">
-    <ion-grid>
-      <ion-row text-center>
-        <ion-col col-12>
-          <img src="assets/imgs/logo.png" alt="">
-        </ion-col>
-        <ion-col col-12 class="signupHeading">
-          <h1>Are you already a user?
-            <a href="#" (click)="openLogin()">Sign In</a>
-          </h1>
-          <h2>
-            <a href="#">Create an account using</a>
-          </h2>
-        </ion-col>
+        </ion-grid>
+    </div>
+    <div class="signupDiv">
+        <ion-grid>
+            <ion-row text-center>
+                <ion-col col-12>
+                    <img src="assets/imgs/logo.png" alt="">
+                </ion-col>
+                <ion-col col-12 class="signupHeading">
+                    <h1>Are you already a user?
+                        <a href="#" (click)="openLogin()">Sign In</a>
+                    </h1>
+                    <h2>
+                        <a href="#">Create an account using</a>
+                    </h2>
+                </ion-col>
 
-        <ion-col col-12 class="signinWhithSocial">
-          <img src="assets/imgs/facebook-img.jpg" alt="" (click)="signInWithFacebook()">
-          <img src="assets/imgs/google-plus.jpg" alt="" (click)="signInWithGoogle()">
-        </ion-col>
+                <ion-col col-12 class="signinWhithSocial">
+                    <img src="assets/imgs/facebook-img.jpg" alt="" (click)="signInWithFacebook()">
+                    <img src="assets/imgs/google-plus.jpg" alt="" (click)="signInWithGoogle()">
+                </ion-col>
 
-        <ion-col col-12 class="orLink">
-          <h1>Or</h1>
-        </ion-col>
-      </ion-row>
-      <div *ngIf="successMessage">
-        <p class="successMessage">{{successMessage}}</p>
-      </div>
+                <ion-col col-12 class="orLink">
+                    <h1>Or</h1>
+                </ion-col>
+            </ion-row>
+            <div *ngIf="successMessage">
+                <p class="successMessage">{{successMessage}}</p>
+            </div>
 
-      <div *ngIf="errorMessage">
-        <p class="errorMessage">{{errorMessage}}</p>
-      </div>
-      <form [formGroup]="registrationForm" (ngSubmit)="signUp(registrationForm.value)">
-        <div class="form-container">
-          <ion-row text-center>
-            <ion-col col-12 col-lg-4 offset-lg-4 col-md-8 offset-md-2>
-              <div class="signupForm">
-                <ion-list>
-                  <ion-item>
-                    <ion-input type="text" placeholder="Email Address" formControlName="email"></ion-input>
-                  </ion-item>
-                  <p class="errorMessage" *ngIf="registrationForm.controls.email.errors && registrationForm.controls.email.dirty && registrationForm.controls.email.errors.pattern">Please provide proper email.</p>
-                  <p class="errorMessage" *ngIf="registrationForm.controls.email.errors && registrationForm.controls.email.dirty && registrationForm.controls.email.errors.required">Email is required.</p>
+            <div *ngIf="errorMessage">
+                <p class="errorMessage">{{errorMessage}}</p>
+            </div>
+            <form [formGroup]="registrationForm" (ngSubmit)="signUp(registrationForm.value)">
+                <div class="form-container">
+                    <ion-row text-center>
+                        <ion-col col-12 col-lg-4 offset-lg-4 col-md-8 offset-md-2>
+                            <div class="signupForm">
+                                <ion-list>
+                                    <ion-item>
+                                        <ion-input type="text" placeholder="Email Address" formControlName="email"></ion-input>
+                                    </ion-item>
+                                    <p class="errorMessage" *ngIf="registrationForm.controls.email.errors && registrationForm.controls.email.dirty && registrationForm.controls.email.errors.pattern">Please provide proper email.</p>
+                                    <p class="errorMessage" *ngIf="registrationForm.controls.email.errors && registrationForm.controls.email.dirty && registrationForm.controls.email.errors.required">Email is required.</p>
 
-                  <ion-item>
-                    <ion-input type="text" placeholder="Full Name" formControlName="full_name"></ion-input>
-                  </ion-item>
-                  <p class="errorMessage" *ngIf="registrationForm.controls.full_name.errors && registrationForm.controls.full_name.dirty && registrationForm.controls.full_name.errors.pattern">Full Name can only be text.</p>
-                  <p class="errorMessage" *ngIf="registrationForm.controls.full_name.errors && registrationForm.controls.full_name.dirty && registrationForm.controls.full_name.errors.required">Full Name is required.</p>
+                                    <ion-item>
+                                        <ion-input type="text" placeholder="Full Name" formControlName="full_name"></ion-input>
+                                    </ion-item>
+                                    <p class="errorMessage" *ngIf="registrationForm.controls.full_name.errors && registrationForm.controls.full_name.dirty && registrationForm.controls.full_name.errors.pattern">Full Name can only be text.</p>
+                                    <p class="errorMessage" *ngIf="registrationForm.controls.full_name.errors && registrationForm.controls.full_name.dirty && registrationForm.controls.full_name.errors.required">Full Name is required.</p>
 
-                  <ion-item>
-                    <ion-input type="text" placeholder="Username" formControlName="username"></ion-input>
-                  </ion-item>
-                  <p class="errorMessage" *ngIf="registrationForm.controls.username.errors && registrationForm.controls.username.dirty">Username is required.</p>
+                                    <ion-item>
+                                        <ion-input type="text" placeholder="Username" formControlName="username"></ion-input>
+                                    </ion-item>
+                                    <p class="errorMessage" *ngIf="registrationForm.controls.username.errors && registrationForm.controls.username.dirty">Username is required.</p>
 
-                  <ion-item>
-                    <ion-input type="password" placeholder="password" formControlName="password"></ion-input>
-                  </ion-item>
-                  <p class="errorMessage" *ngIf="registrationForm.controls.password.errors && registrationForm.controls.password.dirty">Password is required.</p>
+                                    <ion-item>
+                                        <ion-input type="password" placeholder="password" formControlName="password"></ion-input>
+                                    </ion-item>
+                                    <p class="errorMessage" *ngIf="registrationForm.controls.password.errors && registrationForm.controls.password.dirty">Password is required.</p>
 
-                  <ion-item class="withoutBg">
-                    <ion-label>I agree to the terms of services</ion-label>
-                    <ion-checkbox color="dark"  formControlName="agree"></ion-checkbox>
-                  </ion-item>
-                  <p class="errorMessage" *ngIf="registrationForm.controls.agree.errors">Agree terms and conditions.</p>
+                                    <ion-item class="withoutBg">
+                                        <ion-label>I agree to the terms of services</ion-label>
+                                        <ion-checkbox color="dark" formControlName="agree"></ion-checkbox>
+                                    </ion-item>
+                                    <p class="errorMessage" *ngIf="registrationForm.controls.agree.errors">Agree terms and conditions.</p>
 
-                  <div padding class="submitBtn">
-                    <button ion-button block large color="dark" [disabled]="!registrationForm.valid">Sign Up</button>
-                  </div>
+                                    <div padding class="submitBtn">
+                                        <button ion-button block large color="dark" [disabled]="!registrationForm.valid">Sign Up</button>
+                                    </div>
 
-                </ion-list>
-              </div>
-            </ion-col>
+                                </ion-list>
+                            </div>
+                        </ion-col>
 
-          </ion-row>
+                    </ion-row>
+                </div>
+            </form>
+        </ion-grid>
+    </div>
+
+
+
+
+    <!-- footer -->
+    <!-- <div class="footer">
+        <div class="container">
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-lg-3 col-md-6 col-12>
+                        <img src="assets/imgs/footer-logo.png" />
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore nulla pariatur.</p>
+                        <a href="#">
+                            <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
+                        </a>
+                    </ion-col>
+
+                    <ion-col col-lg-3 col-md-6 col-12>
+                        <ul class="footerList">
+                            <li>
+                                <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="#">Leatest News</a>
+                            </li>
+                            <li>
+                                <a href="#">Help</a>
+                            </li>
+                            <li>
+                                <a href="#">Donate</a>
+                            </li>
+                            <li>
+                                <a href="#">Career</a>
+                            </li>
+                        </ul>
+                    </ion-col>
+
+                    <ion-col col-lg-3 col-md-6 col-12 class="footerContact">
+                        <h5>Contact Us</h5>
+                        <p>
+                            <strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
+
+                        <p>
+                            <strong>Call Us</strong> (123) 456-78-90</p>
+
+                        <p>
+                            <strong>Email</strong> info@mytenniscloud.com</p>
+                    </ion-col>
+
+                    <ion-col col-lg-3 col-md-6 col-12>
+                        <h5>Latest Blog Posts</h5>
+
+                        <ion-list>
+                            <ion-item>
+                                <ion-avatar item-start>
+                                    <img src="assets/imgs/blog-img-1.jpg" />
+                                </ion-avatar>
+                                <h2>Improve Your Strokes Using The Wall</h2>
+                                <p>
+                                    <a href="#">February 7, 2018</a> by
+                                    <a href="#">John Doe</a>
+                                </p>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-avatar item-start>
+                                    <img src="assets/imgs/blog-img-2.jpg" />
+                                </ion-avatar>
+                                <h2>Improve Your Strokes Using The Wall</h2>
+                                <p>
+                                    <a href="#">February 7, 2018</a> by
+                                    <a href="#">John Doe</a>
+                                </p>
+                            </ion-item>
+
+
+                        </ion-list>
+
+
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
         </div>
-      </form>
-    </ion-grid>
-  </div>
+    </div> -->
+    <!-- /footer -->
 
 
+    <!-- Bottom footer -->
+    <div class="footerBottom">
+        <div class="container">
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-12 text-center>
+                        <ul class="footerList">
+                            <li>
+                                <a href="#">About</a>
+                            </li>
+                            <li>
+                                <a href="#">Leatest News</a>
+                            </li>
+                            <li>
+                                <a href="#">Help</a>
+                            </li>
+                            <li>
+                                <a href="#">Donate</a>
+                            </li>
+                            <li>
+                                <a href="#">Career</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                    </ion-col>
 
 
-  <!-- footer -->
-  <div class="footer">
-    <div class="container">
-      <ion-grid>
-        <ion-row>
-          <ion-col col-lg-3 col-md-6 col-12>
-            <img src="assets/imgs/footer-logo.png" />
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore nulla pariatur.</p>
-            <a href="#">
-              <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
-            </a>
-          </ion-col>
-
-          <ion-col col-lg-3 col-md-6 col-12>
-            <ul class="footerList">
-              <li>
-                <a href="#">About</a>
-              </li>
-              <li>
-                <a href="#">Leatest News</a>
-              </li>
-              <li>
-                <a href="#">Help</a>
-              </li>
-              <li>
-                <a href="#">Donate</a>
-              </li>
-              <li>
-                <a href="#">Career</a>
-              </li>
-            </ul>
-          </ion-col>
-
-          <ion-col col-lg-3 col-md-6 col-12 class="footerContact">
-            <h5>Contact Us</h5>
-            <p>
-              <strong>Address</strong> 8500 Lorem ipsum, dolor fugiat , 55055</p>
-
-            <p>
-              <strong>Call Us</strong> (123) 456-78-90</p>
-
-            <p>
-              <strong>Email</strong> info@mytenniscloud.com</p>
-          </ion-col>
-
-          <ion-col col-lg-3 col-md-6 col-12>
-            <h5>Latest Blog Posts</h5>
-
-            <ion-list>
-              <ion-item>
-                <ion-avatar item-start>
-                  <img src="assets/imgs/blog-img-1.jpg" />
-                </ion-avatar>
-                <h2>Improve Your Strokes Using The Wall</h2>
-                <p>
-                  <a href="#">February 7, 2018</a> by
-                  <a href="#">John Doe</a>
-                </p>
-              </ion-item>
-
-              <ion-item>
-                <ion-avatar item-start>
-                  <img src="assets/imgs/blog-img-2.jpg" />
-                </ion-avatar>
-                <h2>Improve Your Strokes Using The Wall</h2>
-                <p>
-                  <a href="#">February 7, 2018</a> by
-                  <a href="#">John Doe</a>
-                </p>
-              </ion-item>
-
-
-            </ion-list>
-
-
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+                    <ion-col col-12 text-center>
+                        <p>My Tennis Cloud © 2018 All Rights Reserved
+                            <a href="#">Terms of Use</a> and
+                            <a href="#">Privacy Policy</a>
+                        </p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
     </div>
-  </div>
-  <!-- /footer -->
-
-  <!-- Bottom footer -->
-  <div class="footerBottom">
-    <div class="container">
-      <ion-grid>
-        <ion-row>
-          <ion-col col-12 text-center>
-            <p>My Tennis Cloud © 2018 All Rights Reserved
-              <a href="#">Terms of Use</a> and
-              <a href="#">Privacy Policy</a>
-            </p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-  </div>
-  <!-- /Bottom footer -->
+    <!-- /Bottom footer -->
 </ion-content>
