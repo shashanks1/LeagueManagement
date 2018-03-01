@@ -124,7 +124,7 @@
                         </ion-segment>
 
                         <div [ngSwitch]="editFromGroup">
-                            <ion-list *ngSwitchCase="'contactInfo'">
+                            <ion-list  *ngSwitchDefault> 
 
                                 <form [formGroup]="contactInfoForm">
                                     <ion-item>

@@ -93,6 +93,7 @@ export class EditPage {
 
         this.profile_pic = sessionStorage.getItem("profile_pic");
         this.getUserData();
+        
     }
 
     // //function to update user profile
