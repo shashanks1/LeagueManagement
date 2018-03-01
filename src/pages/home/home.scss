@@ -341,3 +341,29 @@ page-home {
         }
     }
 }
+
+.wrapper {
+    min-height: calc(100vh - 190px);
+}
+
+.footerBottom {
+    height: 100px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.userIsNotLogged {
+    background: $blue-color;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.userIsLogged {
+    background: $blue-color;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
