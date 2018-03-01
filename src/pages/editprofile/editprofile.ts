@@ -3,11 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController, ToastController } from 'ionic-angular';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
-import { CameraMock } from '../../providers/remote-service/Camera-Service';
+
 import { HomePage } from '../home/home';
 
 @Component({
@@ -23,10 +22,16 @@ export class EditPage {
     contactInfoForm: FormGroup;
     personalInfoForm: FormGroup;
     tennisInfoForm: FormGroup;
+    userIsLogged: boolean;
+    userEmail: string;
 
 
-    constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider, public cameraService: CameraMock) {
-
+    constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
+        this.userIsLogged = false;
+        if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
+            this.userIsLogged = true;
+            this.userEmail = JSON.parse(sessionStorage.getItem("loggedUserName"));
+        }
         this.successMessage = '';
         this.errorMessage = '';
         // this.profileForm = fb.group({
@@ -58,10 +63,6 @@ export class EditPage {
         this.contactInfoForm = fb.group({
             'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')])],
             'full_name': [null, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z \-\']+')])],
-        });
-
-        this.personalInfoForm = fb.group({
-            'username': [null],
             'office_phone': [null],
             'home_phone': [null, Validators.pattern('^[0-9]*$')],
             'cell_phone': [null, Validators.pattern('^[0-9]*$')],
@@ -71,6 +72,10 @@ export class EditPage {
             'user_state': [null],
             'country': [null],
             'zip': [null, Validators.pattern('^[0-9]*$')],
+        });
+
+        this.personalInfoForm = fb.group({
+            'username': [null],
             'height': [null],
             'dob': [null],
             'gender': [null],
@@ -105,8 +110,8 @@ export class EditPage {
     // }
 
     //function to update user profile
-    saveProfile(value1,value2,value3) {
-        let value = {...value1, ...value2, ...value3};
+    saveProfile(value1, value2, value3) {
+        let value = { ...value1, ...value2, ...value3 };
         console.log(value);
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
         this.service.saveProfile(id, value).subscribe((res: any[]) => {
@@ -160,17 +165,14 @@ export class EditPage {
     //         });
     // }
 
-     //function to get data from API for edit profile form
+    //function to get data from API for edit profile form
     getUserData() {
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
         this.service.getUser(id).subscribe((res: any[]) => {
 
             this.contactInfoForm.setValue({
                 'email': res['res']['email'],
-                'full_name': res['res']['full_name']
-            });
-            this.personalInfoForm.setValue({
-                'username': res['res']['username'],
+                'full_name': res['res']['full_name'],
                 'office_phone': res['res']['office_phone'],
                 'home_phone': res['res']['home_phone'],
                 'cell_phone': res['res']['cell_phone'],
@@ -180,9 +182,12 @@ export class EditPage {
                 'user_state': res['res']['user_state'],
                 'country': res['res']['country'],
                 'zip': res['res']['zip'],
+            });
+            this.personalInfoForm.setValue({
+                'username': res['res']['username'],
                 'height': res['res']['height'],
                 'dob': res['res']['dob'],
-                'gender': res['res']['gender']
+                'gender': res['res']['gender'],
             });
             this.tennisInfoForm.setValue({
                 'preferred_location': res['res']['preferred_location'],
@@ -191,8 +196,7 @@ export class EditPage {
                 'rating': res['res']['rating'],
                 'user_others': res['res']['user_others'],
                 'strength': res['res']['strength'],
-                'weakness': res['res']['weakness']
-
+                'weakness': res['res']['weakness'],
             });
         },
             error => {
@@ -200,10 +204,6 @@ export class EditPage {
                 this.errorMessage = JSON.parse(this.errorMessage);
             });
     }
-
-
-
-
 
     //function to redirect to home page
     openHomePage() {
