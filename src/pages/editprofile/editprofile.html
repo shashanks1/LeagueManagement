@@ -264,8 +264,8 @@
                                     <div *ngIf="errorMessage">
                                         <p class="errorMessage">{{errorMessage}}</p>
                                     </div>
-                                    <button ion-button block large color="dark" [disabled]="!profileForm.valid">Save Profile</button>
-                                    <a href="#" (click)="cancel()">Cancel</a>
+                                    <button ion-button block large color="secondary" [disabled]="!profileForm.valid">Save Profile</button>
+                                    <a href="#" ion-button block large color="secondary" (click)="cancel()">Cancel</a>
                                 </div>
                             </ion-list>
                         </div>
