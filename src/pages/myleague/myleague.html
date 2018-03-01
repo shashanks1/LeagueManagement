@@ -54,6 +54,21 @@
         </ion-grid>
     </div>
 
+    <ion-col col-12 class="userIsNotLogged forMobile" *ngIf="!userIsLogged">
+        <a href="#" (click)="openRegistration()">
+            <i class="zmdi zmdi-edit"></i> Register</a>
+        <a href="#" (click)="openLogin()">
+            <i class="zmdi zmdi-account"></i> Login</a>
+    </ion-col>
+
+    <ion-col col-12 class="userIsLogged forMobile" *ngIf="userIsLogged">
+        <span class="loggedInUserEmail">Welcome, {{userEmail}}</span>
+        <a href="#" (click)="editProfile()">
+            <i class="zmdi zmdi-account"></i> Edit Profile</a>
+        <a href="#" (click)="logout()">
+            <i class="zmdi zmdi-power"></i> Logout</a>
+    </ion-col>
+
     <ion-col col-12 class="responsiveLink">
         <a href="http://demo.damcogroup.com:2208/" rel="0" class="newWindow">Ipad</a>
         <a href="http://demo.damcogroup.com:2208/" rel="1" class="newWindow">Mobile</a>
@@ -61,167 +76,168 @@
 </ion-header>
 
 <ion-content class="headerContent">
-    <div class="container">
-        <ion-grid>
-            <ion-row>
-                <ion-col col-3>
-                    <a>
-                        <img src="assets/imgs/logo.png" alt="" (click)="openHomePage()">
-                    </a>
-                </ion-col>
-
-                <ion-col col-7>
-                    <ion-list>
-                        <ul class="mainNav">
-                            <li class="active">
-                                <a href="#">Lorem ipsum</a>
-                            </li>
-                            <li>
-                                <a href="#">Perspiciatis
-                                    <i class="zmdi zmdi-chevron-down"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">Neque porro
-                                    <i class="zmdi zmdi-chevron-down"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">About
-                                    <i class="zmdi zmdi-chevron-down"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </ion-list>
-                </ion-col>
-
-                <ion-col col-2>
-                    <a href="#">
-                        <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
-                    </a>
-                </ion-col>
-
-            </ion-row>
-
-        </ion-grid>
-    </div>
-
-    <!-- inner banner -->
-
-    <div class="banner innerBanner">
+    <div class="wrapper">
         <div class="container">
-            <ion-row text-center>
-                <ion-col class="col-12 col-sm-8">
-                    <div class="" *ngIf="!addLeague && !editLeagueValue">
-                        <h1>League List</h1>
-                    </div>
-                    <div class="" *ngIf="addLeague">
-                        <h1>Add New League </h1>
-                    </div>
-                    <div class="" *ngIf="editLeagueValue">
-                        <h1>Edit League </h1>
-                    </div>
-                </ion-col>
-            </ion-row>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-3>
+                        <a>
+                            <img src="assets/imgs/logo.png" alt="" (click)="openHomePage()">
+                        </a>
+                    </ion-col>
 
+                    <ion-col col-7>
+                        <ion-list>
+                            <ul class="mainNav">
+                                <li class="active">
+                                    <a href="#">Lorem ipsum</a>
+                                </li>
+                                <li>
+                                    <a href="#">Perspiciatis
+                                    <i class="zmdi zmdi-chevron-down"></i>
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="#">Neque porro
+                                    <i class="zmdi zmdi-chevron-down"></i>
+                                </a>
+                                </li>
+                                <li>
+                                    <a href="#">About
+                                    <i class="zmdi zmdi-chevron-down"></i>
+                                </a>
+                                </li>
+                            </ul>
+                        </ion-list>
+                    </ion-col>
+
+                    <ion-col col-2>
+                        <a href="#">
+                            <img src="assets/imgs/social-icon.png" alt="" class="socialIcon">
+                        </a>
+                    </ion-col>
+
+                </ion-row>
+
+            </ion-grid>
         </div>
-    </div>
 
-    <div class="tableContent" *ngIf="!addLeague && !editLeagueValue">
-        <div *ngIf="successMessage">
-            <p class="successMessage">{{successMessage}}</p>
+        <!-- inner banner -->
+
+        <div class="banner innerBanner">
+            <div class="container">
+                <ion-row text-center>
+                    <ion-col class="col-12 col-sm-8">
+                        <div class="" *ngIf="!addLeague && !editLeagueValue">
+                            <h1>League List</h1>
+                        </div>
+                        <div class="" *ngIf="addLeague">
+                            <h1>Add New League </h1>
+                        </div>
+                        <div class="" *ngIf="editLeagueValue">
+                            <h1>Edit League </h1>
+                        </div>
+                    </ion-col>
+                </ion-row>
+
+            </div>
         </div>
 
-        <div *ngIf="errorMessage">
-            <p class="errorMessage">{{errorMessage}}</p>
-        </div>
-        <div class="container">
-            <ion-row>
-                <ion-col col-12 text-right>
-                    <button ion-button color="dark" (click)="addNewLeague()">Add New League</button>
-                </ion-col>
-            </ion-row>
+        <div class="tableContent" *ngIf="!addLeague && !editLeagueValue">
+            <div *ngIf="successMessage">
+                <p class="successMessage">{{successMessage}}</p>
+            </div>
 
-            <div class="tableDiv scroolTable dataCol6">
-                <div class="tableDivHeader">
+            <div *ngIf="errorMessage">
+                <p class="errorMessage">{{errorMessage}}</p>
+            </div>
+            <div class="container">
+                <ion-row>
+                    <ion-col col-12 text-right>
+                        <button ion-button color="primary" (click)="addNewLeague()">Add New League</button>
+                    </ion-col>
+                </ion-row>
 
-                    <div class="rowCol">
-                        League Name
+                <div class="tableDiv scroolTable dataCol6">
+                    <div class="tableDivHeader">
+
+                        <div class="rowCol">
+                            League Name
+                        </div>
+
+                        <div class="rowCol">
+                            Category
+                        </div>
+
+                        <div class="rowCol">
+                            Player Name
+                        </div>
+
+                        <div class="rowCol">
+                            Location
+                        </div>
+
+                        <div class="rowCol">
+                            Created
+                        </div>
+
+                        <div class="rowCol text-center">
+                            Action
+                        </div>
+
+
                     </div>
 
-                    <div class="rowCol">
-                        Category
-                    </div>
+                    <div class="tableRow">
+                        <div *ngIf="!noLeagueData">
+                            <div class="tableDivRow" *ngFor="let lgdata of leagueData">
 
-                    <div class="rowCol">
-                        Player Name
-                    </div>
+                                <div class="rowCol">
+                                    {{lgdata.league_name}}
+                                </div>
 
-                    <div class="rowCol">
-                        Location
-                    </div>
-
-                    <div class="rowCol">
-                        Created
-                    </div>
-
-                    <div class="rowCol text-center">
-                        Action
-                    </div>
-
-
-                </div>
-
-                <div class="tableRow">
-                    <div *ngIf="!noLeagueData">
-                        <div class="tableDivRow" *ngFor="let lgdata of leagueData">
-
-                            <div class="rowCol">
-                                {{lgdata.league_name}}
-                            </div>
-
-                            <div class="rowCol groupWrapper">
-                                <span *ngFor="let category of lgdata.groups">
+                                <div class="rowCol groupWrapper">
+                                    <span class="nameListWrap" *ngFor="let category of lgdata.groups">
                                 <div class="groupName">
                                     <span class="nameList">{{category.name}}</span>
 
-                                <span class="nameList">
+                                    <span class="nameList">
                                         <span *ngFor="let player of category.players">
                                             {{player}}
                                         </span>
+                                    </span>
+                                </div>
                                 </span>
                             </div>
-                            </span>
-                        </div>
 
 
-                        <div class="rowCol">
-                            {{lgdata.league_location}}
-                        </div>
+                            <div class="rowCol">
+                                {{lgdata.league_location}}
+                            </div>
 
 
-                        <div class="rowCol">
-                            {{lgdata.created}}
-                        </div>
+                            <div class="rowCol">
+                                {{lgdata.created}}
+                            </div>
 
-                        <div class="rowCol actionLink text-center" *ngIf="logged_user == lgdata.created_by">
-                            <a href="#" (click)="editLeague(lgdata)">
-                                <i class="zmdi zmdi-edit"></i>
-                            </a>
-                            <a href="#" (click)="deleteLeague(lgdata.id)">
-                                <i class="zmdi zmdi-delete"></i>
-                            </a>
+                            <div class="rowCol actionLink text-center" *ngIf="logged_user == lgdata.created_by">
+                                <a href="#" (click)="editLeague(lgdata)">
+                                    <i class="zmdi zmdi-edit"></i>
+                                </a>
+                                <a href="#" (click)="deleteLeague(lgdata.id)">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div *ngIf="noLeagueData">
+                    <p class="errorMessage">No data to display, please add a league.</p>
+                </div>
             </div>
 
-            <div *ngIf="noLeagueData">
-                <p class="errorMessage">No data to display, please add a league.</p>
-            </div>
-        </div>
-
-        <!-- <div class="tableDiv scroolTable dataCol4" *ngIf="!is_admin">
+            <!-- <div class="tableDiv scroolTable dataCol4" *ngIf="!is_admin">
             <div class="tableDivHeader">
 
                 <div class="rowCol">
@@ -277,7 +293,7 @@
                                 </span> -->
 
 
-        <!-- <div class="rowCol">
+            <!-- <div class="rowCol">
             {{lgdata.league_location}}
         </div>
 
@@ -295,7 +311,7 @@
         <p class="errorMessage">No data to display, please add a league.</p>
     </div>
     </div> -->
-    </div>
+        </div>
 
     </div>
 
@@ -490,6 +506,7 @@
         </div>
     </div> -->
     <!-- /footer -->
+    </div>
 
     <!-- Bottom footer -->
     <div class="footerBottom">
