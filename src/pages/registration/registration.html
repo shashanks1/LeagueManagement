@@ -159,7 +159,7 @@
                                             <ion-label>I agree to the terms of services</ion-label>
                                             <ion-checkbox color="dark" formControlName="agree"></ion-checkbox>
                                         </ion-item>
-                                        <p class="errorMessage" *ngIf="registrationForm.controls.agree.errors">Please agree to terms and conditions.</p>
+                                        <p class="errorMessage" *ngIf="registrationForm.controls.agree.errors" >Please agree to terms and conditions.</p>
 
                                         <div padding class="submitBtn">
                                             <button ion-button block large color="dark" [disabled]="!registrationForm.valid">Sign Up</button>

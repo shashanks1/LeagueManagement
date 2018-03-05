@@ -36,7 +36,7 @@
 
                 <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="!userIsLogged">
                     <a href="#" (click)="openRegistration()">
-                        <i class="zmdi zmdi-edit"></i> Register</a>
+                        <i class="zmdi zmdi-edit" ></i> Register</a>
                     <a href="#" (click)="openLogin()">
                         <i class="zmdi zmdi-account"></i> Login</a>
                 </ion-col>
@@ -55,10 +55,10 @@
     </div>
 
     <ion-col col-12 class="userIsNotLogged forMobile" *ngIf="!userIsLogged">
-        <a href="#" (click)="openRegistration()">
-            <i class="zmdi zmdi-edit"></i> Register</a>
-        <a href="#" (click)="openLogin()">
-            <i class="zmdi zmdi-account"></i> Login</a>
+        <a href="#" (click)="openRegistration()" style="color : white">
+            <i class="zmdi zmdi-edit" style="color : white"></i> Register</a>
+        <a href="#" (click)="openLogin()" style="color : white">
+            <i class="zmdi zmdi-account" style="color : white"></i> Login</a>
     </ion-col>
 
     <ion-col col-12 class="userIsLogged forMobile" *ngIf="userIsLogged">

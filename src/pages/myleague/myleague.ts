@@ -7,6 +7,8 @@ import { EditPage } from '../editprofile/editprofile';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
+import { AlertController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-myleague',
@@ -29,7 +31,7 @@ export class MyLeaguePage {
   created_by: any;
   logged_user: any;
 
-  constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
+  constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider, private alertCtrl: AlertController) {
     this.userIsLogged = false;
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
       this.userIsLogged = true;
@@ -38,7 +40,6 @@ export class MyLeaguePage {
 
     this.getLeagueData();
 
-  
     this.addLeague = false;
     this.editLeagueValue = false;
     this.noLeagueData = false;
@@ -48,7 +49,6 @@ export class MyLeaguePage {
     this.leagueData = [];
     this.groupsData = [];
     this.logged_user = JSON.parse(sessionStorage.getItem("loggedUserEmail"));
-
 
 
     this.modificationForm = fb.group({
@@ -190,18 +190,37 @@ export class MyLeaguePage {
 
   //function to delete league
   deleteLeague(id) {
-    this.successMessage = '';
-    this.errorMessage = '';
-    this.service.deleteLeague(id).subscribe((res: any[]) => {
-      this.successMessage = JSON.stringify(res['res']);
-      this.successMessage = JSON.parse(this.successMessage);
-      this.modificationForm.reset();
-      this.getLeagueData()
-    },
-      error => {
-        this.errorMessage = JSON.stringify(error['error']['res']);
-        this.errorMessage = JSON.parse(this.errorMessage);
-      });
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Delete',
+      message: 'Do you want to delete this league?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.successMessage = '';
+            this.errorMessage = '';
+            this.service.deleteLeague(id).subscribe((res: any[]) => {
+              this.successMessage = JSON.stringify(res['res']);
+              this.successMessage = JSON.parse(this.successMessage);
+              this.modificationForm.reset();
+              this.getLeagueData()
+            },
+              error => {
+                this.errorMessage = JSON.stringify(error['error']['res']);
+                this.errorMessage = JSON.parse(this.errorMessage);
+              });
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   //function to redirect to home page
@@ -223,6 +242,9 @@ export class MyLeaguePage {
     this.navCtrl.push(HomePage);
   }
 
+
+
+
   //function to get league data for player
   // getLeaguePlayerData() {
   //   this.noLeagueData = false;
@@ -239,4 +261,3 @@ export class MyLeaguePage {
   //     });
   // }
 }
-

@@ -140,18 +140,16 @@ export class LoginPage {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.signInWithGoogle().then((res) => {
-      console.log(res);
       let postData = {
-        'email' : (res['additionalUserInfo']['profile']['email']),
-        'full_name' : (res['additionalUserInfo']['profile']['name']),
-        'username' : (res['additionalUserInfo']['profile']['name']),
-        'source' : 'Google',
-        'localId': (res['user']['uid']) 
+        'email': (res['additionalUserInfo']['profile']['email']),
+        'full_name': (res['additionalUserInfo']['profile']['name']),
+        'username': (res['additionalUserInfo']['profile']['name']),
+        'source': 'Google',
+        'localId': (res['user']['uid'])
       }
-      console.log(postData);
-      this.service.signUp(postData).subscribe((res: any[]) => {   
+      this.service.signUp(postData).subscribe((res: any[]) => {
         sessionStorage.setItem("loggedUserId", JSON.stringify(res['res']['id']));
-        sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['res']['email']));   
+        sessionStorage.setItem("loggedUserEmail", JSON.stringify(res['res']['email']));
         // sessionStorage.setitem("loggedUserEmail",JSON.stringify(res['additionalUserInfo']['profile']['email']));
       },
         error => {
@@ -170,9 +168,22 @@ export class LoginPage {
     this.successMessage = '';
     this.errorMessage = '';
     this.service.signInWithFacebook().then((res) => {
-      sessionStorage.setItem("loggedUserName", JSON.stringify(res['additionalUserInfo']['profile']['name']));
-      sessionStorage.setItem("loginDone", 'userIsLogged');
-      this.navCtrl.push(HomePage);
+      let postData = {
+        'email': (res['additionalUserInfo']['profile']['email']),
+        'full_name': (res['additionalUserInfo']['profile']['name']),
+        'username': (res['additionalUserInfo']['profile']['name']),
+        'source': 'Google',
+        'localId': (res['user']['uid'])
+      }
+      this.service.signUp(postData).subscribe((res: any[]) => {
+        sessionStorage.setItem("loggedUserName", JSON.stringify(res['additionalUserInfo']['profile']['name']));
+        sessionStorage.setItem("loginDone", 'userIsLogged');
+        // this.navCtrl.push(HomePage);
+      },
+        error => {
+          this.errorMessage = JSON.stringify(error['error']['res']);
+          this.errorMessage = JSON.parse(this.errorMessage);
+        });
     })
       .catch((err) => console.log(err));
   }
