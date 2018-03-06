@@ -61,6 +61,7 @@ export class LoginPage {
       error => {
         this.errorMessage = JSON.stringify(error['error']['res']);
         this.errorMessage = JSON.parse(this.errorMessage);
+        this.loginForm.reset();
       });
   }
 

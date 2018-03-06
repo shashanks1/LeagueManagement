@@ -68,8 +68,18 @@ $green:#95bd42;
             }
         }
     }
+
+    .footerBottom {height: 132px!important;}
+    .footerBottom .footerList li {margin-bottom: 8px!important;}
 }
+
+
 
 :host/deep/ .content a.colorWhite {
     font-size: $white!important;
 }
+
+// edit page
+.signupDiv .item-input .label {color:black; width:130px;}
+sup {color: red;}
+

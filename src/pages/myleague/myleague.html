@@ -69,10 +69,6 @@
             <i class="zmdi zmdi-power"></i> Logout</a>
     </ion-col>
 
-    <ion-col col-12 class="responsiveLink">
-        <a href="http://demo.damcogroup.com:2208/" rel="0" class="newWindow">Ipad</a>
-        <a href="http://demo.damcogroup.com:2208/" rel="1" class="newWindow">Mobile</a>
-    </ion-col>
 </ion-header>
 
 <ion-content class="headerContent">
@@ -321,8 +317,8 @@
                 <form [formGroup]="modificationForm" (ngSubmit)='submitNewLeague(modificationForm.value)'>
 
                     <ion-item>
-                        <ion-label floating>League Name*</ion-label>
-                        <ion-input type="text" formControlName="league_name"></ion-input>
+                        <ion-label floating>League Name<sup>*</sup></ion-label>
+                        <ion-input type="text" formControlName="league_name" class="capitalize"></ion-input>
                     </ion-item>
                     <p class="errorMessage" *ngIf="modificationForm.controls.league_name.errors && modificationForm.controls.league_name.dirty">League Name is required.</p>
 
@@ -332,7 +328,7 @@
                     </ion-item>
                     <ion-item>
                         <ion-label floating>Location</ion-label>
-                        <ion-input type="text" formControlName="league_location"></ion-input>
+                        <ion-input type="text" formControlName="league_location" class="capitalize"></ion-input>
                     </ion-item>
 
                     <div class="fromToWrapper">
@@ -372,7 +368,7 @@
                         </div>
                     </div>
                     <ion-item style="margin-top:20px;">
-                        <ion-label>Category*</ion-label>
+                        <ion-label>Category<sup>*</sup></ion-label>
                         <ion-select formControlName="categories" multiple="true" disabled={{editLeagueValue}}>
                             <ion-option value="Men Singles">Men Singles</ion-option>
                             <ion-option value="Women Singles">Women Singles</ion-option>
@@ -519,7 +515,7 @@
                                 <a href="#">About</a>
                             </li>
                             <li>
-                                <a href="#">Leatest News</a>
+                                <a href="#">Latest News</a>
                             </li>
                             <li>
                                 <a href="#">Help</a>

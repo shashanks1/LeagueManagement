@@ -85,7 +85,7 @@ export class EditPage {
             'preferred_location': [null],
             'handedness': [null],
             'rating_type': [null],
-            'rating': [null],
+            'rating': [null,Validators.pattern('[0-9]+(?:\.[0-9]{0,2})?')],  
             'user_others': [null],
             'strength': [null],
             'weakness': [null],

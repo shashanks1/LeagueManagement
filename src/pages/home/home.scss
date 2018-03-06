@@ -64,6 +64,7 @@ page-home {
     // banner
     .banner {
         background: url(../assets/imgs/banner.jpg) no-repeat 50% 0;
+        background-size:  cover;
         height: 210px;
         h1 {
             color: #fff;

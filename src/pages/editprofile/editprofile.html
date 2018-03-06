@@ -129,60 +129,60 @@
 
                                     <form [formGroup]="contactInfoForm">
                                         <ion-item>
-                                            <ion-label>Full Name*</ion-label>
-                                            <ion-input type="text" id="firstname" class="form-control" placeholder="Full Name" formControlName="full_name"></ion-input>
+                                            <ion-label>Full Name<sup>*</sup></ion-label>
+                                            <ion-input type="text" id="firstname" class="form-control capitalize" formControlName="full_name"></ion-input>
                                         </ion-item>
                                         <p class="errorMessage" *ngIf="contactInfoForm.controls.full_name.errors && contactInfoForm.controls.full_name.dirty && contactInfoForm.controls.full_name.errors.pattern">Full Name can only be text.</p>
                                         <p class="errorMessage" *ngIf="contactInfoForm.controls.full_name.errors && contactInfoForm.controls.full_name.dirty && contactInfoForm.controls.full_name.errors.required">Full Name is required.</p>
 
 
                                         <ion-item>
-                                            <ion-label>Email*</ion-label>
-                                            <ion-input type="text" placeholder="Email" disabled="true" formControlName="email"></ion-input>
+                                            <ion-label>Email<sup>*</sup></ion-label>
+                                            <ion-input type="text" disabled="true" formControlName="email"></ion-input>
                                         </ion-item>
                                         <p class="errorMessage" *ngIf="contactInfoForm.controls.email.errors && contactInfoForm.controls.email.dirty && contactInfoForm.controls.email.errors.pattern">Please provide proper email.</p>
                                         <p class="errorMessage" *ngIf="contactInfoForm.controls.email.errors && contactInfoForm.controls.email.dirty && contactInfoForm.controls.email.errors.required">Email is required.</p>
 
                                         <ion-item>
                                             <ion-label>Home Phone</ion-label>
-                                            <ion-input type="text" placeholder="Home Phone" formControlName="home_phone"></ion-input>
+                                            <ion-input type="text" formControlName="home_phone"></ion-input>
                                         </ion-item>
                                         <p class="errorMessage" *ngIf="contactInfoForm.controls.home_phone.errors && contactInfoForm.controls.home_phone.dirty && contactInfoForm.controls.home_phone.touched">Please provide proper phone number.</p>
 
                                         <ion-item>
                                             <ion-label>Cell Phone</ion-label>
-                                            <ion-input type="text" placeholder="Cell Phone" formControlName="cell_phone"></ion-input>
+                                            <ion-input type="text" formControlName="cell_phone"></ion-input>
                                         </ion-item>
                                         <p class="errorMessage" *ngIf="contactInfoForm.controls.cell_phone.errors && contactInfoForm.controls.cell_phone.dirty && contactInfoForm.controls.cell_phone.touched">Please provide proper phone number.</p>
 
                                         <ion-item>
                                             <ion-label>Address 1</ion-label>
-                                            <ion-input type="text" placeholder="Address 1" formControlName="address1"></ion-input>
+                                            <ion-input type="text" formControlName="address1" class="capitalize"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Address 2</ion-label>
-                                            <ion-input type="text" placeholder="Address 2" formControlName="address2"></ion-input>
+                                            <ion-input type="text" formControlName="address2" class="capitalize"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>City</ion-label>
-                                            <ion-input type="text" placeholder="City" formControlName="city"></ion-input>
+                                            <ion-input type="text" formControlName="city" class="capitalize"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>State</ion-label>
-                                            <ion-input type="text" placeholder="State" formControlName="user_state"></ion-input>
+                                            <ion-input type="text" formControlName="user_state" class="capitalize"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Country</ion-label>
-                                            <ion-input type="text" placeholder="Country" formControlName="country"></ion-input>
+                                            <ion-input type="text" formControlName="country" class="capitalize"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Zip</ion-label>
-                                            <ion-input type="text" placeholder="Zip" formControlName="zip"></ion-input>
+                                            <ion-input type="text" formControlName="zip"></ion-input>
                                         </ion-item>
                                         <p class="errorMessage" *ngIf="contactInfoForm.controls.zip.errors && contactInfoForm.controls.zip.dirty && contactInfoForm.controls.zip.touched">Please provide proper zip code.</p>
 
@@ -196,17 +196,17 @@
                                     <form [formGroup]="personalInfoForm">
                                         <ion-item>
                                             <ion-label>User Name</ion-label>
-                                            <ion-input type="text" placeholder="User Name" formControlName="username"></ion-input>
+                                            <ion-input type="text" formControlName="username" class="capitalize"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Height(cm)</ion-label>
-                                            <ion-input type="text" placeholder="Height(cm)" formControlName="height"></ion-input>
+                                            <ion-input type="text" formControlName="height"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Date of Birth</ion-label>
-                                            <ion-input type="text" placeholder="Date of Birth" formControlName="dob"></ion-input>
+                                            <ion-input type="date" formControlName="dob"></ion-input>
                                         </ion-item>
                                         <br>
 
@@ -224,37 +224,38 @@
                                     <form [formGroup]="tennisInfoForm" (ngSubmit)="saveProfile(contactInfoForm.value,personalInfoForm.value,tennisInfoForm.value)">
                                         <ion-item>
                                             <ion-label> Perfered Location</ion-label>
-                                            <ion-input type="text" placeholder="Perfered Location" formControlName="preferred_location"></ion-input>
+                                            <ion-input type="text" formControlName="preferred_location"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Handedness</ion-label>
-                                            <ion-input type="text" placeholder="Handedness" formControlName="handedness"></ion-input>
+                                            <ion-input type="text" formControlName="handedness"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Rating Type</ion-label>
-                                            <ion-input type="text" placeholder="Rating Type" formControlName="rating_type"></ion-input>
+                                            <ion-input type="text" formControlName="rating_type"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Rating</ion-label>
-                                            <ion-input type="text" placeholder="Rating" formControlName="rating"></ion-input>
+                                            <ion-input type="text" formControlName="rating"></ion-input>
                                         </ion-item>
+                                        <p class="errorMessage" *ngIf="tennisInfoForm.controls.rating.errors && tennisInfoForm.controls.rating.dirty && tennisInfoForm.controls.rating.touched">Please provide proper rating.</p>
 
                                         <ion-item>
                                             <ion-label>Others</ion-label>
-                                            <ion-input type="text" placeholder="Others" formControlName="user_others"></ion-input>
+                                            <ion-input type="text" formControlName="user_others"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Strength</ion-label>
-                                            <ion-input type="text" placeholder="Strength" formControlName="strength"></ion-input>
+                                            <ion-input type="text" formControlName="strength"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Weakness</ion-label>
-                                            <ion-input type="text" placeholder="Weakness" formControlName="weakness"></ion-input>
+                                            <ion-input type="text" formControlName="weakness"></ion-input>
                                         </ion-item>
 
                                         <div padding class="submitBtn">
@@ -641,7 +642,7 @@
                                 <a href="#">About</a>
                             </li>
                             <li>
-                                <a href="#">Leatest News</a>
+                                <a href="#">Latest News</a>
                             </li>
                             <li>
                                 <a href="#">Help</a>
