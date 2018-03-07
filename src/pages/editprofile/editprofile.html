@@ -203,6 +203,7 @@
                                             <ion-label>Height(cm)</ion-label>
                                             <ion-input type="text" formControlName="height"></ion-input>
                                         </ion-item>
+                                        <p class="errorMessage" *ngIf="personalInfoForm.controls.height.errors && personalInfoForm.controls.height.dirty && personalInfoForm.controls.height.touched">Please provide proper height.</p>
 
                                         <ion-item>
                                             <ion-label>Date of Birth</ion-label>
@@ -224,17 +225,17 @@
                                     <form [formGroup]="tennisInfoForm" (ngSubmit)="saveProfile(contactInfoForm.value,personalInfoForm.value,tennisInfoForm.value)">
                                         <ion-item>
                                             <ion-label> Perfered Location</ion-label>
-                                            <ion-input type="text" formControlName="preferred_location"></ion-input>
+                                            <ion-input type="text" formControlName="preferred_location" class="capitalize"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Handedness</ion-label>
-                                            <ion-input type="text" formControlName="handedness"></ion-input>
+                                            <ion-input type="text" formControlName="handedness" class="capitalize"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Rating Type</ion-label>
-                                            <ion-input type="text" formControlName="rating_type"></ion-input>
+                                            <ion-input type="text" formControlName="rating_type" class="capitalize"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
@@ -245,17 +246,17 @@
 
                                         <ion-item>
                                             <ion-label>Others</ion-label>
-                                            <ion-input type="text" formControlName="user_others"></ion-input>
+                                            <ion-input type="text" formControlName="user_others" class="capitalize"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Strength</ion-label>
-                                            <ion-input type="text" formControlName="strength"></ion-input>
+                                            <ion-input type="text" formControlName="strength" class="capitalize"></ion-input>
                                         </ion-item>
 
                                         <ion-item>
                                             <ion-label>Weakness</ion-label>
-                                            <ion-input type="text" formControlName="weakness"></ion-input>
+                                            <ion-input type="text" formControlName="weakness" class="capitalize"></ion-input>
                                         </ion-item>
 
                                         <div padding class="submitBtn">

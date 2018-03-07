@@ -76,7 +76,7 @@ export class EditPage {
 
         this.personalInfoForm = fb.group({
             'username': [null],
-            'height': [null],
+            'height': [null,Validators.pattern('[0-9.-]*')],
             'dob': [null],
             'gender': [null],
         });
@@ -85,7 +85,7 @@ export class EditPage {
             'preferred_location': [null],
             'handedness': [null],
             'rating_type': [null],
-            'rating': [null,Validators.pattern('[0-9]+(?:\.[0-9]{0,2})?')],  
+            'rating': [null,Validators.pattern('[0-9.-]*')],  
             'user_others': [null],
             'strength': [null],
             'weakness': [null],
