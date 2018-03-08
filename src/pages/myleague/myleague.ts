@@ -141,7 +141,11 @@ export class MyLeaguePage {
 
   //function to submit added and edited league to the API
   submitNewLeague(postData) {
-
+    for(let leagueValue in postData){
+      if(postData[leagueValue] == ""){
+        postData[leagueValue] = null;
+      }
+    }
     this.testarray = [];
     this.testarray.push(postData.players);
     postData.players = this.testarray;

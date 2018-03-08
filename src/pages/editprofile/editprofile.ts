@@ -113,8 +113,12 @@ export class EditPage {
     //function to update user profile
     saveProfile(value1, value2, value3) {
         let value = { ...value1, ...value2, ...value3 };
-        console.log(value);
         let id = JSON.parse(sessionStorage.getItem("loggedUserId"));
+        for(let profileValue in value){
+            if (value[profileValue] == ""){
+                value[profileValue] = null;
+            }
+        }
         this.service.saveProfile(id, value).subscribe((res: any[]) => {
             this.successMessage = JSON.stringify(res['res']);
             this.successMessage = JSON.parse(this.successMessage);
