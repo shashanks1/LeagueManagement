@@ -244,29 +244,29 @@
         <!-- /footer -->
     </div>
 
-    <!-- Bottom footer -->
-    <div class="footerBottom">
+     <!-- Bottom footer -->
+     <div class="footerBottom">
         <div class="container">
             <ion-grid>
                 <ion-row>
                     <ion-col col-12 text-center>
                         <ul class="footerList">
-                            <li>
+                            <li (click)="openPages('About')">
                                 <a href="#">About</a>
                             </li>
-                            <li>
+                            <li (click)="openPages('News')">
                                 <a href="#">Latest News</a>
                             </li>
-                            <li>
+                            <li (click)="openPages('Help')">
                                 <a href="#">Help</a>
                             </li>
-                            <li>
+                            <li (click)="openPages('Donate')">
                                 <a href="#">Donate</a>
                             </li>
-                            <li>
+                            <li (click)="openPages('Career')">
                                 <a href="#">Career</a>
                             </li>
-                            <li>
+                            <li (click)="openPages('Contact')">
                                 <a href="#">Contact Us</a>
                             </li>
                         </ul>
@@ -275,8 +275,8 @@
 
                     <ion-col col-12 text-center>
                         <p>My Tennis Cloud © 2018 All Rights Reserved
-                            <a href="#">Terms of Use</a> and
-                            <a href="#">Privacy Policy</a>
+                            <a href="#" (click)="openPages('Terms')">Terms of Use</a> and
+                            <a href="#" (click)="openPages('Policy')">Privacy Policy</a>
                         </p>
                     </ion-col>
                 </ion-row>

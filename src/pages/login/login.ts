@@ -6,6 +6,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 import { HomePage } from '../home/home';
 
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -18,13 +19,14 @@ export class LoginPage {
   errorMessage: string;
   forgotPassword: boolean;
   changePassword: boolean;
-
+  pages: Array<{ title: string, component: any }>;
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     this.successMessage = '';
     this.errorMessage = '';
     this.forgotPassword = false;
     this.changePassword = false;
+
     sessionStorage.setItem("loginDone", null);
     this.loginForm = fb.group({
       'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')])],
@@ -192,6 +194,12 @@ export class LoginPage {
   //function to redirect to home page
   openHomePage() {
     this.navCtrl.push(HomePage);
+  }
+
+  openPages(destinationPage) {
+    if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
+      this.navCtrl.setRoot(LoginPage);
+    }
   }
 }
 

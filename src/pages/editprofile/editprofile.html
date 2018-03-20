@@ -64,27 +64,33 @@
                             <img src="assets/imgs/logo.png" alt="" (click)="openHomePage()">
                         </a>
                     </ion-col>
-
                     <ion-col col-7>
                         <ion-list>
                             <ul class="mainNav">
-                                <li class="active">
-                                    <a href="#">Lorem ipsum</a>
+                                <li>
+                                    <div class="dropdown">
+                                        <span class="dropbtn">Track <i class="zmdi zmdi-chevron-down"></i></span>
+                                        <div class="dropdown-content">
+                                            <a>Match History</a>
+                                            <a>Report Score</a>
+                                            <a>Analytics</a>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li>
-                                    <a href="#">Perspiciatis
-                                            <i class="zmdi zmdi-chevron-down"></i>
-                                        </a>
+                                    <div class="dropdown">
+                                        <span class="dropbtn">Play <i class="zmdi zmdi-chevron-down"></i></span>
+                                        <div class="dropdown-content">
+                                            <a (click)="openPages('My League')">My Leagues </a>
+                                            <a>Groups </a>
+                                            <a>Find a Player </a>
+                                            <a>Find a Coach </a>
+                                        </div>
+                                    </div>
                                 </li>
-                                <li>
-                                    <a href="#">Neque porro
-                                            <i class="zmdi zmdi-chevron-down"></i>
-                                        </a>
-                                </li>
-                                <li>
-                                    <a href="#">About
-                                            <i class="zmdi zmdi-chevron-down"></i>
-                                        </a>
+
+                                <li (click)="openPages('About')">
+                                    <span class="dropbtn">About</span>
                                 </li>
                             </ul>
                         </ion-list>
@@ -639,22 +645,22 @@
                 <ion-row>
                     <ion-col col-12 text-center>
                         <ul class="footerList">
-                            <li>
+                            <li (click)="openPages('About')">
                                 <a href="#">About</a>
                             </li>
-                            <li>
+                            <li (click)="openPages('News')">
                                 <a href="#">Latest News</a>
                             </li>
-                            <li>
+                            <li (click)="openPages('Help')">
                                 <a href="#">Help</a>
                             </li>
-                            <li>
+                            <li (click)="openPages('Donate')">
                                 <a href="#">Donate</a>
                             </li>
-                            <li>
+                            <li (click)="openPages('Career')">
                                 <a href="#">Career</a>
                             </li>
-                            <li>
+                            <li (click)="openPages('Contact')">
                                 <a href="#">Contact Us</a>
                             </li>
                         </ul>
@@ -663,8 +669,8 @@
 
                     <ion-col col-12 text-center>
                         <p>My Tennis Cloud © 2018 All Rights Reserved
-                            <a href="#">Terms of Use</a> and
-                            <a href="#">Privacy Policy</a>
+                            <a href="#" (click)="openPages('Terms')">Terms of Use</a> and
+                            <a href="#" (click)="openPages('Policy')">Privacy Policy</a>
                         </p>
                     </ion-col>
                 </ion-row>

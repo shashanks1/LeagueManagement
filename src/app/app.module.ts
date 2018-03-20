@@ -22,6 +22,14 @@ import { LoginPage } from '../pages/login/login';
 import { EditPage } from '../pages/editprofile/editprofile';
 import { MyLeaguePage } from '../pages/myleague/myleague';
 import { MyGroupPage } from '../pages/mygroup/mygroup';
+import { AboutPage } from '../pages/about/about';
+import { LatestnewsPage } from '../pages/latestnews/latestnews';
+import { HelpPage } from '../pages/help/help';
+import { DonatePage } from '../pages/donate/donate';
+import { CareerPage } from '../pages/career/career';
+import { ContactPage } from '../pages/contact/contact';
+import { TermsPage } from '../pages/terms/terms';
+import { PrivacypolicyPage } from '../pages/privacypolicy/privacypolicy'; 
 import { RemoteServiceProvider } from '../providers/remote-service/remote-service';
 
 
@@ -46,7 +54,15 @@ export const environment = {
     LoginPage,
     EditPage,
     MyLeaguePage,
-    MyGroupPage
+    MyGroupPage,
+    AboutPage,
+    LatestnewsPage,
+    HelpPage,
+    DonatePage,
+    CareerPage,
+    ContactPage,
+    TermsPage,
+    PrivacypolicyPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +82,15 @@ export const environment = {
     RegistrationPage,
     LoginPage,
     MyLeaguePage,
-    MyGroupPage
+    MyGroupPage,
+    AboutPage,
+    LatestnewsPage,
+    HelpPage,
+    DonatePage,
+    CareerPage,
+    ContactPage,
+    TermsPage,
+    PrivacypolicyPage
   ],
   providers: [
     StatusBar,

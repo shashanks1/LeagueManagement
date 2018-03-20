@@ -5,6 +5,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { EditPage } from '../editprofile/editprofile';
 
+import { AboutPage } from '../about/about';
+import { LatestnewsPage } from '../latestnews/latestnews';
+import { HelpPage } from '../help/help';
+import { DonatePage } from '../donate/donate';
+import { CareerPage } from '../career/career';
+import { ContactPage } from '../contact/contact';
+import { TermsPage } from '../terms/terms';
+import { PrivacypolicyPage } from '../privacypolicy/privacypolicy'; 
+
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
 import { AlertController } from 'ionic-angular';
@@ -30,6 +39,7 @@ export class MyLeaguePage {
   widthVar: any;
   created_by: any;
   logged_user: any;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider, private alertCtrl: AlertController) {
     this.userIsLogged = false;
@@ -37,6 +47,17 @@ export class MyLeaguePage {
       this.userIsLogged = true;
       this.userEmail = JSON.parse(sessionStorage.getItem("loggedUserName"));
     }
+
+    this.pages = [
+      { title: 'About' , component: AboutPage },
+      { title: 'News' , component: LatestnewsPage},
+      { title: 'Help' , component: HelpPage},
+      { title: 'Donate' , component: DonatePage},
+      { title: 'Career' , component: CareerPage},
+      { title: 'Contact' , component: ContactPage},
+      { title: 'Terms' , component: TermsPage},
+      { title: 'Policy' , component: PrivacypolicyPage}
+    ];
 
     this.getLeagueData();
 
@@ -236,6 +257,14 @@ export class MyLeaguePage {
   editProfile() {
     this.navCtrl.push(EditPage);
   }
+
+  openPages(destinationPage) {
+      for(let i=0;i<this.pages.length;i++){
+        if(this.pages[i].title == destinationPage){
+          this.navCtrl.push(this.pages[i].component);
+        }
+      }
+    }
 
   //function to logout of the application
   logout() {

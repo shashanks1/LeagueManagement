@@ -7,7 +7,6 @@ import { RemoteServiceProvider } from '../../providers/remote-service/remote-ser
 import { LoginPage } from '../login/login';
 import { HomePage } from '../home/home';
 
-
 @Component({
   selector: 'page-registration',
   templateUrl: 'registration.html',
@@ -18,11 +17,13 @@ export class RegistrationPage {
   agree: boolean;
   successMessage: string;
   errorMessage: string;
+  pages: Array<{ title: string, component: any }>;
 
   constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
     this.agree = true;
     this.successMessage = '';
     this.errorMessage = '';
+
 
     this.registrationForm = fb.group({
       'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')])],
@@ -132,5 +133,11 @@ export class RegistrationPage {
 
   openLogin() {
     this.navCtrl.push(LoginPage);
+  }
+
+  openPages(destinationPage) {
+    if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
+      this.navCtrl.setRoot(LoginPage);
+    }
   }
 }

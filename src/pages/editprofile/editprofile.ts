@@ -8,6 +8,15 @@ import { LoadingController, ToastController } from 'ionic-angular';
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
 import { HomePage } from '../home/home';
+import { MyLeaguePage } from '../myleague/myleague';
+import { AboutPage } from '../about/about';
+import { LatestnewsPage } from '../latestnews/latestnews';
+import { HelpPage } from '../help/help';
+import { DonatePage } from '../donate/donate';
+import { CareerPage } from '../career/career';
+import { ContactPage } from '../contact/contact';
+import { TermsPage } from '../terms/terms';
+import { PrivacypolicyPage } from '../privacypolicy/privacypolicy'; 
 
 @Component({
     selector: 'edit-profile',
@@ -24,6 +33,7 @@ export class EditPage {
     tennisInfoForm: FormGroup;
     userIsLogged: boolean;
     userEmail: string;
+    pages: Array<{ title: string, component: any }>;
 
 
     constructor(private fb: FormBuilder, public navCtrl: NavController, public navParams: NavParams, public service: RemoteServiceProvider) {
@@ -34,6 +44,18 @@ export class EditPage {
         }
         this.successMessage = '';
         this.errorMessage = '';
+
+        this.pages = [
+            { title: 'My League', component: MyLeaguePage },
+            { title: 'About' , component: AboutPage },
+            { title: 'News' , component: LatestnewsPage},
+            { title: 'Help' , component: HelpPage},
+            { title: 'Donate' , component: DonatePage},
+            { title: 'Career' , component: CareerPage},
+            { title: 'Contact' , component: ContactPage},
+            { title: 'Terms' , component: TermsPage},
+            { title: 'Policy' , component: PrivacypolicyPage}
+          ];
         // this.profileForm = fb.group({
         //     'email': [null, Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')])],
         //     'full_name': [null, Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z \-\']+')])],
@@ -214,6 +236,14 @@ export class EditPage {
     openHomePage() {
         this.navCtrl.push(HomePage);
     }
+
+    openPages(destinationPage) {
+          for(let i=0;i<this.pages.length;i++){
+            if(this.pages[i].title == destinationPage){
+              this.navCtrl.push(this.pages[i].component);
+            }
+          }
+        }
 
     //function to logout of the application
     logout() {
