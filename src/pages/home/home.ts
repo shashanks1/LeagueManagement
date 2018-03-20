@@ -14,7 +14,7 @@ import { DonatePage } from '../donate/donate';
 import { CareerPage } from '../career/career';
 import { ContactPage } from '../contact/contact';
 import { TermsPage } from '../terms/terms';
-import { PrivacypolicyPage } from '../privacypolicy/privacypolicy'; 
+import { PrivacypolicyPage } from '../privacypolicy/privacypolicy';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 
@@ -38,14 +38,14 @@ export class HomePage {
     }
     this.pages = [
       { title: 'My League', component: MyLeaguePage },
-      { title: 'About' , component: AboutPage },
-      { title: 'News' , component: LatestnewsPage},
-      { title: 'Help' , component: HelpPage},
-      { title: 'Donate' , component: DonatePage},
-      { title: 'Career' , component: CareerPage},
-      { title: 'Contact' , component: ContactPage},
-      { title: 'Terms' , component: TermsPage},
-      { title: 'Policy' , component: PrivacypolicyPage}
+      { title: 'About', component: AboutPage },
+      { title: 'News', component: LatestnewsPage },
+      { title: 'Help', component: HelpPage },
+      { title: 'Donate', component: DonatePage },
+      { title: 'Career', component: CareerPage },
+      { title: 'Contact', component: ContactPage },
+      { title: 'Terms', component: TermsPage },
+      { title: 'Policy', component: PrivacypolicyPage }
     ];
   }
 
@@ -66,11 +66,16 @@ export class HomePage {
 
   //function to open league page and footer links for the application
   openPages(destinationPage) {
-    if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
-      this.navCtrl.setRoot(LoginPage);
-    } else {
-      for(let i=0;i<this.pages.length;i++){
-        if(this.pages[i].title == destinationPage){
+    if (destinationPage == 'My League') {
+      if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
+        this.navCtrl.setRoot(LoginPage);
+      } else {
+        this.navCtrl.push(MyLeaguePage);
+      }
+    }
+    else {
+      for (let i = 0; i < this.pages.length; i++) {
+        if (this.pages[i].title == destinationPage) {
           this.navCtrl.push(this.pages[i].component);
         }
       }
@@ -90,8 +95,8 @@ export class HomePage {
     sessionStorage.setItem("loginDone", null);
     sessionStorage.setItem("loggedUserId", null);
     sessionStorage.setItem("loggedUserName", null);
-    sessionStorage.setItem("loggedUserEmail",null);
-    sessionStorage.setItem("profile_pic",null);
+    sessionStorage.setItem("loggedUserEmail", null);
+    sessionStorage.setItem("profile_pic", null);
     this.navCtrl.push(HomePage);
   }
 }

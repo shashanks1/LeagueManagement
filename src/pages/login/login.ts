@@ -5,7 +5,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 import { HomePage } from '../home/home';
-
+import { MyLeaguePage } from '../myleague/myleague';
+import { AboutPage } from '../about/about';
+import { LatestnewsPage } from '../latestnews/latestnews';
+import { HelpPage } from '../help/help';
+import { DonatePage } from '../donate/donate';
+import { CareerPage } from '../career/career';
+import { ContactPage } from '../contact/contact';
+import { TermsPage } from '../terms/terms';
+import { PrivacypolicyPage } from '../privacypolicy/privacypolicy';
 
 @Component({
   selector: 'page-login',
@@ -26,6 +34,17 @@ export class LoginPage {
     this.errorMessage = '';
     this.forgotPassword = false;
     this.changePassword = false;
+    this.pages = [
+      { title: 'My League', component: MyLeaguePage },
+      { title: 'About', component: AboutPage },
+      { title: 'News', component: LatestnewsPage },
+      { title: 'Help', component: HelpPage },
+      { title: 'Donate', component: DonatePage },
+      { title: 'Career', component: CareerPage },
+      { title: 'Contact', component: ContactPage },
+      { title: 'Terms', component: TermsPage },
+      { title: 'Policy', component: PrivacypolicyPage }
+    ];
 
     sessionStorage.setItem("loginDone", null);
     this.loginForm = fb.group({
@@ -196,9 +215,21 @@ export class LoginPage {
     this.navCtrl.push(HomePage);
   }
 
+  //function to open league page and footer links for the application
   openPages(destinationPage) {
-    if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
-      this.navCtrl.setRoot(LoginPage);
+    if (destinationPage == 'My League') {
+      if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
+        this.navCtrl.setRoot(LoginPage);
+      } else {
+        this.navCtrl.push(MyLeaguePage);
+      }
+    }
+    else {
+      for (let i = 0; i < this.pages.length; i++) {
+        if (this.pages[i].title == destinationPage) {
+          this.navCtrl.push(this.pages[i].component);
+        }
+      }
     }
   }
 }

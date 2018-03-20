@@ -6,6 +6,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RemoteServiceProvider } from '../../providers/remote-service/remote-service';
 import { LoginPage } from '../login/login';
 import { HomePage } from '../home/home';
+import { MyLeaguePage } from '../myleague/myleague';
+import { AboutPage } from '../about/about';
+import { LatestnewsPage } from '../latestnews/latestnews';
+import { HelpPage } from '../help/help';
+import { DonatePage } from '../donate/donate';
+import { CareerPage } from '../career/career';
+import { ContactPage } from '../contact/contact';
+import { TermsPage } from '../terms/terms';
+import { PrivacypolicyPage } from '../privacypolicy/privacypolicy';
 
 @Component({
   selector: 'page-registration',
@@ -23,6 +32,17 @@ export class RegistrationPage {
     this.agree = true;
     this.successMessage = '';
     this.errorMessage = '';
+    this.pages = [
+      { title: 'My League', component: MyLeaguePage },
+      { title: 'About', component: AboutPage },
+      { title: 'News', component: LatestnewsPage },
+      { title: 'Help', component: HelpPage },
+      { title: 'Donate', component: DonatePage },
+      { title: 'Career', component: CareerPage },
+      { title: 'Contact', component: ContactPage },
+      { title: 'Terms', component: TermsPage },
+      { title: 'Policy', component: PrivacypolicyPage }
+    ];
 
 
     this.registrationForm = fb.group({
@@ -131,13 +151,26 @@ export class RegistrationPage {
     this.navCtrl.push(HomePage);
   }
 
+  //function to redirect to login page
   openLogin() {
     this.navCtrl.push(LoginPage);
   }
 
+  //function to open league page and footer links for the application
   openPages(destinationPage) {
-    if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
-      this.navCtrl.setRoot(LoginPage);
+    if (destinationPage == 'My League') {
+      if (sessionStorage.getItem("loginDone") != 'userIsLogged') {
+        this.navCtrl.setRoot(LoginPage);
+      } else {
+        this.navCtrl.push(MyLeaguePage);
+      }
+    }
+    else {
+      for (let i = 0; i < this.pages.length; i++) {
+        if (this.pages[i].title == destinationPage) {
+          this.navCtrl.push(this.pages[i].component);
+        }
+      }
     }
   }
 }

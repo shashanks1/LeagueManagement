@@ -33,6 +33,12 @@
                       <i class="zmdi zmdi-email"></i> info@mytenniscloud.com</a>
                 </ion-col>
 
+                <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="!userIsLogged">
+                    <a href="#" (click)="openRegistration()">
+                        <i class="zmdi zmdi-edit"></i> Register</a>
+                    <a href="#" (click)="openLogin()">
+                        <i class="zmdi zmdi-account"></i> Login</a>
+                </ion-col>
 
                 <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="userIsLogged">
                     <span class="loggedInUserEmail">Welcome, {{userEmail}}</span>
