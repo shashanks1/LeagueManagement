@@ -36,7 +36,7 @@
 
                 <ion-col col-12 col-md-4 text-right class="pull-right" *ngIf="!userIsLogged">
                     <a href="#" (click)="openRegistration()">
-                        <i class="zmdi zmdi-edit" ></i> Register</a>
+                        <i class="zmdi zmdi-edit"></i> Register</a>
                     <a href="#" (click)="openLogin()">
                         <i class="zmdi zmdi-account"></i> Login</a>
                 </ion-col>
@@ -87,23 +87,30 @@
                     <ion-col col-7>
                         <ion-list>
                             <ul class="mainNav">
-                                <li class="active">
-                                    <a href="#">Lorem ipsum</a>
+                                <li>
+                                    <div class="dropdown">
+                                        <span class="dropbtn">Dropdown <i class="zmdi zmdi-chevron-down"></i></span>
+                                        <div class="dropdown-content">
+                                            <a>Match History</a>
+                                            <a>Report Score</a>
+                                            <a>Analytics</a>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li>
-                                    <a href="#">Perspiciatis
-                        <i class="zmdi zmdi-chevron-down"></i>
-                      </a>
+                                    <div class="dropdown">
+                                        <span class="dropbtn">Play <i class="zmdi zmdi-chevron-down"></i></span>
+                                        <div class="dropdown-content">
+                                            <a>My Leagues </a>
+                                            <a>Groups </a>
+                                            <a>Find a Player </a>
+                                            <a>Find a Coach </a>
+                                        </div>
+                                    </div>
                                 </li>
+
                                 <li>
-                                    <a href="#">Neque porro
-                        <i class="zmdi zmdi-chevron-down"></i>
-                      </a>
-                                </li>
-                                <li>
-                                    <a href="#">About
-                        <i class="zmdi zmdi-chevron-down"></i>
-                      </a>
+                                    <span class="dropbtn">About</span>
                                 </li>
                             </ul>
                         </ion-list>
@@ -209,7 +216,7 @@
                                 <img src="assets/imgs/popularTabs-img-1.jpg" />
                                 <ion-card-content>
                                     <ion-card-title>
-                                        My Group
+                                        Report Score
                                     </ion-card-title>
                                 </ion-card-content>
                             </ion-card>
