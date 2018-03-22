@@ -31,6 +31,12 @@ export class HomePage {
   pages: Array<{ title: string, component: any }>;
 
   constructor(public service: RemoteServiceProvider, public navCtrl: NavController) {
+    history.pushState(null, document.title, location.href);
+    window.addEventListener('popstate', function (event)
+    {
+      history.pushState(null, document.title, location.href);
+    });
+    
     this.userIsLogged = false;
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
       this.userIsLogged = true;

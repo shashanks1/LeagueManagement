@@ -26,7 +26,6 @@ export class AboutPage {
   pages: Array<{ title: string, component: any }>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-
     this.userIsLogged = false;
     if (sessionStorage.getItem("loginDone") == 'userIsLogged') {
       this.userIsLogged = true;
