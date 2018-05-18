@@ -1,0 +1,25 @@
+version: 0.2
+phases:
+  install:
+    commands:
+    - sudo npm install -g cordova
+    - sudo npm install -g ionic
+    - npm i npm@latest -g
+  
+  build:
+    commands:
+    - echo Build started on `date`
+    - npm install
+    - ionic build
+
+  post_build:
+    commands:
+    - echo Build completed
+    - ls -l www
+    - cp -r appspec.yml scripts www/
+    - cd www && zip -r ../league_build.zip *
+
+artifacts:
+  files:
+    - 'league_build.zip'
+  
