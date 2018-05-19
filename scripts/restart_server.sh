@@ -1,3 +1,3 @@
 
-sudo service nginx restart
+sudo service apache2 restart
 
