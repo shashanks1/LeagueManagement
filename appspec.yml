@@ -12,6 +12,10 @@ permissions:
     type:
       - file
 hooks:
+  BeforeInstall:
+    - location: scripts/install_server.sh
+      timeout: 300
+      runas: root 
   ApplicationStop:
     - location: scripts/restart_server.sh
       timeout: 300
