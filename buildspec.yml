@@ -23,4 +23,4 @@ phases:
 artifacts:
   files:
     - 'league_build.zip'
-  
+    - .ebextensions/**/*
